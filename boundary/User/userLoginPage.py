@@ -28,7 +28,7 @@ def displayLoginPage():
 @login_app.route("/home", methods=["GET"])
 def displayHomePage():
     if session["roles"] == "admin":
-        return render_template('adminDeleteUserAccount.html',email=session["user_email"])
+        return render_template('admin.html',email=session["user_email"])
     elif session["roles"] == "rea":
         return render_template("home.html", role="Real Estate Agent")
     elif session["roles"] == "buyer":

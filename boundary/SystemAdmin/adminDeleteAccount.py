@@ -14,8 +14,8 @@ def delete_account():
         is_deleted = deleteUserController.deleteUserAccount(user_email)
         
         if is_deleted:
-            flash(f'{session["user_email"]} you have delete the account!', category='success')
+            flash(f'{session["user_email"]} you have delete the account!', 'success')
         else:
-            flash('something have went wrong', 'error')
+            flash('Email not existed please enter again', 'error')
         
-    return render_template('adminDeleteUserAccount.html', email=session["user_email"])
+    return render_template('admin.html', email=session["user_email"])

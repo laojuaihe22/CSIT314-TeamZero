@@ -15,8 +15,8 @@ def create_account():
         is_created = createUserController.createUserAccount(user_email,user_pass,user_role)
         
         if is_created:
-            flash(f'{session["user_email"]} you have create the account!', category='success')
+            flash(f'{session["user_email"]} you have create the account!', 'success')
         else:
-            flash('something have went wrong', 'error')
+            flash('Email existed please enter another email!', 'error')
         
-    return render_template('admin.html')
+    return render_template('admin.html',email=session["user_email"])

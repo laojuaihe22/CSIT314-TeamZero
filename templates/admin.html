@@ -7,7 +7,18 @@
 </head>
 <body>
     <h1>This is {{email}}</h1>
+    <br>
+    <!-- Flash message block -->
+    {% with messages = get_flashed_messages(with_categories=true) %}        
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}"><p>{{ message }}</p></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
 
+    <h2>Create User</h2>
     <form action="/createUserAccount" method="POST">
 
         <input type="text" name="email" id="email" class="input-field" placeholder="Email">
@@ -23,17 +34,19 @@
             <option value="seller">Seller</option>
         </select>
         <br><br>
-        <!-- Flash message block -->
-        {% with messages = get_flashed_messages(with_categories=true) %}        
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="flash-{{ category }}"><p>{{ message }}</p></div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
         <button type="submit">Create account</button>
+        <br><br>
     </form>
 
+    <h2>Delete User</h2>
+    <form action="/deleteUserAccount" method="POST">
+
+        <input type="text" name="email" id="email" class="input-field" placeholder="Enter user email">
+        <br><br>
+        <button type="submit">Delete account</button>
+    </form>
+
+    <br><br>
 
     <form action="/logout" method="post">
         <button type="submit">Logout</button>
