@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
-from controller.loginController import LoginController
+from controller.User.loginController import LoginController
 
 login_app = Blueprint('login_app', __name__)
 
@@ -12,25 +12,23 @@ def displayLoginPage():
         user_pass = request.form["password"]
         
         loginController = LoginController()
-        verifyUser = loginController.verifyAccount(user_email, user_pass)
-        
+        verifyUser, user_role = loginController.verifyAccount(user_email, user_pass)
         
         if verifyUser:
-            session.permanent = True
             session["user_email"] = user_email
-            session["roles"] = loginController.getUserRole()  # Example roles assignment, adjust as needed
-            # flash('Logged in successfully!', category='success')
-            return redirect('/home/' + user_email)
+            session["roles"] = user_role  # Example roles assignment, adjust as needed
+            flash(f'{session["roles"]} have Logged in successfully!', category='success')
+            return redirect('/home')
         else:
-            flash('Invalid email or password', 'error')
+            flash('Invalid email or password', 'error')     
             return redirect('/')  # Allow user to retry login
     else:
         return render_template("login.html")
     
-@login_app.route("/home/<userEmail>", methods=["GET"])
-def displayHomePage(userEmail):
+@login_app.route("/home", methods=["GET"])
+def displayHomePage():
     if session["roles"] == "admin":
-        return render_template("home.html", role=session["roles"])
+        return render_template('adminDeleteUserAccount.html',email=session["user_email"])
     elif session["roles"] == "rea":
         return render_template("home.html", role="Real Estate Agent")
     elif session["roles"] == "buyer":

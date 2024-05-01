@@ -3,7 +3,6 @@ from pymongo import MongoClient
 class User:
     def __init__(self):
         self.database = None
-        self.role = ""
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
@@ -28,10 +27,57 @@ class User:
         user = collection.find_one({"email": email, "password": password})
         
         if user:
-            self.role = user.get('role')
+            return True, user.get('role')
+        else:
+            return False, "None"
+    
+    def createUserAccount(self,email, password, role):
+        
+        # Get the MongoDB client
+        client = self.get_database()
+        
+        # Access a specific database
+        db = client["CSIT314"]
+        
+        # Access a specific collection within the database
+        collection = db["User"]
+        
+        try:
+            # Check if email already exists in the database
+            existing_user = collection.find_one({'email': email})
+            
+            if existing_user:
+                return False
+            
+            user_data = {
+                "email": email,
+                "password": password,
+                "role": role
+            }
+            
+            # Insert user data into the database
+            collection.insert_one(user_data)
+            return True
+        
+        except Exception as e:
+            # Log the exception or return an error message
+            return False
+        
+    def deleteUserAccount(self, email):
+        # Get the MongoDB client
+        client = self.get_database()
+        
+        # Access a specific database
+        db = client["CSIT314"]
+        
+        # Access a specific collection within the database
+        collection = db["User"]
+        
+        user = collection.find_one({"email": email})    
+        
+        if user:
+            # Delete the document
+            collection.delete_one({"email": email})
             return True
         else:
-            return False;
-    
-    def getUserRole(self):
-        return self.role    
+            return False
