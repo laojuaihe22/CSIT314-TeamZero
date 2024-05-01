@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+{% block content %}
+    <div class="image-container">
+        <img src="static/index.jpeg" alt="login-image">
+        <div class="overlay"></div>
+        <div class="image-text">All your real estate needs in one place. </div>
+    </div>
+    <div class="welcome-text"> Welcome to<br>ZeroRealEstate</div>
+    <div class="login-text-small">Enter your email and password to access your account.</div>
+    <div class="login-form-container">
+        <form action = "/login" method = "POST" class="login-form" onsubmit="lsRememberMe();">
+            <label for="cemail">Email:</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            <label for="cpassword">Password:</label>
+            <div class="password-input-container">
+                <input id="password" name="password" type="password" placeholder="Enter your password" required />
+                <i class="ri-eye-line toggle-password-icon" id="toggleIcon" onclick="togglePasswordVisibility()"></i>
+            </div>
+            <span class="align-text">
+                <input type="checkbox" id="rememberUser" name="rememberUser" value="lsRememberMe">
+                <label for="rememberUser">Remember me</label>
+                <div class="ResetPW">Forget password? <a href="resetPage.html">Change now</a></div>
+            </span>
+            <button type="submit" value="Login" class="button" id="get"><span>Sign In</span></button>
+            <span class="signUp">
+                <div class="newUser">Don't have an account? <a href="/sign-up">Sign Up</a></div>
+            </span>
+        </form>
+{% endblock %}
+
