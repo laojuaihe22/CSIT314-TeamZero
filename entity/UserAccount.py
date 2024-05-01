@@ -31,7 +31,7 @@ class User:
             self.role = user.get('role')
             return True
         else:
-            False;
+            return False;
     
     def getUserRole(self):
         return self.role    
