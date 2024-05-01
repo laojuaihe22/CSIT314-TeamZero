@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroRealEstate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}"> 
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+</head>
+<body>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='index.jpeg')}}" alt="login-image">
+        <div class="overlay"></div>
+        <div class="image-text">All your real estate needs in one place. </div>
+    </div>
+    <div class="welcome-text"> Welcome to<br>ZeroRealEstate</div>
+    <div class="login-text-small">Enter your email and password to access your account.</div>
+    <div class="login-form-container">
+        <form class="login-form" onsubmit="lsRememberMe();" action="/" method="post">
+            <label for="cemail">Email:</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            <label for="cpassword">Password:</label>
+            <div class="password-input-container">
+                <input id="password" name="password" type="password" placeholder="Enter your password" />
+                <i class="ri-eye-line toggle-password-icon" id="toggleIcon" onclick="togglePasswordVisibility()"></i>
+            </div>
+            <span class="align-text">
+                <input type="checkbox" id="rememberUser" name="rememberUser" value="lsRememberMe">
+                <label for="rememberUser">Remember me</label>
+                <div class="ResetPW">Forget password? <a href="resetPage.html">Change now</a></div>
+            </span>
+            <button type="submit" value="Login" class="button""><span>Sign In</span></button>
+            <span class="signUp">
+                <div class="newUser">Don't have an account? <a href="signUpPage.html">Sign Up</a></div>
+            </span>
+                <!-- Flash message block -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}"><p>{{ message }}</p></div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div> 
+    <!-- <footer>
+        <small>&copy; Team Zero 2024. All Rights Reserved.</small>
+    </footer> -->
+
+</body>
+</html>
