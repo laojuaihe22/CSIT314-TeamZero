@@ -17,7 +17,7 @@ class LoginController:
             self.role = userAccount.getUserRole()
             return True
         else:
-            False;
+            return False;
     
     def getUserRole(self):
         return self.role
