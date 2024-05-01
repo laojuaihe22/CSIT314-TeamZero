@@ -1,6 +1,6 @@
 from flask import redirect, session, Blueprint
 
-logout_app = Blueprint('login_controller', __name__)
+logout_app = Blueprint('logout_app', __name__)
 
 @logout_app.route("/logout", methods=["POST", "GET"])
 def displayLogoutPage():
