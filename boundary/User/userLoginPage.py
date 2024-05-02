@@ -5,8 +5,6 @@ login_app = Blueprint('login_app', __name__)
 
 @login_app.route("/", methods=["POST", "GET"])
 def displayLoginPage():
-    if "user_email" in session:
-        return redirect('/logout')
     if request.method == "POST":
         user_email = request.form["email"]
         user_pass = request.form["password"]
@@ -16,8 +14,8 @@ def displayLoginPage():
         
         if verifyUser:
             session["user_email"] = user_email
-            session["roles"] = user_role  # Example roles assignment, adjust as needed
-            flash(f'{session["roles"]} have Logged in successfully!', category='success')
+            session["roles"] = user_role  
+            flash(f'{session["roles"]} have Logged in successfully!', 'success')
             return redirect('/home')
         else:
             flash('Invalid email or password', 'error')     
@@ -27,12 +25,17 @@ def displayLoginPage():
     
 @login_app.route("/home", methods=["GET"])
 def displayHomePage():
-    if session["roles"] == "admin":
-        return render_template('admin.html',email=session["user_email"])
-    elif session["roles"] == "rea":
-        return render_template("home.html", role="Real Estate Agent")
-    elif session["roles"] == "buyer":
-        return render_template("home.html", role=session["roles"])
-    elif session["roles"] == "seller":
-        return render_template("home.html", role=session["roles"])
-    return False  
+    
+    if "user_email" in session:
+        if session["roles"] == "admin":
+            return render_template('admin.html',email=session["user_email"])
+        
+        elif session["roles"] == "rea":
+            return render_template("home.html", role="Real Estate Agent")
+        elif session["roles"] == "buyer":
+            return render_template("home.html", role=session["roles"])
+        elif session["roles"] == "seller":
+            return render_template("home.html", role=session["roles"])
+        return False  
+    else:
+        return redirect('/')

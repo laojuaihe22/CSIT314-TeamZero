@@ -18,4 +18,4 @@ def delete_account():
         else:
             flash('Email not existed please enter again', 'error')
         
-    return render_template('admin.html', email=session["user_email"])
+    return redirect('/home')

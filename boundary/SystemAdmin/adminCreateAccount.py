@@ -19,4 +19,4 @@ def create_account():
         else:
             flash('Email existed please enter another email!', 'error')
         
-    return render_template('admin.html',email=session["user_email"])
+    return redirect('/home')

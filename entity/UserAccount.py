@@ -81,3 +81,31 @@ class User:
             return True
         else:
             return False
+        
+    def getUserAccountData(self):
+        # Get the MongoDB client
+        client = self.get_database()
+        
+        # Access a specific database
+        db = client["CSIT314"]
+        
+        # Access a specific collection within the database
+        collection = db["User"]
+        
+        user_account_data = list(collection.find())
+        
+        return user_account_data
+        
+    def getUserAccount(self,email):
+    
+        client = self.get_database()
+        db = client["CSIT314"]
+        collection = db["User"]
+        
+        user = collection.find_one({"email": email})  
+        
+        if user:
+            return user
+        else :
+            return False 
+        

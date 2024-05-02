@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Admin Create User Account</title>
+    <title>System Admin</title>
 </head>
 <body>
     <h1>This is {{email}}</h1>
@@ -26,7 +26,7 @@
         <br><br>
         <input type="password" name="password" id="password" class="input-field" placeholder="Password">
         <span id="error_password" class="error"></span> <!-- Display error for Password -->
-        <br><br>
+        <br><br>    
         <label for="role">Choose a role:</label>
         <select id="role" name="role">
             <option value="rea">Real Estate Agent</option>
@@ -52,5 +52,33 @@
         <button type="submit">Logout</button>
     </form>
 
+    <br><br>
+
+    <h1>User List</h1>
+    <form action="/viewUserAccount" method="post">
+    <ul>
+        {% for user in users %}
+            <li>Email: {{ user['email'] }} &emsp; Role: {{user['role']}}</li>
+        {% endfor %}
+    </ul> 
+    <button type="submit">Get User Account</button>
+    </form> 
+
+    <h1>Search User Account</h1>
+    <form action="/searchUserAccount" method="post">
+        <h1>User Profile</h1>
+        <input type="text" name="email" id="email" class="input-field" placeholder="Enter user email">
+        {% if searchUser %}
+        <ul>
+            <li>Email: {{ searchUser.email }}</li>
+            <li>Password: {{ searchUser.password }}</li>
+            <li>Role: {{ searchUser.role }}</li>
+            <li>Name: {{ searchUser.profile.name }}</li>
+            <li>Age: {{ searchUser.profile.age }}</li>
+            <li>Country: {{ searchUser.profile.country }}</li>
+        </ul>
+        {% endif %}
+    <button type="submit">Search</button>
+    </form> 
 </body>
 </html>

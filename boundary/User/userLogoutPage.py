@@ -5,6 +5,5 @@ logout_app = Blueprint('logout_app', __name__)
 @logout_app.route("/logout", methods=["POST", "GET"])
 def displayLogoutPage():
     session.pop("user_email", None)
-    session.pop("password", None)
     session.pop("roles", None)
     return redirect('/')  # Redirect to login page after logout
