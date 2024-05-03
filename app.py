@@ -7,8 +7,11 @@ from boundary.SystemAdmin.adminDeleteAccount import delete_account_app
 from boundary.SystemAdmin.adminViewAccount import view_account_app
 from boundary.SystemAdmin.adminSearchUserAccount import search_account_app
 
+from datetime import timedelta
+
 app = Flask(__name__)
 app.secret_key = "123"
+app.permanent_session_lifetime = timedelta(minutes=10)
 
 # blueprint for loginPage
 app.register_blueprint(login_app)

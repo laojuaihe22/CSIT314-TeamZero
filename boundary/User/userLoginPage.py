@@ -6,6 +6,7 @@ login_app = Blueprint('login_app', __name__)
 @login_app.route("/", methods=["GET"])
 def displayLoginPage():
     if "user_email" in session:
+        session.permanent = True
         return redirect(url_for('login_app.displayHomePage'))
     else:
         return render_template("login.html")
