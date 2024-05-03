@@ -1,16 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZeroRealEstate</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+        <script src="{{ url_for('static', filename='script.js')}}"></script>
 </head>
-<body>
-    <h1>This is home page</h1>
-    <p>Hi i am {{role}}</p>
+<body class="no-scroll">
+
+<span class="navbar">
+    <a class="title" href="page1.html">Zero Real Estate</a>
+    <a class="active" href="myprofile.html"><button>My Profile</button></a>
+    <a class="active" href="/logout"><button>logout</button></a>
+    <a href="myActivities.html">My Activities</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+    <a href="page1.html">Home</a>
+</span>
     
-    <form action="/logout" method="POST">
-        <button type="submit">Logout</button>
-    </form>
+
+<!-- Page content goes here -->
+<div class="photo">
+    <img src="{{ url_for('static', filename='page1.jpg')}}" alt="Photo">
+    <div class="text">
+        We Guide You Through It All
+    </div>
+</div>
+
+<div class="textabovecolumn">
+    <a href="#">Rent</a>
+    <a href="#">Sell</a>
+    <a href="#">Buy</a>
+</div>
+
+<div class="columns">
+    <span class="align">
+        <div class="column">
+            <p>TYPE</p>
+            <select>
+                <option value="" disabled selected>Select Property Type</option>
+                <option value="house">All Properties</option>
+                <option value="apartment">Landed</option>
+                <option value="condo">Condominium</option>
+            </select>
+        </div>
+    </span>
+    <span class="align">
+        <div class="column">
+            <p>LOCATION</p>
+            <input type="text" placeholder="Search Location">
+        </div>
+    </span>    
+    <div class="column">
+        <button>Search</button>
+    </div>
+</div>
+
+
 </body>
 </html>

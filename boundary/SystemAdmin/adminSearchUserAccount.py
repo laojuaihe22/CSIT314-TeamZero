@@ -9,7 +9,7 @@ def view_account():
     if request.method == "POST":
         user_email = request.form["email"]
         searchUserAccountController = SearchUserAccountController()
-        user_account_data = searchUserAccountController.getUserAccount(user_email)
+        user_account_data = searchUserAccountController.searchUserAccount(user_email)
         
         if user_account_data:
             return render_template('admin.html',searchUser=user_account_data,email=session['user_email'])

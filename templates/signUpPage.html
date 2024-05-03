@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroRealEstate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+    
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='index.jpeg')}}" alt="login-image">
+        <div class="overlay"></div>
+        <div class="image-text">All your real estate needs in one place. </div>
+    </div>
+    <div class="welcome-text"> Welcome to<br>ZeroRealEstate</div>
+    <form class="create-acc-form-container" id="signupForm" onsubmit="return validatePasswords()&& validateNewUser()" action="/sign-up" method="post">
+        <div class="create-acc">Create An Account</div>
+        <div class="new-acc">Enter your desired login email and password <br> to get started with us!</div>
+        <input id="nemail" name="email" type="email" placeholder="Email Address" required>
+        <input id="npassword" name="password" type="password" placeholder="Password" required>
+        <input id="npassword_re" name="password_re" type="password" placeholder="Re-enter password" required>
+        <div id="exsistingEmail" class="error-message"></div>
+        <div id="passwordMismatch" class="error-message">
+        </div>
+        <button class="button" type="submit"><span>Create Account</span></button>
+        <span class="login">
+            <div class="newUser">Already have An Account? <a href="/">Sign In</a></div>
+        </span>        
+    </form>
+
+</div>
+
+</body>
+</html>

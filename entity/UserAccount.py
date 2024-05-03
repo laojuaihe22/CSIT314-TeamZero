@@ -14,13 +14,9 @@ class User:
     #89 As a buyers, I want to be able to log in to the real estate platform using my email address and password.
     #91 As a sellers, I want to be able to log in to the real estate platform using my email address and password.
     def verifyAccount(self,email,password):
-        # Get the MongoDB client
+
         client = self.get_database()
-
-        # Access a specific database
         db = client["CSIT314"]
-
-        # Access a specific collection within the database
         collection = db["User"]
 
         # Now you can perform database operations using the collection object
@@ -33,13 +29,8 @@ class User:
     
     def createUserAccount(self,email, password, role):
         
-        # Get the MongoDB client
         client = self.get_database()
-        
-        # Access a specific database
         db = client["CSIT314"]
-        
-        # Access a specific collection within the database
         collection = db["User"]
         
         try:
@@ -64,13 +55,9 @@ class User:
             return False
         
     def deleteUserAccount(self, email):
-        # Get the MongoDB client
+
         client = self.get_database()
-        
-        # Access a specific database
         db = client["CSIT314"]
-        
-        # Access a specific collection within the database
         collection = db["User"]
         
         user = collection.find_one({"email": email})    
@@ -82,21 +69,17 @@ class User:
         else:
             return False
         
-    def getUserAccountData(self):
-        # Get the MongoDB client
+    def viewUserAccountData(self):
+
         client = self.get_database()
-        
-        # Access a specific database
         db = client["CSIT314"]
-        
-        # Access a specific collection within the database
         collection = db["User"]
         
         user_account_data = list(collection.find())
         
         return user_account_data
         
-    def getUserAccount(self,email):
+    def searchUserAccount(self,email):
     
         client = self.get_database()
         db = client["CSIT314"]
@@ -108,4 +91,27 @@ class User:
             return user
         else :
             return False 
+    
+    def signUpUser(self, email,password):
+        client = self.get_database()
+        db = client["CSIT314"]
+        collection = db["User"]
+        try:
+            # Check if email already exists in the database
+            existing_user = collection.find_one({'email': email})
+            
+            if existing_user:
+                return False
+            
+            user_data = {
+                "email": email,
+                "password": password,
+            }
+            
+            # Insert user data into the database
+            collection.insert_one(user_data)
+            return True
         
+        except Exception as e:
+            # Log the exception or return an error message
+            return False

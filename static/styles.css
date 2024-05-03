@@ -51,7 +51,7 @@ img {
 .login-text-small {
     padding-top: 20px;
     position: absolute;
-    top: 40%; 
+    top: 35%; 
     left: 74.5%; 
     transform: translate(-50%); 
     color: black; 
@@ -202,11 +202,11 @@ img {
     font-size: 30px; 
     font-weight: normal;
     text-align: center; 
-    border: 2px outset whitesmoke; /* Border style */
-    border-radius: 20px; /* Rounded corners */
-    padding: 20px; /* Padding around the container */
-    max-width: 400px; /* Maximum width of the container */
-    margin: 0 auto; /* Center the container horizontally */
+    border: 2px outset whitesmoke;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .create-acc {
@@ -254,3 +254,186 @@ img {
     align-items: center;
     margin-top: -20px;
 }
+
+.error-message {
+    color: red;
+    font-size: 13px;
+    position: absolute;
+    font-weight: bold;
+}
+
+#passwordMismatch {
+    margin-top: 5px;
+    padding-left: 20%;
+}
+
+#exsistingEmail {
+    margin-top: 135px;
+}
+
+#infoMismatch {
+    margin-top: 5px;
+}
+
+
+
+
+/* jiro's css */
+
+.navbar {
+    position: fixed;
+    top: 7;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-weight: 700;
+}
+
+.navbar a {
+    margin-top: 1.1%;
+    color: black;
+    float: right;
+    display: block;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+}
+
+.navbar a.title {
+    padding-left: 45px;
+    position: absolute;
+    margin-top:5px;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navbar button {
+    font-size: 13px;
+    margin: 1px;
+    background-color:black; /* Green background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.navbar a.active {
+    margin-top:-5px;
+    color: black;
+}
+
+/* Style for the photo */
+.photo {
+    margin-top: 75px; /* Adjust according to navbar height */
+    width: 100%;
+    height: calc(100vh - 60px); /* Subtract navbar height from viewport height */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5; /* Adjust opacity as needed */
+}
+
+.photo .text {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 46px;
+    font-weight: bold;
+    opacity: 1.0; /* Fully opaque */
+    color: black; /* Text color */
+}
+
+.columns {
+    background-color: white;
+    position: absolute;
+    top: 61%; /* Adjust vertically */
+    left: 50%; /* Adjust horizontally */
+    transform: translate(-50%, -50%);
+    display: grid; /* Use grid layout */
+    grid-template-columns: 1fr 1fr 2fr; /* Adjust column widths */
+    grid-column-gap: 20px; /* Add gap between columns */
+    align-items: center; /* Align items vertically */
+    height: 12%;
+    width: 40%;
+    border-radius: 10px; /* Curved border */
+    padding: 7px; /* Add padding */
+}
+
+.textabovecolumn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 550;
+    opacity: 100;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.textabovecolumn a {
+    color: black; /* Change the color to black */
+    text-decoration: none; /* Remove underline */
+    margin: 0px 30px; /* Add some margin for spacing */
+}
+
+
+.column p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin: 5%; /* Remove default margin */
+    color: black; /* Text color */
+}
+
+.column select {
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.column input[type="text"] {
+    width: 150px;
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid #353434;
+    background-color: rgb(220, 219, 219);
+    box-sizing: border-box;
+}
+
+.column button {
+    margin-top: 12%;
+    margin-left: 11%;
+    background-color:black; /* Green background */
+    color: white; /* White text */
+    padding: 10px 30px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.align {
+    position: relative;
+    margin-left: 5%;
+}
+
+.column button:hover {
+    background-color:grey; /* Darker green */
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Ally's css */

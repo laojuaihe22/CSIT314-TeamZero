@@ -2,8 +2,8 @@ from entity.UserAccount import User
 
 class ViewUserAccountController:
     
-    def getUserAccountData(self):
+    def viewUserAccountData(self):
         userAccount = User()
-        user_account = userAccount.getUserAccountData()
+        user_account = userAccount.viewUserAccountData()
         
         return user_account
