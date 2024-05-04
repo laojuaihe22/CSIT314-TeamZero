@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>This is {{email}}</h1>
-    <br>
     <!-- Flash message block -->
     {% with messages = get_flashed_messages(with_categories=true) %}        
         {% if messages %}
@@ -16,79 +16,126 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <br>
 
-    <h2>Create User</h2>
-    <form action="/createUserAccount" method="POST">
+    <div class="container mt-5">
+        <h1 class="mb-4">System Administration</h1>
+        <!-- Logout Button -->
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-secondary mb-4">Logout</button>
+        </form>
 
-        <input type="text" name="email" id="email" class="input-field" placeholder="Email">
-        <span id="error_username" class="error"></span> <!-- Display error for Username -->
-        <br><br>
-        <input type="password" name="password" id="password" class="input-field" placeholder="Password">
-        <span id="error_password" class="error"></span> <!-- Display error for Password -->
-        <br><br>    
-        <label for="role">Choose a role:</label>
-        <select id="role" name="role">
-            <option value="rea">Real Estate Agent</option>
-            <option value="buyer">Buyer</option>
-            <option value="seller">Seller</option>
-        </select>
-        <br><br>
-        <button type="submit">Create account</button>
-        <br><br>
-    </form>
+        <!-- Flash message block -->
+        <div id="flash-messages">
+            <h1>This is {{email}} </h1>
+        </div>
+        <!-- Create User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Create User</h2>
+            </div>
+            <div class="card-body">
+                <form id="create-user-form" action="/createUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Choose a role:</label>
+                        <select class="form-control" id="role" name="role">
+                            <option value="rea">Real Estate Agent</option>
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            </div>
+        </div>
 
-    <h2>Delete User</h2>
-    <form action="/deleteUserAccount" method="POST">
+        <!-- Delete User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Delete User</h2>
+            </div>
+            <div class="card-body">
+                <form id="delete-user-form" action="/deleteUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="delete-email">Enter user email:</label>
+                        <input type="text" class="form-control" id="delete-email" name="email" placeholder="Enter user email">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                </form>
+            </div>
+        </div>
 
-        <input type="text" name="email" id="email" class="input-field" placeholder="Enter user email">
-        <br><br>
-        <button type="submit">Delete account</button>
-    </form>
 
-    <br><br>
-
-    <form action="/logout" method="post">
-        <button type="submit">Logout</button>
-    </form>
-
-    <br><br>
-
-    <h1>User List</h1>
     <form action="/viewUserAccount" method="get">
-        <table>
-            <tr>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-            {% for user in users %}
-            <tr>
-                <td>{{ user['email'] }}</td>
-                <td>{{ user['role'] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    <button type="submit">Get User Account</button>
-    </form> 
-
-    <h1>Search User Account</h1>
-    <form action="/searchUserAccount" method="post">
-        
-        <input type="text" name="email" id="email" class="input-field" placeholder="Enter user email">
-        {% if searchUser %}
-        <h1>User Account</h1>
-            <table>
-                <tr>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
-                <tr>
-                    <td>{{ searchUser.email }}</td>
-                    <td>{{ searchUser.password }}</td>
-                </tr>
-            </table>
-        {% endif %}
-    <button type="submit">Search</button>
-    </form> 
+        <!-- User List -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>User List</h2>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list">
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user['email'] }}</td>
+                                <td>{{ user['role'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Get User Account</button>
+            </div>
+        </div>
+    </form>
+        <!-- Search User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Search User Account</h2>
+            </div>
+            <div class="card-body">
+                <form id="search-user-form" action="/searchUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="search-email">Enter user email:</label>
+                        <input type="text" class="form-control" id="search-email" name="email" placeholder="Enter user email">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-list">
+                                {% if searchUser %}
+                                    <tr>
+                                        <td>{{ searchUser.email }}</td>
+                                        <td>{{ searchUser.password }}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
