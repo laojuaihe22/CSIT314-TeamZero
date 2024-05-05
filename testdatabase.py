@@ -12,7 +12,7 @@ email = "admin2@gmail.com"
 
 user = collection.find_one({"email": email})  
 
-print(user["email"]) 
-print(user["role"]) 
-print(user["profile"]['name']) 
+# print(user["email"]) 
+# print(user["role"]) 
+# print(user["profile"]['name']) 
 

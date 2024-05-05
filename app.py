@@ -6,6 +6,7 @@ from boundary.SystemAdmin.adminCreateAccount import create_account_app
 from boundary.SystemAdmin.adminDeleteAccount import delete_account_app
 from boundary.SystemAdmin.adminViewAccount import view_account_app
 from boundary.SystemAdmin.adminSearchUserAccount import search_account_app
+from boundary.User.userProfilePage import userProfile
 
 from datetime import timedelta
 
@@ -21,6 +22,7 @@ app.register_blueprint(delete_account_app)
 app.register_blueprint(view_account_app)
 app.register_blueprint(search_account_app)
 app.register_blueprint(signUp_app)
+app.register_blueprint(userProfile)
 
 # Run the Flask application
 if __name__ == "__main__":  
