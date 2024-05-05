@@ -436,4 +436,10 @@ img {
     overflow: hidden;
 }
 
+.flash-error
+{
+    color: red;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
 /* Ally's css */

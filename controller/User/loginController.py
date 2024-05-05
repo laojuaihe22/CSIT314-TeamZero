@@ -1,11 +1,11 @@
-from entity.UserAccount import User
+from entity.UserAccount import UserAccount
 
 class LoginController:
        
     
     def verifyAccount(self, email, password):
         
-        userAccount = User()
+        userAccount = UserAccount()
         user, user_role = userAccount.verifyAccount(email,password)
         
         if user:

@@ -1,10 +1,10 @@
-from entity.UserAccount import User
+from entity.UserAccount import UserAccount
 
 class SearchUserAccountController:
     
     def searchUserAccount(self,email):
         
-        userAccount = User()
+        userAccount = UserAccount()
         user = userAccount.searchUserAccount(email)
         
         return user;

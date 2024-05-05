@@ -1,4 +1,4 @@
-from entity.UserAccount import User
+from entity.UserAccount import UserAccount
 class CreateUserController:
     
     def createUserAccount(self,email,password,role):
@@ -6,7 +6,7 @@ class CreateUserController:
         if not email or not password or not role:
             return False 
         
-        userAccount = User()
+        userAccount = UserAccount()
         isCreated = userAccount.createUserAccount(email,password,role)
         
         if isCreated:

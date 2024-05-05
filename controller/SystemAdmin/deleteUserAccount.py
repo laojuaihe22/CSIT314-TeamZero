@@ -1,4 +1,4 @@
-from entity.UserAccount import User
+from entity.UserAccount import UserAccount
 
 class DeleteUserAccount:
     
@@ -7,7 +7,7 @@ class DeleteUserAccount:
         if not email:
             return False 
         
-        userAccount = User()
+        userAccount = UserAccount()
         isDeleted = userAccount.deleteUserAccount(email)
         
         if isDeleted:

@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-class User:
+class UserAccount:
     def __init__(self):
         self.database = None
     def get_database(self):
