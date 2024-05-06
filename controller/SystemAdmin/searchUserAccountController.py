@@ -7,6 +7,6 @@ class SearchUserAccountController:
         userAccount = UserAccount()
         user = userAccount.searchUserAccount(email)
         
-        return user;
+        return user
         
     

@@ -33,7 +33,7 @@ def displayHomePage():
     if "user_email" in session:
         role = session.get("roles")
         if role == "admin":
-            return render_template('admin.html', email=session["user_email"])
+            return render_template('HomeProfile.html', email=session["user_email"])
         else:
             return render_template("home.html", role=role)
     else:

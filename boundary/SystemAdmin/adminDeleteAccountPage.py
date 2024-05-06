@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
-from controller.SystemAdmin.deleteUserAccount import DeleteUserAccount
+from controller.SystemAdmin.deleteUserAccountController import DeleteUserAccount
 
 delete_account_app = Blueprint('delete_account_app', __name__)
 

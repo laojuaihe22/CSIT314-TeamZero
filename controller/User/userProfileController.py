@@ -3,9 +3,9 @@ from entity.UserProfile import UserProfile
 
 class UserProfileController:
     
-    def displayUserProfile(self,email):
+    def viewUserProfile(self,email):
         userProfileEntity = UserProfile()
-        userObj = userProfileEntity.displayUserProfile(email)
+        userObj = userProfileEntity.viewUserProfile(email)
         
         return userObj
     

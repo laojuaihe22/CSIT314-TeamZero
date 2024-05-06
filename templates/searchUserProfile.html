@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search User Profile</title>
+</head>
+<body>
+    <h1>Search User Profile</h1>
+    <form id="searchForm" action="/searchUserProfile" method="post">
+        <label for="email">Enter User Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Search</button>
+    </form>
+
+
+    {% if searchUser %}
+    <h1>User found</h1>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>{{ searchUser.email }}</td>
+            <td>{{ searchUser.profile.name }}</td>
+            <td>{{ searchUser.profile.age }}</td>
+            <td>{{ searchUser.profile.description }}</td>
+        </tr>
+    </table>
+    {% else %}
+    <h1>No user found with the provided email.</h1>
+    {% endif %}
+
+
+</body>
+</html>
