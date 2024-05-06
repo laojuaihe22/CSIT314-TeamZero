@@ -23,6 +23,7 @@ class UserProfile:
         userObj = collection.find_one({"email": email})
         
         return userObj
+
     
     #create user profile
     def createUserProfile(self, email, name, age, description):

@@ -5,7 +5,7 @@ search_account_app = Blueprint('search_account_app', __name__)
 
 @search_account_app.route('/searchUserAccount', methods=['GET', 'POST'])
 def search_account():
-    
+
     if request.method == "POST":
         user_email = request.form["email"]
         searchUserAccountController = SearchUserAccountController()

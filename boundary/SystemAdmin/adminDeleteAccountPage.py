@@ -5,7 +5,7 @@ delete_account_app = Blueprint('delete_account_app', __name__)
 
 
 @delete_account_app.route('/deleteUserAccount', methods=['GET', 'POST'])
-def delete_account():
+def delete_account_page():
     
     if request.method == "POST":
         user_email = request.form["email"]

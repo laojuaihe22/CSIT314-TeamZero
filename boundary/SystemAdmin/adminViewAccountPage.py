@@ -4,7 +4,7 @@ from controller.SystemAdmin.viewUserAccountController import ViewUserAccountCont
 view_account_app = Blueprint('view_account_app', __name__)
 
 @view_account_app.route('/viewUserAccount', methods=['GET', 'POST'])
-def view_account():
+def view_account_page():
     
     if request.method == "GET":
         viewUserAccountController = ViewUserAccountController()
