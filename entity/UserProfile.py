@@ -23,3 +23,4 @@ class UserProfile:
         userObj = collection.find_one({"email": email})
         
         return userObj
+    

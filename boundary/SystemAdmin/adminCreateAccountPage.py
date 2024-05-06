@@ -5,7 +5,7 @@ create_account_app = Blueprint('create_account_app', __name__)
 
 
 @create_account_app.route('/createUserAccount', methods=['GET', 'POST'])
-def create_account():
+def create_account_page():
     
     if request.method == "POST":
         user_email = request.form["email"]

@@ -2,10 +2,10 @@ from flask import Flask
 from boundary.User.userLoginPage import login_app
 from boundary.User.userLogoutPage import logout_app
 from boundary.User.userSignUpPage import signUp_app
-from boundary.SystemAdmin.adminCreateAccount import create_account_app
-from boundary.SystemAdmin.adminDeleteAccount import delete_account_app
-from boundary.SystemAdmin.adminViewAccount import view_account_app
-from boundary.SystemAdmin.adminSearchUserAccount import search_account_app
+from boundary.SystemAdmin.adminCreateAccountPage import create_account_app
+from boundary.SystemAdmin.adminDeleteAccountPage import delete_account_app
+from boundary.SystemAdmin.adminViewAccountPage import view_account_app
+from boundary.SystemAdmin.adminSearchAccountPage import search_account_app
 from boundary.User.userProfilePage import userProfile
 
 from datetime import timedelta
