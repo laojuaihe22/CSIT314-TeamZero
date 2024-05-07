@@ -12,6 +12,11 @@ from boundary.SystemAdmin.adminViewUserProfilePage import view_profile_app
 from boundary.SystemAdmin.adminDeleteUserProfilePage import delete_profile_app
 from boundary.SystemAdmin.adminSearchProfilePage import search_profile_app
 from boundary.SystemAdmin.adminUpdateUserProfilePage import update_profile_app
+from boundary.RealEstateAgent.agentCreatePropertyListingPage import create_property_listing_app
+from boundary.RealEstateAgent.agentViewPropertyListingPage import view_property_listing_app
+from boundary.RealEstateAgent.agentUpdatePropertyListingPage import update_property_listing_app
+from boundary.RealEstateAgent.agentDeletePropertyListingPage import delete_property_listing_app
+from boundary.RealEstateAgent.agentSearchPropertyListingPage import search_property_listing_app
 from datetime import timedelta
 
 app = Flask(__name__)
@@ -32,7 +37,11 @@ app.register_blueprint(view_profile_app)
 app.register_blueprint(delete_profile_app)
 app.register_blueprint(search_profile_app)
 app.register_blueprint(update_profile_app)
-
+app.register_blueprint(create_property_listing_app)
+app.register_blueprint(view_property_listing_app)
+app.register_blueprint(update_property_listing_app)
+app.register_blueprint(delete_property_listing_app)
+app.register_blueprint(search_property_listing_app)
 
 # Run the Flask application
 if __name__ == "__main__":  

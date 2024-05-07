@@ -8,7 +8,7 @@ class UserProfile:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
-            self.database = MongoClient("mongodb://localhost:27017")
+            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
         return self.database
     
     
@@ -107,6 +107,7 @@ class UserProfile:
         if user:
             update_query = {"$set": {"profile." + field: value}}
             collection.update_one({"email": email}, update_query)
-            return user
+            updated_user = collection.find_one({'email': email})
+            return updated_user
         else:
-            return user
+            return None

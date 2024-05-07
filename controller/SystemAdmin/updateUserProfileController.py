@@ -6,8 +6,7 @@ class UpdateUserProfileController:
 
         if not email:
             return False 
-        
-
+    
         userProfile = UserProfile()
         updatedUser = userProfile.updateUserProfile(email, field, data)
 
