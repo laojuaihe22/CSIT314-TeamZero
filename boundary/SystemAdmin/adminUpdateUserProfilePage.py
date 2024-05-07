@@ -18,11 +18,12 @@ def update_profile():
         value = request.form["value"]
         
         updateUserProfileController = UpdateUserProfileController()
-        is_created = updateUserProfileController.updateUserProfile(user_email, field, value)
+        updateUser = updateUserProfileController.updateUserProfile(user_email, field, value)
 
-        if is_created:
+        if updateUser:
             flash(f'Profile updated for {session["user_email"]}', 'success')
+            return render_template('/updateUserProfile.html', updateUser=updateUser)
         else:
             flash('Email doesn\'t exists', 'error')
         
-    return redirect('/home')
+    return render_template('/updateUserProfile.html', updateUser=None)
