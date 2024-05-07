@@ -107,6 +107,7 @@ class UserProfile:
         if user:
             update_query = {"$set": {"profile." + field: value}}
             collection.update_one({"email": email}, update_query)
-            return user
+            updated_user = collection.find_one({'email': email})
+            return updated_user
         else:
-            return user
+            return None
