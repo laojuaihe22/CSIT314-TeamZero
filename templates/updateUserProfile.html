@@ -20,5 +20,24 @@
         <input type="text" id="value" name="value" required><br><br>
         <button type="submit">Update User</button>
     </form>
+    {% if updateUser %}
+    <h1>User profile updated</h1>
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>{{ updateUser.email }}</td>
+            <td>{{ updateUser.profile.name }}</td>
+            <td>{{ updateUser.profile.age }}</td>
+            <td>{{ updateUser.profile.description }}</td>
+        </tr>
+    </table>
+    {% else %}
+    <h1>No user found with the provided email.</h1>
+    {% endif %}
 </body>
 </html>

@@ -9,10 +9,7 @@ class UpdateUserProfileController:
         
 
         userProfile = UserProfile()
-        isUpdated = userProfile.updateUserProfile(email, field, data)
+        updatedUser = userProfile.updateUserProfile(email, field, data)
 
-        if isUpdated:
-            return True
-        else:
-            return False
+        return updatedUser
         

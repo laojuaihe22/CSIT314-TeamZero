@@ -6,7 +6,7 @@ class UserAccount:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
-            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+            self.database = MongoClient("mongodb://localhost:27017")
         return self.database
     
     #61 As a system admin, I want to log in to the management system, so that I can perform administrative tasks and manage the system effectively.
