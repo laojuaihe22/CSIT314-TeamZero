@@ -9,7 +9,7 @@ from boundary.SystemAdmin.adminSearchUserAccountPage import search_account_app
 from boundary.User.userProfilePage import userProfile
 from boundary.SystemAdmin.adminCreateProfilePage import create_profile_app
 from boundary.SystemAdmin.adminViewUserProfilePage import view_profile_app
-from boundary.SystemAdmin.adminDeleteUserProfilePage import delete_profile_app
+from boundary.SystemAdmin.adminSuspendUserProfilePage import suspend_profile_app
 from boundary.SystemAdmin.adminSearchProfilePage import search_profile_app
 from boundary.SystemAdmin.adminUpdateUserProfilePage import update_profile_app
 from boundary.RealEstateAgent.agentCreatePropertyListingPage import create_property_listing_app
@@ -34,7 +34,7 @@ app.register_blueprint(signUp_app)
 app.register_blueprint(userProfile)
 app.register_blueprint(create_profile_app)
 app.register_blueprint(view_profile_app)
-app.register_blueprint(delete_profile_app)
+app.register_blueprint(suspend_profile_app)
 app.register_blueprint(search_profile_app)
 app.register_blueprint(update_profile_app)
 app.register_blueprint(create_property_listing_app)

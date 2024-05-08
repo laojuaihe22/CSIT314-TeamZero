@@ -13,7 +13,7 @@
         <label for="field">Select Field:</label>
         <select id="field" name="field">
             <option value="name">Name</option>
-            <option value="age">Age</option>
+            <option value="status">Status</option>
             <option value="description">Description</option>
         </select><br><br>
         <label for="value">New Value:</label>
@@ -26,13 +26,13 @@
         <tr>
             <th>Email</th>
             <th>Name</th>
-            <th>Age</th>
+            <th>Status</th>
             <th>Description</th>
         </tr>
         <tr>
             <td>{{ updateUser.email }}</td>
             <td>{{ updateUser.profile.name }}</td>
-            <td>{{ updateUser.profile.age }}</td>
+            <td>{{ updateUser.profile.status }}</td>
             <td>{{ updateUser.profile.description }}</td>
         </tr>
     </table>

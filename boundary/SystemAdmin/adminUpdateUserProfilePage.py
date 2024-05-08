@@ -3,13 +3,9 @@ from controller.SystemAdmin.updateUserProfileController import UpdateUserProfile
 
 update_profile_app = Blueprint('update_profile_app', __name__)
 
-@update_profile_app.route('/updateUserProfilePage', methods=['GET', 'POST'])
-def update_profile_page():
-
-    return render_template('updateUserProfile.html')
 
 @update_profile_app.route('/updateUserProfile', methods=['GET', 'POST'])
-def update_profile():
+def update_profile_page():
 
     if request.method == "POST":
 
@@ -24,6 +20,7 @@ def update_profile():
             flash(f'Profile updated for {session["user_email"]}', 'success')
             return render_template('/updateUserProfile.html', updateUser=updateUser)
         else:
-            flash('Email doesn\'t exists', 'error')
+            flash('No profile has been updated', 'error')
+            return render_template('/updateUserProfile.html', updateUser=None)
         
-    return render_template('/updateUserProfile.html', updateUser=None)
+    return render_template('/updateUserProfile.html')

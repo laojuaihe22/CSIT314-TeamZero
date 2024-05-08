@@ -4,7 +4,7 @@ from controller.SystemAdmin.viewUserProfileController import ViewUserProfileCont
 view_profile_app = Blueprint('view_profile_app', __name__)
 
 @view_profile_app.route('/viewUserProfile', methods=['GET', 'POST'])
-def view_profile():
+def view_profile_page():
 
     if request.method == "GET":
         viewUserProfileController = ViewUserProfileController()
