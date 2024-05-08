@@ -7,6 +7,7 @@ db = client["CSIT314"]
 
 # Access a specific collection within the database
 collection = db["User"]
+property_collection = db["PropertyListing"]
 
 email = "admin3@gmail.com"
 

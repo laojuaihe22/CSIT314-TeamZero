@@ -2,10 +2,10 @@ from entity.UserAccount import UserAccount
 
 class SuspendUserAccount:
     
-    def suspendUserAccount(self, email):
+    def suspendUserAccount(self, user_email):
     
         userAccount = UserAccount()
-        is_suspend = userAccount.suspendUserAccount(email)
+        is_suspend = userAccount.suspendUserAccount(user_email)
         
         if is_suspend:
             return True

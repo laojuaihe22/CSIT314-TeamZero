@@ -1,11 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
-from controller.SystemAdmin.deleteUserAccountController import SuspendUserAccount
+from controller.SystemAdmin.suspendUserAccountController import SuspendUserAccount
 
-delete_account_app = Blueprint('delete_account_app', __name__)
+suspend_account_app = Blueprint('suspend_account_app', __name__)
 
 
-@delete_account_app.route('/suspendUserAccount', methods=['POST'])
-def delete_account_page():
+@suspend_account_app.route('/suspendUserAccount', methods=['POST'])
+def suspend_account_page():
     
     if request.method == "POST":
         user_email = request.form["email"]
