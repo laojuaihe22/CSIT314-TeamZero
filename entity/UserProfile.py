@@ -65,18 +65,18 @@ class UserProfile:
         return user_profile_data
 
     # suspend user profiles
-    def suspendUserProfile(self, email):
+    def suspendUserProfile(self, user_email):
 
         client = self.get_database()
         
         db = client["CSIT314"]
         collection = db["User"]
 
-        user = collection.find_one({"email": email})    
+        user = collection.find_one({"email": user_email})    
         
         if user:
             # suspend profile
-            collection.update_one({"email": email}, {"$set":{"status": False}})
+            collection.update_one({"email": user_email}, {"$set":{"status": False}})
             return True
         else:
             return False

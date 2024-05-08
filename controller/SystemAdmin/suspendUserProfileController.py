@@ -3,13 +3,11 @@ from entity.UserProfile import UserProfile
 
 class SuspendUserProfile:
 
-    def suspendUserProfile(self, email):
-          
-        if not email:
-                return False 
+    def suspendUserProfile(self, user_email):
+        
         
         userProfile = UserProfile()
-        isDeleted = userProfile.suspendUserProfile(email)
+        isDeleted = userProfile.suspendUserProfile(user_email)
         
         return isDeleted
               

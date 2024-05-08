@@ -57,17 +57,17 @@ class UserAccount:
             # Log the exception or return an error message
             return False
         
-    def suspendUserAccount(self, email):
+    def suspendUserAccount(self, user_email):
 
         client = self.get_database()
         db = client["CSIT314"]
         collection = db["User"]
         
-        user = collection.find_one({"email": email})    
+        user = collection.find_one({"email": user_email})    
         
         if user:
             collection.update_one(
-                {"email": email},
+                {"email": user_email},
                 {"$set": {"status": False}}
             )
             return True
