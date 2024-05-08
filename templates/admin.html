@@ -46,6 +46,7 @@
                     <div class="form-group">
                         <label for="role">Choose a role:</label>
                         <select class="form-control" id="role" name="role">
+                            <option value="admin">Admin</option>
                             <option value="rea">Real Estate Agent</option>
                             <option value="buyer">Buyer</option>
                             <option value="seller">Seller</option>
@@ -62,12 +63,12 @@
                 <h2>Delete User Account</h2>
             </div>
             <div class="card-body">
-                <form id="delete-user-form" action="/deleteUserAccount" method="POST">
+                <form id="delete-user-form" action="/suspendUserAccount" method="POST">
                     <div class="form-group">
                         <label for="delete-email">Enter user email:</label>
                         <input type="text" class="form-control" id="delete-email" name="email" placeholder="Enter user email">
                     </div>
-                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                    <button type="submit" class="btn btn-danger">Suspend Account</button>
                 </form>
             </div>
         </div>
@@ -84,14 +85,21 @@
                     <thead>
                         <tr>
                             <th>Email</th>
-                            <th>Role</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="user-list">
                         {% for user in users %}
                             <tr>
                                 <td>{{ user['email'] }}</td>
-                                <td>{{ user['role'] }}</td>
+                                <td>
+                                {% if user['status'] %}
+                                    Activate
+                                    
+                                {% else %}
+                                    Deactivate
+                                {% endif %}
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -121,7 +129,7 @@
                                 {% if searchUser %}
                                     <tr>
                                         <td>{{ searchUser.email }}</td>
-                                        <td>{{ searchUser.password }}</td>
+                                        <td>{{ searchUser.profile.role }}</td>
                                     </tr>
                                 {% endif %}
                             </tbody>

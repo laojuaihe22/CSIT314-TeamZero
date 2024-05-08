@@ -1,16 +1,13 @@
 from entity.UserAccount import UserAccount
 
-class DeleteUserAccount:
+class SuspendUserAccount:
     
-    def deleteUserAccount(self, email):
-        
-        if not email:
-            return False 
-        
+    def suspendUserAccount(self, email):
+    
         userAccount = UserAccount()
-        isDeleted = userAccount.deleteUserAccount(email)
+        is_suspend = userAccount.suspendUserAccount(email)
         
-        if isDeleted:
+        if is_suspend:
             return True
         else:
             return False

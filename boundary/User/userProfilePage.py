@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.User.userProfileController import UserProfileController
-from flask import jsonify
+
 userProfile = Blueprint('userProfile', __name__)
 
 @userProfile.route('/userProfile', methods = ['GET'])

@@ -4,7 +4,7 @@ from controller.SystemAdmin.createUserAccountController import CreateUserControl
 create_account_app = Blueprint('create_account_app', __name__)
 
 
-@create_account_app.route('/createUserAccount', methods=['GET', 'POST'])
+@create_account_app.route('/createUserAccount', methods=['POST'])
 def create_account_page():
     
     if request.method == "POST":
