@@ -26,7 +26,7 @@ class UserProfile:
 
     
     #create user profile
-    def createUserProfile(self, email, name, age, description):
+    def createUserProfile(self, email, name, description):
         
         client = self.get_database()
         
@@ -40,14 +40,11 @@ class UserProfile:
             if existing_user:
                 updated_user_data = {
                     "$set": {
-                        "profile": {
-                            "name": name,
-                            "age": age,
-                            "description": description
+                        "profile.name": name,
+                        "profile.description": description,
                         }
                     }
-                }
-            
+                
                 collection.update_one({"email": email}, updated_user_data)
                 return True
         
@@ -67,8 +64,8 @@ class UserProfile:
         
         return user_profile_data
 
-    # delete user profiles
-    def deleteUserProfile(self, email):
+    # suspend user profiles
+    def suspendUserProfile(self, email):
 
         client = self.get_database()
         
@@ -78,8 +75,8 @@ class UserProfile:
         user = collection.find_one({"email": email})    
         
         if user:
-            # Delete profile
-            collection.update_one({"email": email}, {"$unset": {"profile": ""}})
+            # suspend profile
+            collection.update_one({"email": email}, {"$set":{"status": False}})
             return True
         else:
             return False
@@ -105,7 +102,22 @@ class UserProfile:
         user = collection.find_one({"email": email})  
 
         if user:
-            update_query = {"$set": {"profile." + field: value}}
+            if field == "role":
+                if value in ["buyer", "seller", "real estate agent"]:  # Check if value is one of the allowed roles
+                    update_query = {"$set": {"profile." + field: value}}
+                else:
+                    return None
+                    
+            elif field == "status":
+                if value in ["False", "True"]:  # Check if value is either "False" or "True"
+                    update_query = {"$set": {"profile." + field: value}}
+                else:
+                    return None
+
+            else:
+                # Handle the case where the field is not "role" or "status"
+                update_query = {"$set": {"profile." + field: value}}
+
             collection.update_one({"email": email}, update_query)
             updated_user = collection.find_one({'email': email})
             return updated_user

@@ -3,12 +3,10 @@ from controller.SystemAdmin.searchUserProfileController import SearchUserProfile
 
 search_profile_app = Blueprint('search_profile_app', __name__)
 
-@search_profile_app.route('/searchUserProfilePage', methods=['GET', 'POST'])
-def search_profile_page():
-    return render_template('searchUserProfile.html')
+
 
 @search_profile_app.route('/searchUserProfile', methods=['GET', 'POST'])
-def search_profile():
+def search_profile_page():
     if request.method == "POST":
         user_email = request.form.get("email")  # Use request.form.get to safely retrieve form data
         searchUserProfileController = SearchUserProfileController()
@@ -16,5 +14,8 @@ def search_profile():
         
         if user_account_data:
             return render_template('searchUserProfile.html', searchUser=user_account_data)
-    
-    return render_template('searchUserProfile.html', searchUser=None)
+        else:
+
+            return render_template('searchUserProfile.html', searchUser= None)
+        
+    return render_template('searchUserProfile.html')

@@ -15,23 +15,27 @@
 
 
     {% if searchUser %}
-    <h1>User found</h1>
+    <h1>User Profile found</h1>
     <table border="1">
         <tr>
             <th>Email</th>
             <th>Name</th>
-            <th>Age</th>
+            <th>Status</th>
             <th>Description</th>
         </tr>
         <tr>
             <td>{{ searchUser.email }}</td>
             <td>{{ searchUser.profile.name }}</td>
-            <td>{{ searchUser.profile.age }}</td>
+            <td>{{ searchUser.profile.status }}</td>
             <td>{{ searchUser.profile.description }}</td>
         </tr>
     </table>
     {% else %}
-    <h1>No user found with the provided email.</h1>
+        {% if searchUser is none %}
+            <h1>No user found with the provided email.</h1>
+        {% else %}
+            <h1></h1>
+        {% endif %}
     {% endif %}
 
 
