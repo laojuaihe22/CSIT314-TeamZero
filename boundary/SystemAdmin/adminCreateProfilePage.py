@@ -3,9 +3,9 @@ from controller.SystemAdmin.createUserProfileController import CreateUserProfile
 
 create_profile_app = Blueprint('create_profile_app', __name__)
 
+
 @create_profile_app.route('/createUserProfilePage', methods=['GET', 'POST'])
 def create_profile_page():
-
     return render_template('createUserProfile.html')
 
 
@@ -26,4 +26,4 @@ def create_profile():
         else:
             flash('Email doesn\'t exists', 'error')
         
-    return redirect('/home')
+    return redirect(url_for('create_profile_app.create_profile_page'))
