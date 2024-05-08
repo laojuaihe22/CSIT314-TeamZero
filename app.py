@@ -3,7 +3,7 @@ from boundary.User.userLoginPage import login_app
 from boundary.User.userLogoutPage import logout_app
 from boundary.User.userSignUpPage import signUp_app
 from boundary.SystemAdmin.adminCreateAccountPage import create_account_app
-from boundary.SystemAdmin.adminDeleteAccountPage import delete_account_app
+from boundary.SystemAdmin.adminSuspendAccountPage import delete_account_app
 from boundary.SystemAdmin.adminViewAccountPage import view_account_app
 from boundary.SystemAdmin.adminSearchUserAccountPage import search_account_app
 from boundary.User.userProfilePage import userProfile

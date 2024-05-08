@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
 
 # Access a specific database
 db = client["CSIT314"]
@@ -10,9 +10,11 @@ collection = db["User"]
 
 email = "admin2@gmail.com"
 
-user = collection.find_one({"email": email})  
+user_data = {
+                "email": email,
+                "password": "1",
+                "profile":{}
+            }
 
-# print(user["email"]) 
-# print(user["role"]) 
-# print(user["profile"]['name']) 
+collection.insert_one(user_data)  
 

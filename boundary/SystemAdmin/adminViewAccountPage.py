@@ -3,7 +3,7 @@ from controller.SystemAdmin.viewUserAccountController import ViewUserAccountCont
 
 view_account_app = Blueprint('view_account_app', __name__)
 
-@view_account_app.route('/viewUserAccount', methods=['GET', 'POST'])
+@view_account_app.route('/viewUserAccount', methods=['GET'])
 def view_account_page():
     
     if request.method == "GET":

@@ -6,6 +6,7 @@ signUp_app = Blueprint('signUp_app', __name__)
 
 @signUp_app.route("/sign-up", methods=["POST","GET"])
 def signUpPage():
+    
     if request.method == "POST":
         sign_up_email = request.form["email"]
         sign_up_password = request.form["password"]
@@ -15,7 +16,7 @@ def signUpPage():
         
         if is_created:
             flash('Account created successfully!!', category='success')
-            return redirect(url_for('login_app.displayLoginPage'))
+            return redirect('/')
         else:
             flash('Email already exists, please use another email', category='error')
             return redirect(url_for('signUp_app.signUpPage'))

@@ -23,7 +23,7 @@ class UserAccount:
         user = collection.find_one({"email": email, "password": password})
         
         if user:
-            return True, user.get('role')
+            return True, user['profile']['role']
         else:
             return False, "None"
     
@@ -43,7 +43,8 @@ class UserAccount:
             user_data = {
                 "email": email,
                 "password": password,
-                "role": role
+                "status":True,
+                "profile":{"role":role,}
             }
             
             # Insert user data into the database
@@ -54,7 +55,7 @@ class UserAccount:
             # Log the exception or return an error message
             return False
         
-    def deleteUserAccount(self, email):
+    def suspendUserAccount(self, email):
 
         client = self.get_database()
         db = client["CSIT314"]
@@ -63,8 +64,10 @@ class UserAccount:
         user = collection.find_one({"email": email})    
         
         if user:
-            # Delete the document
-            collection.delete_one({"email": email})
+            collection.update_one(
+                {"email": email},
+                {"$set": {"status": False}}
+            )
             return True
         else:
             return False
@@ -106,6 +109,7 @@ class UserAccount:
             user_data = {
                 "email": email,
                 "password": password,
+                "status": True
             }
             
             # Insert user data into the database
