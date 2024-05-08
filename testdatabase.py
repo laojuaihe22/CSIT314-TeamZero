@@ -8,13 +8,9 @@ db = client["CSIT314"]
 # Access a specific collection within the database
 collection = db["User"]
 
-email = "admin2@gmail.com"
+email = "admin3@gmail.com"
 
-user_data = {
-                "email": email,
-                "password": "1",
-                "profile":{}
-            }
+user = collection.find_one({"email":email})
 
-collection.insert_one(user_data)  
-
+# print(user["profile"]["role"])
+print(user["profile"]["role"])

@@ -44,7 +44,9 @@ class UserAccount:
                 "email": email,
                 "password": password,
                 "status":True,
-                "profile":{"role":role,}
+                "profile":{"role":role,
+                           "status":True,
+                           }
             }
             
             # Insert user data into the database
@@ -68,6 +70,24 @@ class UserAccount:
                 {"email": email},
                 {"$set": {"status": False}}
             )
+            return True
+        else:
+            return False
+        
+    def updateUserAccount(self, user_email, field, value):
+        
+        client = self.get_database()
+        db = client["CSIT314"]
+        collection = db["User"]
+        
+        user = collection.find_one({"email": user_email}) 
+        
+        if user:
+            collection.update_one(
+                {"email": user_email},
+                {"$set": {field: value}}
+            )
+            
             return True
         else:
             return False

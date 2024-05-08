@@ -139,8 +139,38 @@
                 </form>
             </div>
         </div>
+
+            <!-- Create User Form -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Update User Account</h2>
+        </div>
+        <div class="card-body">
+            <form id="create-user-form" action="/updateUserAccount" method="POST">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email wanted to update">
+                </div>
+                <div class="form-group">
+                    <label for="role">Field to update</label>
+                    <select class="form-control" id="field" name="field">
+                        <option value="email">Email</option>
+                        <option value="password">Password</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="value">Update Value:</label>
+                    <input type="text" class="form-control" id="value" name="value" placeholder="">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Account</button>
+            </form>
+        </div>
     </div>
-    
+
+    </div>
+
+
     <!-- Bootstrap JS (Optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
