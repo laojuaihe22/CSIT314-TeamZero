@@ -31,7 +31,7 @@ def processLoginPage():
 @login_app.route("/home", methods=["GET"])
 def displayHomePage():
     if "user_email" in session:
-        role = session.get("roles")
+        role = session['roles']
         if role == "admin":
             return render_template('admin.html', email=session["user_email"])
         else:
