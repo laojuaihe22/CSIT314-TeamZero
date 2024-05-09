@@ -22,7 +22,6 @@ def processLoginPage():
     if verifyUser:
         session["user_email"] = user_email
         session["roles"] = user_role  
-        flash(f'{session["roles"]} have Logged in successfully!', 'success')
         return redirect(url_for('login_app.displayHomePage'))
     else:
         flash('Invalid email or password', 'error')     
