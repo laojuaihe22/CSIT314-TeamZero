@@ -275,7 +275,127 @@ img {
     margin-top: 5px;
 }
 
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
 
+.sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.nav-logo {
+    color: white;
+    margin: 20px;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+.admin-main {
+    padding-left: 200px;
+    margin: 200px;
+    text-align: center; 
+    font-size: 50px;
+    font-weight: bold;
+    color: #818181;
+    opacity: 0.8;
+}
+
+.user-account-option{
+    color: #818181;
+    padding-left: 90px;
+    text-align: center; 
+    font-size: 25px;
+    font-weight: normal;
+    margin-top: -90px;
+}
+
+.user-account-title{
+    color: #111;
+    font-weight: bold;
+}
+
+
+.sidenav a.selected {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-account-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-account-buttons button {
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 500px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-account-buttons button:hover {
+    background-color: grey;
+}
+
+.create-acc-admin {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Align items to the center horizontally */
+    margin-top: 50px; /* Adjust top margin */
+    text-align: center;
+}
+
+.admin-action-title {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.create-acc-admin input,
+.create-acc-admin select,
+.update-acc-admin select,
+.delete-acc-admin select,
+.search-acc-admin input {
+    width: 250px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: #111;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box; 
+}
+
+label[for="role"] {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
 
 
 /* jiro's css */
@@ -436,10 +556,4 @@ img {
     overflow: hidden;
 }
 
-.flash-error
-{
-    color: red;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-}
 /* Ally's css */

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <div class="nav-logo">System Admin</div>
+        <a href="/userAccount">User Account</a>
+        <a href="userProfile.html">User Profile</a>
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-secondary mb-4">Logout</button>
+        </form>
+    </div>
+
+    
+        <div class="admin-main" id="adminContent">
+            {% block content %}
+                <p>ZeroRealEstate</p>
+                <p>Admin</p>
+            {% endblock content %}
+        </div>          
+    
+ 
+</body>
+</html>

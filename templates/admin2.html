@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Flash message block -->
+    {% with messages = get_flashed_messages(with_categories=true) %}        
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}"><p>{{ message }}</p></div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="container mt-5">
+        <h1 class="mb-4">System Administration</h1>
+        <!-- Logout Button -->
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-secondary mb-4">Logout</button>
+        </form>
+
+        <!-- Flash message block -->
+        <div id="flash-messages">
+            <h1>This is {{email}} </h1>
+        </div>
+        <!-- Create User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Create User Account</h2>
+            </div>
+            <div class="card-body">
+                <form id="create-user-form" action="/createUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Choose a role:</label>
+                        <select class="form-control" id="role" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="rea">Real Estate Agent</option>
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Delete User Account</h2>
+            </div>
+            <div class="card-body">
+                <form id="delete-user-form" action="/suspendUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="delete-email">Enter user email:</label>
+                        <input type="text" class="form-control" id="delete-email" name="email" placeholder="Enter user email">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Suspend Account</button>
+                </form>
+            </div>
+        </div>
+
+
+    <form action="/viewUserAccount" method="get">
+        <!-- User List -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>View User Account</h2>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list">
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user['email'] }}</td>
+                                <td>
+                                {% if user['status'] %}
+                                    Activate
+                                    
+                                {% else %}
+                                    Deactivate
+                                {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Get User Account</button>
+            </div>
+        </div>
+    </form>
+        <!-- Search User Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Search User Account</h2>
+            </div>
+            <div class="card-body">
+                <form id="search-user-form" action="/searchUserAccount" method="POST">
+                    <div class="form-group">
+                        <label for="search-email">Enter user email:</label>
+                        <input type="text" class="form-control" id="search-email" name="email" placeholder="Enter user email">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-list">
+                                {% if searchUser %}
+                                    <tr>
+                                        <td>{{ searchUser.email }}</td>
+                                        <td>{{ searchUser.profile.role }}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+
+            <!-- Create User Form -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Update User Account</h2>
+        </div>
+        <div class="card-body">
+            <form id="create-user-form" action="/updateUserAccount" method="POST">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email wanted to update">
+                </div>
+                <div class="form-group">
+                    <label for="role">Field to update</label>
+                    <select class="form-control" id="field" name="field">
+                        <option value="email">Email</option>
+                        <option value="password">Password</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="value">Update Value:</label>
+                    <input type="text" class="form-control" id="value" name="value" placeholder="">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Account</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

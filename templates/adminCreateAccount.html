@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroRealEstate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: lightgray;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidenav">
+        <div class="nav-logo">ZeroRealEstate</div>
+        <a href="javascript:void(0)" onclick="showUserAccount(), highlightLink(this)">User Account</a>
+        <a href="userProfile.html">User Profile</a>
+    </div>
+    <div class="admin-main" id="adminContent">
+        <form class="create-acc-admin" id="adminCreateForm" action="/createUserAccount" method="post" onsubmit="return validateNewUser()">
+            <div class="admin-action-title"><u><b>Create New User Account</b></u></div>
+            <input id="nemail" name="email" type="email" placeholder="Email Address" required>
+            <input id="npassword" name="password" type="password" placeholder="New Password" required>
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="admin">Admin</option>
+                <option value="rea">Real Estate Agent</option>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+            </select>
+            <!-- error message here -->
+            {% with messages = get_flashed_messages() %}        
+                {% if messages %}
+                    {% for msg in messages %}
+                    <div id="exsistingEmail" class="error-message">{{msg}}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <button class="button" type="submit">Create</button>
+        </form>
+    </div>
+</body>
+
+</html>

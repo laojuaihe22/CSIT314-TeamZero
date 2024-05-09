@@ -1,5 +1,5 @@
 from entity.UserAccount import UserAccount
-class CreateUserController:
+class CreateUserAccountController:
     
     def createUserAccount(self,email,password,role):
         
