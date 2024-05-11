@@ -1,0 +1,47 @@
+{% extends "baseAdmin.html" %}
+{% block style %}
+.button {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+
+.delete-acc-admin {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-acc-admin input,
+.delete-acc-admin select {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.delete-acc-admin p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: black;
+}
+{% endblock style %}
+
+
+{% block content %}
+
+
+<form class="delete-acc-admin" id="adminDeleteForm" method="post" action="/suspendUserAccount">
+    <div class="admin-action-title"><u><b>Delete User Account</b></u></div>
+    <p>Enter the Email to Delete:</p>
+    <input id="email" name="email" type="email" placeholder="Email Address" required>
+    <p>Re-type Email:</p>
+    <input id="email_re" name="email_re" type="email" placeholder="Re-enter Email Address" required>
+    <button class="button" type="submit">Delete</button>
+
+    <p> {{message}}</p>
+</form>
+
+
+{% endblock content %}

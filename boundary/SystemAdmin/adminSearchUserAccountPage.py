@@ -12,7 +12,9 @@ def search_account():
         user_account_data = searchUserAccountController.searchUserAccount(user_email)
         
         if user_account_data:
-            return render_template('admin.html',searchUser=user_account_data,email=session['user_email'])
+            return render_template('adminSearchUserAccount.html',user=user_account_data)
         else:
-            flash('Invalid email', 'error')
-    return redirect('/home')
+            return render_template('adminSearchUserAccount.html',message='Invalid email!')
+            
+            
+    return render_template('adminSearchUserAccount.html')
