@@ -20,13 +20,9 @@ class UserAccount:
         collection = db["User"]
 
         # Now you can perform database operations using the collection object
-        user = collection.find_one({"email": email})
+        user = collection.find_one({"email": email, "password": password})
         
-        if not user:
-            return False, "None"
-        
-
-        if user['password'] == password:
+        if user:
             return True, user['profile']['role']
         else:
             return False, "None"

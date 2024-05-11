@@ -9,6 +9,6 @@ def view_account_page():
     if request.method == "GET":
         viewUserAccountController = ViewUserAccountController()
         user_account_data = viewUserAccountController.viewUserAccountData()
-        return render_template('adminViewUserAccount.html',users=user_account_data)
+        return render_template('admin.html',users=user_account_data,email=session['user_email'])
     
-    return render_template('adminViewUserAccount.html')
+    return redirect('/home')

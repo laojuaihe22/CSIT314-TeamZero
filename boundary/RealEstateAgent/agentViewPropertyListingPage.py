@@ -6,7 +6,7 @@ view_property_listing_app = Blueprint('view_property_listing_app', __name__)
 
 
 @view_property_listing_app.route('/viewPropertyListingPage', methods = ['POST'])
-def view_property_listing():
+def view_property_listing_page():
     if request.method == "GET":
 
         viewPropertyListingController = ViewPropertyListingController()
