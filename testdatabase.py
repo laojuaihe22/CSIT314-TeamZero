@@ -7,11 +7,11 @@ db = client["CSIT314"]
 
 # Access a specific collection within the database
 collection = db["User"]
-property_collection = db["PropertyListing"]
+# property_collection = db["PropertyListing"]
 
 email = "admin3@gmail.com"
 
 user = collection.find_one({"email":email})
 
 # print(user["profile"]["role"])
-print(user["profile"]["role"])
+print(user['password'])

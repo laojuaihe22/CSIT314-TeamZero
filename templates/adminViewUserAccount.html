@@ -1,0 +1,98 @@
+{% extends "baseAdmin.html" %}
+
+{% block style %}
+
+.admin-main {
+    padding-left: 150px;
+    margin: 200px ;
+    text-align: center; 
+    font-size: 50px;
+    font-weight: bold;
+    color: #818181;
+    opacity: 0.8;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.user-table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.user-table td {
+    background-color: #ffffff;
+}
+
+.user-table td:nth-child(2) {
+    font-style: italic;
+}
+
+.search-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#searchInput {
+    padding: 8px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search Email" oninput="searchUsers()">
+</div>
+
+    <div class="admin-action-title"><u><b>View User Accounts</b></u></div>
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>status</th>
+                <th>Role</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user['email'] }}</td>
+                <td>
+                    {% if user['status'] %}
+                    Activate
+                    {% else %}
+                    Deactivate
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user['profile']['role'] == "rea" %}
+                    Real Estate Agent
+                    {% else %}
+                    {{user['profile']['role']}}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
