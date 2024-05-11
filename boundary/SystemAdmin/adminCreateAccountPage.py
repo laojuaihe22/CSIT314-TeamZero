@@ -15,9 +15,9 @@ def create_account_page():
         is_created = createUserController.createUserAccount(user_email,user_pass,user_role)
         
         if is_created:
-            flash('Account created successfully!', 'success')
+            return render_template('adminCreateAccount.html',message='Account created successfully!')
         else:
-            flash('This email is already registered!', 'error')
+            return render_template('adminCreateAccount.html',message='This email is already registered!')
         
     return render_template('adminCreateAccount.html')
 

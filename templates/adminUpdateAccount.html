@@ -1,0 +1,63 @@
+{% extends "baseAdmin.html" %}
+
+{% block style %}
+
+.update-acc-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-action-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.update-acc-admin input,
+.update-acc-admin select {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.update-acc-admin label p {
+    color: #111;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+
+
+{% endblock style %}
+
+{% block content %}
+
+<form class="update-acc-admin" id="adminUpdateForm" action="/updateUserAccount" method="post">
+    <div class="admin-action-title"><u><b>Update Account</b></u></div>
+    <input id="email" name="email" type="email" placeholder="Enter User Email wanted to update" required>
+    <label for="Action">
+        <p>Field to Update</p>
+    </label>
+    <select id="field" name="field">
+        <option value="email">Email</option>
+        <option value="password">Password</option>
+    </select>
+    <label for="Value">
+        <p>Update Value</p>
+    </label>
+    <input id="value" name="value" type="text" placeholder="Enter value to update" required>
+    <div id="exsistingEmail" class="error-message">{{message}}</div>
+    <div id="passwordMismatch" class="error-message"></div>
+    <button class="button" type="submit">Update</button>
+</form>
+
+{% endblock content %}

@@ -22,7 +22,7 @@ from datetime import timedelta
 
 app = Flask(__name__)
 app.secret_key = "123"
-app.permanent_session_lifetime = timedelta(minutes=10)
+app.permanent_session_lifetime = timedelta(hours=1)
 
 # blueprint for loginPage
 app.register_blueprint(login_app)

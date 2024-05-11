@@ -1,0 +1,84 @@
+{% extends "baseAdmin.html" %}
+{% block style %}
+        .button {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: lightgray;
+            border: 1px solid gray;
+        }
+
+        .search-acc-admin p {
+            padding-top: 10px;
+            margin-bottom: -5px;
+            font-size: 15px;
+            color: black;
+        }
+
+        table {
+            position: absolute;
+            margin-top: 10px;
+            color: black;
+            font-size: 15px;
+            border-collapse: collapse;
+            width: 50%;
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: center;
+            background-color: lightgrey;
+        }
+
+        td {
+            text-align: left;
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+{% endblock style %}
+
+
+{% block content %}
+
+<form class="search-acc-admin" id="AdminSearchForm" action="/searchUserAccount" method="post">
+    <div class="admin-action-title"><u><b>Search Account</b></u></div>
+    <p>Enter the Email to Search:</p>
+    <input id="email" name="email" type="email" placeholder="Email Address" required>
+    <button class="button" type="submit">Search</button>
+    <div id="searchResults" class="details-container">
+        {% if user %}
+        <table>
+            <tr>
+                <th colspan="2">User Details</th>
+            </tr>
+            <tr>
+                <td><strong>Email:</strong></td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td><strong>Status:</strong></td>
+                <td>
+                    {% if user.status %}
+                        Activate
+            
+                    {% else %}
+                        Deactivate
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Role:</strong></td>
+                <td>{{user.profile.role}}</td>
+            </tr>
+        </table>
+        {% else %}
+        <p>{{message}}</p>
+        {% endif %}
+        
+    </div>
+</form>
+
+{% endblock content %}
