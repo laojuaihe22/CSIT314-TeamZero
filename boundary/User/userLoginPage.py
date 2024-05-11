@@ -38,15 +38,3 @@ def displayHomePage():
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))
-
-@login_app.route("/home", methods=["GET"])
-def displayHomePage():
-    if "user_email" in session:
-        role = session['roles']
-        if role == "admin":
-            return render_template('adminDashboard.html')
-        else:
-            return render_template("home.html", role=role)
-    else:
-        flash("You need to log in first", 'error')
-        return redirect(url_for('login_app.displayLoginPage'))
