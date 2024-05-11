@@ -1,0 +1,120 @@
+{% extends "baseAdmin.html" %}
+
+{% block style %}
+.create-profile-admin {
+    max-width: 90%;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.admin-action-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.create-profile-admin label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.create-profile-admin input[type="text"],
+.create-profile-admin input[type="email"],
+.create-profile-admin textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.create-profile-admin .error-message {
+    color: #dc3545;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button:hover {
+    background-color: #e0e0e0;
+}
+
+button[type="submit"] {
+    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.create-profile-admin select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    appearance: none; /* Remove default dropdown arrow */
+    background-color: #fff; /* Dropdown background color */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    cursor: pointer;
+}
+
+{% endblock style %}
+
+{% block content %}
+<form class="create-profile-admin" id="adminCreateProfileForm" action="/createUserProfile" method="post" onsubmit="return validateNewUser()">
+    <div class="admin-action-title"><u><b>Create New User Profile</b></u></div>
+    <label for="email">Email:</label>
+    <select id="nemail" name="email" required>
+        {% for user in users %}
+            <option value="{{ user['email'] }}">{{ user['email'] }}</option>
+        {% endfor %}
+    </select>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+    <!-- error message here -->
+    {% with messages = get_flashed_messages() %}        
+        {% if messages %}
+            {% for msg in messages %}
+            <div id="exsistingEmail" class="error-message">{{msg}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <button class="button" type="submit">Create</button>
+</form>
+{% endblock content %}

@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.SystemAdmin.suspendUserProfileController import SuspendUserProfile
+from controller.SystemAdmin.viewUserAccountController import ViewUserAccountController
 
 suspend_profile_app = Blueprint('suspend_profile_app', __name__)
 
@@ -12,8 +13,10 @@ def suspend_profile_page():
         is_deleted = suspendUserProfile.suspendUserProfile(user_email)
 
         if is_deleted:
-            flash(f'{session["user_email"]}\'s profile suspended!', 'success')
+            flash(f'{user_email}\'s profile suspended!', 'success')
         else:
             flash('Email doesn\'t exists, please enter again', 'error')
-        
-    return render_template('suspendProfile.html')
+    
+    viewUserAccountController = ViewUserAccountController()
+    user_account_data = viewUserAccountController.viewUserAccountData()
+    return render_template('adminSuspendProfile.html', users = user_account_data)

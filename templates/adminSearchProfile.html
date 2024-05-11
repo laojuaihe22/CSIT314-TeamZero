@@ -1,0 +1,129 @@
+{% extends "baseAdmin.html" %}
+
+{% block style %}
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="email"] {
+    width: calc(100% - 80px); /* Adjusted width for better alignment with the button */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 80px; /* Adjusted width for better alignment with the input */
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px; /* Reduced padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Reduced font size */
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.create-profile-admin select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    appearance: none; /* Remove default dropdown arrow */
+    background-color: #fff; /* Dropdown background color */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    cursor: pointer;
+}
+
+{% endblock style %}
+
+{% block content %}
+<h1>Search User Profile</h1>
+<form id="searchForm" action="/searchUserProfile" method="post">
+    <label for="email">Enter User Email:</label>
+    <select id="nemail" name="email" required>
+        {% for user in users %}
+            <option value="{{ user['email'] }}">{{ user['email'] }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+{% if searchUser %}
+<h1>User Profile found</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ searchUser.email }}</td>
+            <td>{{ searchUser.profile.name }}</td>
+            <td>{{ searchUser.profile.status }}</td>
+            <td>{{ searchUser.profile.description }}</td>
+        </tr>
+    </tbody>
+</table>
+{% else %}
+{% if searchUser is none %}
+<h1>No user found with the provided email.</h1>
+{% else %}
+<h1></h1>
+{% endif %}
+{% endif %}
+{% endblock %}
