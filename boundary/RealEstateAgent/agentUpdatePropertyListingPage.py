@@ -3,13 +3,10 @@ from controller.RealEstateAgent.updatePropertyListingController import UpdatePro
 
 update_property_listing_app = Blueprint('update_property_listing_app', __name__)
 
-@update_property_listing_app.route('/updatePropertyListingPage')
-def update_property_listing_page():
-    
-    return render_template('updatePropertyListing.html')
+
 
 @update_property_listing_app.route('/updatePropertyListing', methods = ['POST'])
-def update_property_listing():
+def update_property_listing_page():
     if request.method == 'POST':
 
         address = request.form['address']
@@ -24,3 +21,5 @@ def update_property_listing():
             return render_template('updatePropertyListing.html', updated_property=updated_property)
         else:
             flash('Failed to update the property', 'error')
+
+    return render_template('updateListing.html')

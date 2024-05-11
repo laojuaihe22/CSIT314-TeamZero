@@ -4,13 +4,10 @@ from controller.SystemAdmin.searchUserProfileController import SearchUserProfile
 
 search_property_listing_app = Blueprint('search_property_listing_app', __name__)
 
-@search_property_listing_app.route('/searchUserProfilePage', methods=['GET', 'POST'])
-def search_property_listing_page():
 
-    return render_template('searchPropertyListing.html')
 
 @search_property_listing_app.route('/searchUserProfile', methods=['GET', 'POST'])
-def search_property_listing():
+def search_property_listing_page():
     if request.method == "POST":
         filter_type = request.form['filter']
         filter_value = request.form['value']

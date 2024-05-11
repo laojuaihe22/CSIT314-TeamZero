@@ -12,19 +12,52 @@ class PropertyListing:
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentID, region, address, price, type, description):
+    def createPropertyListing(self, agentID, sellerID, region, address, price, type, description):
 
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["propertyListing"]
+        property_listing_collection = db["propertyListing"]
+        user_collection = db["User"]
 
-        collection.insert_one({'agentID':agentID, 'address' : address, 'region': region, 'price':price, 'type': type, 'description' : description })
-        return True
+        # Create the property listing document
+        property_listing = {
+            'agentID': agentID,
+            'sellerID': sellerID,
+            'region': region,
+            'address': address,
+            'price': price,
+            'type': type,
+            'description': description
+        }
+
+        # Insert the property listing into the propertyListing collection
+        result = property_listing_collection.insert_one(property_listing)
+        property_listing_id = result.inserted_id
+
+        
+        if user_collection.count_documents({'email': agentID, 'profile.propertyListings': {'$exists': False}}) > 0:
+            agent_profile_update = {'$set': {'profile.propertyListings': [property_listing_id]}}
+        else:
+            agent_profile_update = {'$push': {'profile.propertyListings': property_listing_id}}
+
+        agent_update_result =user_collection.update_one({'email': agentID}, agent_profile_update)
+
+        if user_collection.count_documents({'email': sellerID, 'profile.propertyListings': {'$exists': False}}) > 0:
+            seller_profile_update = {'$set': {'profile.propertyListings': [property_listing_id]}}
+        else:
+            seller_profile_update = {'$push': {'profile.propertyListings': property_listing_id}}
+
+        seller_update_result = user_collection.update_one({'email': sellerID}, seller_profile_update)
+
+        if agent_update_result.matched_count > 0 and seller_update_result.matched_count > 0:
+            return True
+        else:
+            return False
 
     #view property listing
     def viewPropertyListing(self):
-
+ 
         client = self.get_database()
         
         db = client["CSIT314"]

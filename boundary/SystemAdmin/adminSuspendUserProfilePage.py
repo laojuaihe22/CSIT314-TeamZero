@@ -3,8 +3,6 @@ from controller.SystemAdmin.suspendUserProfileController import SuspendUserProfi
 
 suspend_profile_app = Blueprint('suspend_profile_app', __name__)
 
-
-
 @suspend_profile_app.route('/suspendUserProfile', methods=['GET', 'POST'])
 def suspend_profile_page():
     if request.method == "POST":

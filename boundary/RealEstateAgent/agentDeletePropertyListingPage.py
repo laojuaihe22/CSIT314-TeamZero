@@ -4,21 +4,17 @@ from controller.RealEstateAgent.deletePropertyListingController import DeletePro
 
 delete_property_listing_app = Blueprint('delete_property_listing_app', __name__)
 
-@delete_property_listing_app.route('/deletePropertyListingPage', methods=['GET', 'POST'])
-def delete_property_listing_page():
-    return render_template('deletePropertyListing.html')
-
 @delete_property_listing_app.route('/deletePropertyListing', methods=['GET', 'POST'])
-def delete_property_listing():
+def delete_property_listing_page():
     if request.method == "POST":
-        delete_user = request.form["address"]
+        delete_property = request.form["address"]
 
         deletePropertyListingController = DeletePropertyListingController()
-        user_deleted = deletePropertyListingController.deletePropertyListing(delete_user)
+        property_deleted = deletePropertyListingController.deletePropertyListing(delete_property)
 
-        if user_deleted:
+        if property_deleted:
             flash('Successfully deleted from property listing', 'success')
         else:
             flash('Failed to delete from property listing', 'error')
         
-    return redirect('/home')
+    return render_template('deleteListing.html')
