@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.SystemAdmin.suspendUserAccountController import SuspendUserAccount
 
+
 suspend_account_app = Blueprint('suspend_account_app', __name__)
 
 

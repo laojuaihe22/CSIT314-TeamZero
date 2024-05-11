@@ -9,6 +9,6 @@ def view_profile_page():
     if request.method == "GET":
         viewUserProfileController = ViewUserProfileController()
         user_profile_data = viewUserProfileController.viewUserProfile()
-        return render_template('user_list.html',users=user_profile_data)
+        return render_template('adminViewProfile.html',users=user_profile_data)
     
     return redirect('/home')

@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Admin Panel</h1>
-    <p>This is the home page of the admin panel.</p>
-    <ul>
-        <li><a href="/viewUserProfile">View User Profiles</a></li>
-        <li><a href="/createUserProfile">Create New User Profiles</a></li>
-        <li><a href="/updateUserProfile">Update User Profiles</a></li>
-        <li><a href="/suspendUserProfile">Suspend User Profiles</a></li>
-        <li><a href="/searchUserProfile">Search User Profiles</a></li>
-    </ul>
-</body>
-</html>
+{% extends "baseAdmin.html" %}
+
+{% block style %}
+/* Additional CSS styles */
+.options {
+    margin-top: 20px;
+}
+
+.options a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    transition: background-color 0.3s;
+}
+
+.options a:hover {
+    background-color: #e0e0e0;
+}
+{% endblock style %}
+
+{% block content %}
+<div class="options">
+    <a href="/createUserProfile">Create User Profile</a>
+    <a href="/viewUserProfile">View User Profile</a>
+    <a href="/updateUserProfile">Update User Profile</a>
+    <a href="/suspendUserProfile">Suspend User Profile</a>
+    <a href="/searchUserProfile">Search User Profiles</a>
+</div>
+{% endblock content %}

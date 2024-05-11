@@ -1,0 +1,179 @@
+{% extends "baseAdmin.html" %}
+
+
+{% block style %}
+h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+form {
+    max-width: 300px;
+    width: 90%; /* Adjusted to fit the available width */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: #fff; /* Changed background color */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.button:hover {
+    background-color: #c82333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px; /* Reduced padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px; /* Reduced font size */
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center; /* Center error message */
+}
+
+button[type="submit"] {
+    width: 80px; /* Adjusted width for better alignment with the input */
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.create-profile-admin select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    appearance: none; /* Remove default dropdown arrow */
+    background-color: #fff; /* Dropdown background color */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    cursor: pointer;
+}
+
+{% endblock style %}
+
+
+
+
+
+{% block content %}
+    <form class = 'update-profile-admin' action="updateUserProfile" method="post">
+        <div class="admin-action-title"><u><b>Update User Profile</b></u></div>
+        <label for="email">Email:</label>
+        <select id="nemail" name="email" required>
+            {% for user in users %}
+                <option value="{{ user['email'] }}">{{ user['email'] }}</option>
+            {% endfor %}
+        </select>
+        <label for="field">Select Field:</label>
+        <select id="field" name="field">
+            <option value="name">Name</option>
+            <option value="status">Status</option>
+            <option value="description">Description</option>
+        </select><br><br>
+        <label for="value">New Value:</label>
+        <input type="text" id="value" name="value" required><br><br>
+        <button class="button" type="submit">Update User</button>
+    </form>
+    {% if updateUser %}
+    <h1>User profile updated</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ updateUser.email }}</td>
+                <td>{{ updateUser.profile.name }}</td>
+                <td>{{ updateUser.profile.status }}</td>
+                <td>{{ updateUser.profile.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% else %}
+    {% if updateUser is none %}
+            <h1>No user found with the provided email.</h1>
+        {% else %}
+            <h1></h1>
+        {% endif %}
+    {% endif %}
+    <!-- error message here -->
+    {% with messages = get_flashed_messages() %}        
+        {% if messages %}
+            {% for msg in messages %}
+            <div id="exsistingEmail" class="error-message">{{msg}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}

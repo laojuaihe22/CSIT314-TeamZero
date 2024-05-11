@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.SystemAdmin.searchUserProfileController import SearchUserProfileController
+from controller.SystemAdmin.viewUserAccountController import ViewUserAccountController
 
 search_profile_app = Blueprint('search_profile_app', __name__)
 
@@ -13,9 +14,11 @@ def search_profile_page():
         user_account_data = searchUserProfileController.searchUserProfile(user_email)
         
         if user_account_data:
-            return render_template('searchUserProfile.html', searchUser=user_account_data)
+            return render_template('adminSearchProfile.html', searchUser=user_account_data)
         else:
 
-            return render_template('searchUserProfile.html', searchUser= None)
-        
-    return render_template('searchUserProfile.html')
+            return render_template('adminSearchProfile.html', searchUser= None)
+    
+    viewUserAccountController = ViewUserAccountController()
+    user_account_data = viewUserAccountController.viewUserAccountData()
+    return render_template('adminSearchProfile.html', users = user_account_data)
