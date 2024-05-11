@@ -14,7 +14,7 @@
 
 {% block content %}
 
-<form class="create-acc-admin" id="adminCreateForm" action="/createUserAccount" method="post" onsubmit="return validateNewUser()">
+<form class="create-acc-admin" id="adminCreateForm" action="/createUserAccount" method="post">
     <div class="admin-action-title"><u><b>Create New User Account</b></u></div>
     <input id="nemail" name="email" type="email" placeholder="Email Address" required>
     <input id="npassword" name="password" type="password" placeholder="New Password" required>
@@ -26,14 +26,9 @@
         <option value="seller">Seller</option>
     </select>
     <!-- error message here -->
-    {% with messages = get_flashed_messages() %}        
-        {% if messages %}
-            {% for msg in messages %}
-            <div id="exsistingEmail" class="error-message">{{msg}}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    
+
+    <div id="exsistingEmail" class="error-message">{{message}}</div>
+
     <button class="button" type="submit">Create</button>
 </form>
 

@@ -16,9 +16,8 @@ def update_profile_page():
         updateUser = updateUserAccountController.updateUserAccount(user_email, field, value)
 
         if updateUser:
-            flash(f'User Profile updated ', 'success')
-            return redirect(url_for('login_app.displayLoginPage'))
+            return render_template('adminUpdateAccount.html',message="User Profile updated ")
         else:
-            flash('Email doesn\'t exists', 'error')
+            return render_template('adminUpdateAccount.html',message="Email doesn\'t exists ")
         
-    return render_template('admin.html')
+    return render_template('adminUpdateAccount.html')
