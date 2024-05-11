@@ -38,4 +38,3 @@ def displayHomePage():
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))
-
