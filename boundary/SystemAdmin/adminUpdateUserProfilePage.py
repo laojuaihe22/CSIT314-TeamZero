@@ -2,12 +2,13 @@ from flask import Flask, redirect, url_for, render_template, request, session, B
 from controller.SystemAdmin.updateUserProfileController import UpdateUserProfileController
 from controller.SystemAdmin.viewUserAccountController import ViewUserAccountController
 
-
 update_profile_app = Blueprint('update_profile_app', __name__)
-
 
 @update_profile_app.route('/updateUserProfile', methods=['GET', 'POST'])
 def update_profile_page():
+
+    viewUserAccountController = ViewUserAccountController()
+    user_account_data = viewUserAccountController.viewUserAccountData()
 
     if request.method == "POST":
 
@@ -15,16 +16,25 @@ def update_profile_page():
         field = request.form["field"]
         value = request.form["value"]
         
+        if field == "status":
+            # Check if the value is a boolean
+            if value.lower() == "true":
+                value = True
+            elif value.lower() == "false":
+                value = False
+            else:
+                flash('Status field requires a boolean value (True or False)', 'error')
+                return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data)
+
         updateUserProfileController = UpdateUserProfileController()
         updateUser = updateUserProfileController.updateUserProfile(user_email, field, value)
 
         if updateUser:
             flash(f'{user_email}\'s user profile updated!', 'success')
-            return render_template('/adminUpdateProfile.html', updateUser=updateUser)
+            return render_template('/adminUpdateProfile.html', updateUser=updateUser,  users=user_account_data)
         else:
             flash('No profile has been updated', 'error')
-            return render_template('/adminUpdateProfile.html', updateUser=None)
+            return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data)
     
-    viewUserAccountController = ViewUserAccountController()
-    user_account_data = viewUserAccountController.viewUserAccountData()
-    return render_template('/adminUpdateProfile.html', users = user_account_data)
+    
+    return render_template('/adminUpdateProfile.html', users=user_account_data)
