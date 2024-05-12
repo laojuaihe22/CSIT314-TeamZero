@@ -26,7 +26,7 @@ class UserProfile:
 
     
     #create user profile
-    def createUserProfile(self, email, name, description):
+    def createUserProfile(self, user_email, user_name, user_description):
         
         client = self.get_database()
         
@@ -35,17 +35,17 @@ class UserProfile:
 
         try:
             # Check if email exists in the database
-            existing_user = collection.find_one({'email': email})
+            existing_user = collection.find_one({'email': user_email})
             
             if existing_user:
                 updated_user_data = {
                     "$set": {
-                        "profile.name": name,
-                        "profile.description": description,
+                        "profile.name": user_name,
+                        "profile.description": user_description,
                         }
                     }
                 
-                collection.update_one({"email": email}, updated_user_data)
+                collection.update_one({"email": user_email}, updated_user_data)
                 return True
         
         except Exception as e:
@@ -82,14 +82,14 @@ class UserProfile:
             return False
         
     #search user profile
-    def searchUserProfile(self, email):
+    def searchUserProfile(self, user_email):
 
         client = self.get_database()
         
         db = client["CSIT314"]
         collection = db["User"]
 
-        userObj = collection.find_one({"email": email})
+        userObj = collection.find_one({"email": user_email})
         return userObj
     
     #update user profile
