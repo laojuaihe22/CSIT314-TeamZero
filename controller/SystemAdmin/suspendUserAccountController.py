@@ -1,6 +1,6 @@
 from entity.UserAccount import UserAccount
 
-class SuspendUserAccount:
+class SuspendUserAccountController:
     
     def suspendUserAccount(self, user_email):
     

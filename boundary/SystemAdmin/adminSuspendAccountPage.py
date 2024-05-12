@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
-from controller.SystemAdmin.suspendUserAccountController import SuspendUserAccount
+from controller.SystemAdmin.suspendUserAccountController import SuspendUserAccountController
 
 
 suspend_account_app = Blueprint('suspend_account_app', __name__)
@@ -16,11 +16,10 @@ def suspend_account_page():
             return render_template('adminSuspendAccount.html',message='Email mismatch!')
         
 
-        deleteUserController = SuspendUserAccount()
-        is_deleted = deleteUserController.suspendUserAccount(user_email)
+        suspendUserController = SuspendUserAccountController()
+        is_suspend = suspendUserController.suspendUserAccount(user_email)
         
-        if is_deleted:
-            flash(f'{session["user_email"]} you have suspend the account!', 'success')
+        if is_suspend:
             return render_template('adminSuspendAccount.html',message='Account successfully suspended!')
         else:
             return render_template('adminSuspendAccount.html',message='Email not existed please enter again')

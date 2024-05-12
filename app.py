@@ -7,7 +7,6 @@ from boundary.SystemAdmin.adminSuspendAccountPage import suspend_account_app
 from boundary.SystemAdmin.adminViewAccountPage import view_account_app
 from boundary.SystemAdmin.adminSearchAccountPage import search_account_app
 from boundary.SystemAdmin.adminUpdateAccountPage import update_account_app
-from boundary.User.userProfilePage import userProfile
 from boundary.SystemAdmin.adminCreateProfilePage import create_profile_app
 from boundary.SystemAdmin.adminViewUserProfilePage import view_profile_app
 from boundary.SystemAdmin.adminSuspendProfilePage import suspend_profile_app
@@ -33,7 +32,6 @@ app.register_blueprint(update_account_app)
 app.register_blueprint(view_account_app)
 app.register_blueprint(search_account_app)
 app.register_blueprint(signUp_app)
-app.register_blueprint(userProfile)
 app.register_blueprint(create_profile_app)
 app.register_blueprint(view_profile_app)
 app.register_blueprint(suspend_profile_app)

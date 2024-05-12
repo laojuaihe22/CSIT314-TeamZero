@@ -1,7 +1,7 @@
 from entity.UserProfile import UserProfile
 
 
-class SuspendUserProfile:
+class SuspendUserProfileController:
 
     def suspendUserProfile(self, user_email):
         

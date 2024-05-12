@@ -11,6 +11,45 @@
             margin: 0;
             font-family: Arial, sans-serif;   
         }
+        button {
+            --button_radius: 0.75em;
+            --button_color: #e8e8e8;
+            --button_outline_color: #000000;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --highlight-color: rgba(255, 255, 255, 0.2);
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            border-radius: var(--button_radius);
+            background: linear-gradient(
+              to bottom right,
+              var(--highlight-color),
+              var(--shadow-color)
+            );
+            box-shadow: 6px 6px 16px var(--shadow-color),
+              -6px -6px 16px var(--highlight-color);
+            cursor: pointer;
+          }
+          
+          .button_top {
+            display: block;
+            box-sizing: border-box;
+            border: 2px solid var(--button_outline_color);
+            border-radius: var(--button_radius);
+            padding: 0.75em 1.5em;
+            background: var(--button_color);
+            color: var(--button_outline_color);
+            transform: translateY(-0.2em);
+            transition: transform 0.1s ease;
+          }
+          
+          button:hover .button_top {
+            transform: translateY(-0.33em);
+          }
+          
+          button:active .button_top {
+            transform: translateY(0);
+          }
 
         {% block style %}
         
@@ -23,7 +62,7 @@
         <a href="/userAccount">User Account</a>
         <a href="/userProfile">User Profile</a>
         <form action="/logout" method="post">
-            <button type="submit" class="btn btn-secondary mb-4">Logout</button>
+            <button type="submit" class="button_top"><span>Logout</span></button>
         </form>
     </div>
 

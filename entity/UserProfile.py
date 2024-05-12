@@ -11,18 +11,6 @@ class UserProfile:
             self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
         return self.database
     
-    
-    # view user profile
-    def viewUserProfile(self, email):
-        
-        client = self.get_database()
-        
-        db = client["CSIT314"]
-        collection = db["User"]
-        
-        userObj = collection.find_one({"email": email})
-        
-        return userObj
 
     
     #create user profile
