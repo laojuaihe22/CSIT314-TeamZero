@@ -95,7 +95,7 @@ button[type="submit"]:hover {
 {% endblock style %}
 
 {% block content %}
-<form class="create-profile-admin" id="adminCreateProfileForm" action="/createUserProfile" method="post" onsubmit="return validateNewUser()">
+<form class="create-profile-admin" id="adminCreateProfileForm" action="/createUserProfile" method="post">
     <div class="admin-action-title"><u><b>Create New User Profile</b></u></div>
     <label for="email">Email:</label>
     <select id="nemail" name="email" required>

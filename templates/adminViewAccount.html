@@ -11,31 +11,28 @@
     opacity: 0.8;
 }
 
-.user-table {
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.user-table th,
-.user-table td {
+th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 14px;
+    font-size: 16px;
 }
 
-.user-table th {
-    background-color: #007bff;
-    color: #fff;
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.user-table td {
-    background-color: #ffffff;
-}
-
-.user-table td:nth-child(2) {
-    font-style: italic;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 .search-container {
@@ -53,9 +50,6 @@
 {% endblock style %}
 
 {% block content %}
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search Email" oninput="searchUsers()">
-    </div>
         <div class="admin-action-title"><u><b>View User Accounts</b></u></div>
         <table class="user-table">
             <thead>

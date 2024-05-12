@@ -90,7 +90,13 @@ button[type="submit"]:hover {
             <td>{{ user.email }}</td>
             {% if user.profile %}
             <td>{{ user.profile.name }}</td>     
-            <td>{{ user.profile.status }}</td>        
+            <td>
+                {% if user['status'] %}
+                Activate
+                {% else %}
+                Deactivate
+                {% endif %}
+            </td>        
             <td>{{ user.profile.description }}</td>
             {% else %}
             <td></td>
