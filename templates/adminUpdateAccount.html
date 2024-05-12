@@ -36,6 +36,12 @@
     border: 1px solid gray;
 }
 
+.update-message{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 
 {% endblock style %}
 
@@ -50,13 +56,14 @@
     <select id="field" name="field">
         <option value="email">Email</option>
         <option value="password">Password</option>
+        <option value="status">Status</option>
     </select>
     <label for="Value">
         <p>Update Value</p>
     </label>
     <input id="value" name="value" type="text" placeholder="Enter value to update" required>
-    <div id="exsistingEmail" class="error-message">{{message}}</div>
     <button class="button" type="submit">Update</button>
+    <p class="update-message">{{message}}</p>
 </form>
 
 {% endblock content %}

@@ -12,11 +12,21 @@ def update_profile_page():
         field = request.form["field"]
         value = request.form["value"]
         
+        if field == "status":
+            # Convert value to boolean if field is status
+            if value.lower() == "true":
+                value = True
+            elif value.lower() == "false":
+                value = False
+            else:
+                return render_template('adminUpdateAccount.html', message="Status can only be 'true' or 'false'")
+        
+        
         updateUserAccountController = UpdateUserAccountController()
         updateUser = updateUserAccountController.updateUserAccount(user_email, field, value)
 
         if updateUser:
-            return render_template('adminUpdateAccount.html',message="User Profile updated ")
+            return render_template('adminUpdateAccount.html',message="User Profile updated !")
         else:
             return render_template('adminUpdateAccount.html',message="Email doesn\'t exists ")
         

@@ -26,6 +26,12 @@
     font-size: 15px;
     color: black;
 }
+
+.delete-message{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+}
 {% endblock style %}
 
 
@@ -33,14 +39,14 @@
 
 
 <form class="delete-acc-admin" id="adminDeleteForm" method="post" action="/suspendUserAccount">
-    <div class="admin-action-title"><u><b>Delete User Account</b></u></div>
+    <div class="admin-action-title"><u><b>Suspend User Account</b></u></div>
     <p>Enter the Email to Delete:</p>
     <input id="email" name="email" type="email" placeholder="Email Address" required>
     <p>Re-type Email:</p>
     <input id="email_re" name="email_re" type="email" placeholder="Re-enter Email Address" required>
-    <button class="button" type="submit">Delete</button>
+    <button class="button" type="submit">suspendUserAccount</button>
 
-    <p> {{message}}</p>
+    <p class="delete-message" style="color: red;font-size: 13px;font-weight: bold;">{{message}}</p>
 </form>
 
 

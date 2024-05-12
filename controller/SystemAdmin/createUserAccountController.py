@@ -1,10 +1,10 @@
 from entity.UserAccount import UserAccount
 class CreateUserAccountController:
     
-    def createUserAccount(self,email,password,role):
+    def createUserAccount(self,user_email,user_pass,user_role):
         
         userAccount = UserAccount()
-        isCreated = userAccount.createUserAccount(email,password,role)
+        isCreated = userAccount.createUserAccount(user_email,user_pass,user_role)
         
         if isCreated:
             return True
