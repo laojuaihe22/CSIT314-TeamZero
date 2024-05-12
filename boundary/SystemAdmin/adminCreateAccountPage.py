@@ -10,9 +10,9 @@ def create_account_page():
     if request.method == "POST":
         user_email = request.form["email"]
         user_pass = request.form["password"]
-        user_role = request.form.get('role')
+        role = request.form.get('role')
         createUserController = CreateUserAccountController()
-        is_created = createUserController.createUserAccount(user_email,user_pass,user_role)
+        is_created = createUserController.createUserAccount(user_email,user_pass,role)
         
         if is_created:
             return render_template('adminCreateAccount.html',message='Account created successfully!')

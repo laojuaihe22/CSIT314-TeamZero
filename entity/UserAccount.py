@@ -27,7 +27,7 @@ class UserAccount:
         else:
             return False, "None"
     
-    def createUserAccount(self,user_email,user_pass,user_role):
+    def createUserAccount(self,user_email,user_pass,role):
         
         client = self.get_database()
         db = client["CSIT314"]
@@ -44,7 +44,7 @@ class UserAccount:
                 "email": user_email,
                 "password": user_pass,
                 "status":True,
-                "profile":{"role":user_role,
+                "profile":{"role":role,
                            "status":True,
                            }
             }
