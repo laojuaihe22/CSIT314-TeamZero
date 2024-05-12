@@ -2,13 +2,10 @@ from entity.UserProfile import UserProfile
 
 class UpdateUserProfileController:
 
-    def updateUserProfile(self, email, field, data):
+    def updateUserProfile(self, user_email, field, value):
 
-        if not email:
-            return False 
-    
         userProfile = UserProfile()
-        updatedUser = userProfile.updateUserProfile(email, field, data)
+        updatedUser = userProfile.updateUserProfile(user_email, field, value)
 
         return updatedUser
         

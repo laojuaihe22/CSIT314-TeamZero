@@ -2,13 +2,10 @@ from entity.UserProfile import UserProfile
 
 class CreateUserProfileController():
 
-    def createUserProfile(self, email, name, description):
-
-        if not email or not name or not description:
-            return False 
+    def createUserProfile(self, user_email, user_name, user_description):
         
         userProfile = UserProfile()
-        isCreated = userProfile.createUserProfile(email, name, description)
+        isCreated = userProfile.createUserProfile(user_email, user_name, user_description)
         
         return isCreated
             

@@ -2,9 +2,9 @@ from entity.UserProfile import UserProfile
 
 class SearchUserProfileController:
 
-    def searchUserProfile(self,email):
+    def searchUserProfile(self,user_email):
 
         userProfile = UserProfile()
-        user = userProfile.searchUserProfile(email)
+        user = userProfile.searchUserProfile(user_email)
 
         return user
