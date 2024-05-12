@@ -82,7 +82,7 @@ a:hover {
 <h1>Suspend User Profile</h1>
 <p>Are you sure you want to suspend this user profile?</p>
 <form action="/suspendUserProfile" method="post">
-    <label for="email">Enter User Email:</label>
+    <label for="email">Select User Email:</label>
     <select id="nemail" name="email" required>
         {% for user in users %}
             <option value="{{ user['email'] }}">{{ user['email'] }}</option>

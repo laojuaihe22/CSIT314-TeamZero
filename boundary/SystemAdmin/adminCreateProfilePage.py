@@ -26,3 +26,8 @@ def create_profile_page():
     viewUserAccountController = ViewUserAccountController()
     user_account_data = viewUserAccountController.viewUserAccountData()
     return render_template('adminCreateProfile.html', users = user_account_data)
+
+@create_profile_app.route('/userProfile', methods=['GET'])
+def user_profile():
+    if "user_email" in session:
+        return render_template('userHomeProfile.html')

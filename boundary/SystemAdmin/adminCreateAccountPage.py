@@ -27,7 +27,3 @@ def user_account():
         return render_template('userAccount.html')
     
 
-@create_account_app.route('/userProfile', methods=['GET'])
-def user_profile():
-    if "user_email" in session:
-        return render_template('userHomeProfile.html')

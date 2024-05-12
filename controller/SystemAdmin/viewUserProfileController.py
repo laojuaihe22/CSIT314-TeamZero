@@ -1,6 +1,6 @@
 from entity.UserProfile import UserProfile
 
-class ViewUserProfileController():
+class ViewUserProfileController:
 
     def viewUserProfile(self):
         userProfiles = UserProfile()
