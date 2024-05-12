@@ -115,27 +115,3 @@ class UserAccount:
         else :
             return False 
     
-    def signUpUser(self, email,password):
-        client = self.get_database()
-        db = client["CSIT314"]
-        collection = db["User"]
-        try:
-            # Check if email already exists in the database
-            existing_user = collection.find_one({'email': email})
-            
-            if existing_user:
-                return False
-            
-            user_data = {
-                "email": email,
-                "password": password,
-                "status": True
-            }
-            
-            # Insert user data into the database
-            collection.insert_one(user_data)
-            return True
-        
-        except Exception as e:
-            # Log the exception or return an error message
-            return False
