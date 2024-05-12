@@ -27,7 +27,7 @@ class UserAccount:
         else:
             return False, "None"
     
-    def createUserAccount(self,email, password, role):
+    def createUserAccount(self,user_email,user_pass,user_role):
         
         client = self.get_database()
         db = client["CSIT314"]
@@ -35,16 +35,16 @@ class UserAccount:
         
         try:
             # Check if email already exists in the database
-            existing_user = collection.find_one({'email': email})
+            existing_user = collection.find_one({'email': user_email})
             
             if existing_user:
                 return False
             
             user_data = {
-                "email": email,
-                "password": password,
+                "email": user_email,
+                "password": user_pass,
                 "status":True,
-                "profile":{"role":role,
+                "profile":{"role":user_role,
                            "status":True,
                            }
             }

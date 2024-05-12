@@ -9,6 +9,11 @@
     background-color: lightgray;
     border: 1px solid gray;
 }
+.create-message{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+}
 
 {% endblock style %}
 
@@ -25,11 +30,10 @@
         <option value="buyer">Buyer</option>
         <option value="seller">Seller</option>
     </select>
-    <!-- error message here -->
-
-    <div id="exsistingEmail" class="error-message">{{message}}</div>
 
     <button class="button" type="submit">Create</button>
+    <!-- error message here -->
+    <p class="create-message">{{message}}</p>
 </form>
 
 {% endblock content %}
