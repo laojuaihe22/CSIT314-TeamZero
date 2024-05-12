@@ -114,7 +114,13 @@ tr:nth-child(even) {
         <tr>
             <td>{{ searchUser.email }}</td>
             <td>{{ searchUser.profile.name }}</td>
-            <td>{{ searchUser.profile.status }}</td>
+            <td>
+                {% if searchUser.profile.status %}
+                Activate
+                {% else %}
+                    Deactivate
+                {% endif %}
+            </td>
             <td>{{ searchUser.profile.description }}</td>
         </tr>
     </tbody>
