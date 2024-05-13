@@ -118,7 +118,7 @@ listings{% extends "baseUserDashboard.html" %}
             <h2 class="title-delete">Your Listings</h2>
             <div class="listing-cards">
                 <!-- star from here for loop -->
-                    {% for property in propertyListing %}
+                {% for property in propertyListing %}
                     <div class="listing-card">
                         <div class="listing-info">
                             <h3>The Vision</h3>
@@ -132,8 +132,7 @@ listings{% extends "baseUserDashboard.html" %}
                             <button class="delete-btn" type="submit">Delete</button>
                         </form>
                     </div>
-                    {% endfor %}
-                </form>
+                {% endfor %}
             </div>
         </div>
     </div>
