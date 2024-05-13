@@ -1,4 +1,4 @@
-{% extends "baseUserDashboard.html" %}
+listings{% extends "baseUserDashboard.html" %}
 
 {% block style %}
 
@@ -38,10 +38,12 @@
 }
 
 .hidden {
-    display: none;
+    display: contents;
+    
 }
 
 .listing-cards {
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -91,8 +93,16 @@
 }
 
 .agent-body {
-    overflow-y: auto;
-    max-height: calc(100vh - 250px);
+    margin: auto;
+    
+}
+
+.title-delete{
+    margin-top: 50px;
+}
+
+#listings{
+    flex-wrap: wrap;
 }
 {% endblock style %}
 
@@ -101,11 +111,10 @@
 {% block content %}
 
 <div class="agent-main">
-    <h1>hello</h1>
     <!-- Listing Section -->
     <div class="agent-body">
         <div id="listings" class="hidden">
-            <h2>Delete Your Listings</h2>
+            <h2 class="title-delete">Your Listings</h2>
             <div class="listing-cards">
                 <div class="listing-card">
                     <img src="image1.jpg" alt="Listing 1">
@@ -117,12 +126,144 @@
                     </div>
                     <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
                 </div>
+                <!-- Add new listings below -->
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                <div class="listing-card">
+                    <img src="image3.jpg" alt="Listing 3">
+                    <div class="listing-info">
+                        <h3>The Valley</h3>
+                        <h4 style="color: darkgreen;">$3,500,000</h4>
+                        <p class="location-text" style="color: grey;">Sunnyvale, California
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20mins</p>
+                    </div>
+                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                </div>
+                
             </div>
         </div>
     </div>
+
     <!-- Messages Section -->
     <div id="messages" class="hidden">
-        <!-- Messages content here -->
         <p>Messages Content Goes Here</p>
     </div>
 </div>
