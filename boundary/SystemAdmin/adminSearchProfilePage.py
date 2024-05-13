@@ -14,10 +14,9 @@ def search_profile_page():
         user_account_data = searchUserProfileController.searchUserProfile(user_email)
         
         if user_account_data:
-            return render_template('adminSearchProfile.html', searchUser=user_account_data)
+            return render_template('adminSearchProfile.html', user=user_account_data)
         else:
-
-            return render_template('adminSearchProfile.html', searchUser= None)
+            return render_template('adminSearchProfile.html', message="Invalid email!")
     
     viewUserAccountController = ViewUserAccountController()
     user_account_data = viewUserAccountController.viewUserAccountData()

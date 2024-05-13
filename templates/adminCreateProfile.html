@@ -60,21 +60,6 @@
     background-color: #e0e0e0;
 }
 
-button[type="submit"] {
-    width: 80px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 16px;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
 
 .create-profile-admin select {
     width: calc(100% - 20px);
@@ -98,15 +83,11 @@ button[type="submit"]:hover {
 <form class="create-profile-admin" id="adminCreateProfileForm" action="/createUserProfile" method="post">
     <div class="admin-action-title"><u><b>Create New User Profile</b></u></div>
     <label for="email">Email:</label>
-    <select id="nemail" name="email" required>
-        {% for user in users %}
-            <option value="{{ user['email'] }}">{{ user['email'] }}</option>
-        {% endfor %}
-    </select>
+    <input id="nemail" name="email" type="email" placeholder="Enter user email address" required>  
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" placeholder="Name" required>
     <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea>
+    <textarea id="description" name="description" placeholder="Description" required></textarea>
     <!-- error message here -->
     {% with messages = get_flashed_messages() %}        
         {% if messages %}
