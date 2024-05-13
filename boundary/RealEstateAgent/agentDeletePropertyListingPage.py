@@ -17,4 +17,4 @@ def delete_property_listing_page():
         else:
             flash('Failed to delete from property listing', 'error')
         
-    return render_template('deleteListing.html')
+    return render_template('realEstateAgentDeletePropertyListing.html')
