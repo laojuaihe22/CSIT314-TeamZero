@@ -30,11 +30,10 @@ def processLoginPage():
 @login_app.route("/home", methods=["GET"])
 def displayHomePage():
     if "user_email" in session:
-        role = session['roles']
-        if role == "admin":
+        if session['roles'] == "admin":
             return render_template('adminDashboard.html')
-        else:
-            return render_template("home.html", role=role)
+        elif session['roles'] == "rea":
+            return render_template("realEstateAgentDashboard.html")
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))
