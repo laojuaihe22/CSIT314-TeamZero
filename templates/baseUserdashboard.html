@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroRealEstate</title>
+    <style>
+         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+            font-weight: 700;
+            z-index: 1000; /* Ensures the navbar appears above other content */
+        }
+
+        .navbar a {
+            margin-top: 1.1%;
+            color: black;
+            float: right;
+            display: block;
+            text-align: center;
+            padding: 14px 25px;
+            text-decoration: none;
+        }
+
+        .navbar a.title {
+            padding-left: 45px;
+            position: absolute;
+            margin-top: 5px;
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .navbar button {
+            font-size: 13px;
+            margin: 1px;
+            background-color:black; /* Green background */
+            color: white; /* White text */
+            padding: 15px 30px; /* Padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+        }
+
+        .navbar a.active {
+            margin-top: 5px;
+            color: black;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .logout img {
+            margin: -15px;
+            width: 50px;
+            height: auto;
+            color: black;
+        }
+
+        {% block style %}
+
+        {% endblock style %}
+
+
+    </style>
+</head>
+<body>
+    <span class="navbar">
+        <a class="title" href="page1.html">ZeroRealEstate</a>
+        <a class="logout" href="index.html"><img src="{{ url_for('static', filename='logout.avif')}}"></a>
+        <a class="active" href="myprofile.html"><button>My Profile</button></a>
+        <a href="myActivities.html">My Activities</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="page1.html">Home</a>
+    </span>
+{% block content %}
+
+{% endblock content %}
+
+</body>
+</html>
