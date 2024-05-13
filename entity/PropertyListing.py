@@ -12,7 +12,7 @@ class PropertyListing:
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentID, sellerID, region, address, price, type, description):
+    def createPropertyListing(self, agentID, sellerID, address, price, type, description):
 
         client = self.get_database()
         
@@ -24,7 +24,6 @@ class PropertyListing:
         property_listing = {
             'agentID': agentID,
             'sellerID': sellerID,
-            'region': region,
             'address': address,
             'price': price,
             'type': type,
