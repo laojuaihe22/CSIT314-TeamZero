@@ -64,8 +64,8 @@ button[class="column"]:hover {
         <h4>Create Property Listings</h4>
         <p>content</p>
     </button>
-
-    <button class="column" onclick="window.location.href='buyer.html'">
+    
+    <button class="column" method = "GET" , action = "/viewPropertyListingPage">
         <img src="{{ url_for('static', filename='buyer.png')}}" alt="Image">
         <h4>View Property Listings</h4>
         <p>content</p>

@@ -9,7 +9,7 @@ create_property_listing_app = Blueprint('create_property_listing_app', __name__)
 def create_property_listing_page():
      
     if request.method == "POST":
-        agentID = session["email"]
+        agentID = session["user_email"]
         sellerID = request.form["sellerID"]
         property_address = request.form["address"]
         property_price = request.form["price"]
