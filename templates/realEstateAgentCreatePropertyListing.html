@@ -133,10 +133,18 @@ button[type="submit"]:hover {
                 <input type="text" id="description" name="description" required>
             </div>
             <button type="submit">Submit</button>
+            <!-- error message here -->
         </form>
+        
     </div>
 </div>
-
+    {% with messages = get_flashed_messages() %}        
+            {% if messages %}
+                {% for msg in messages %}
+                    <div id="exsistingEmail" class="error-message">{{msg}}</div>
+                {% endfor %}
+            {% endif %}
+    {% endwith %}
 </div>
 {% endblock content %}
 

@@ -130,10 +130,13 @@ listings{% extends "baseUserDashboard.html" %}
         </div>
     </div>
 
-    <!-- Messages Section -->
-    <div id="messages" class="hidden">
-        <p>Messages Content Goes Here</p>
-    </div>
+    {% with messages = get_flashed_messages() %}        
+            {% if messages %}
+                {% for msg in messages %}
+                    <div id="exsistingEmail" class="error-message">{{msg}}</div>
+                {% endfor %}
+            {% endif %}
+    {% endwith %}
 </div>
 
 {% endblock content %}

@@ -184,6 +184,13 @@ button[type="submit"]:hover {
         <!-- Display nothing if property_list is None -->
         {% endif %}
     </div>
+    {% with messages = get_flashed_messages() %}        
+            {% if messages %}
+                {% for msg in messages %}
+                    <div id="exsistingEmail" class="error-message">{{msg}}</div>
+                {% endfor %}
+            {% endif %}
+    {% endwith %}
 </div>    
 
 
