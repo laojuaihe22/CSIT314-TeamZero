@@ -5,9 +5,9 @@ create_property_listing_app = Blueprint('create_property_listing_app', __name__)
 
 
 
-@create_property_listing_app.route('/createPropertyListing', methods = ['POST'])
+@create_property_listing_app.route('/createPropertyListing', methods = ['POST','GET'])
 def create_property_listing_page():
-
+     
     if request.method == "POST":
         agentID = session["email"]
         sellerID = request.form["sellerID"]

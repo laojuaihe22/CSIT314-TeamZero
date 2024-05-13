@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZeroRealEstate</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
     <style>
         .agent-main{
             position: absolute;
@@ -104,7 +104,7 @@
 
 <span class="navbar">
     <a class="title" href="page1.html">ZeroRealEstate</a>
-    <a class="logout" href="index.html"><img src="logout.avif"></a>
+    <a class="logout" href="index.html"><img src="{{ url_for('static', filename='logout.avif')}}"></a>
     <a class="active" href="myprofile.html"><button>My Profile</button></a>
     <a href="myActivities.html">My Activities</a>
     <a href="contact.html">Contact</a>
