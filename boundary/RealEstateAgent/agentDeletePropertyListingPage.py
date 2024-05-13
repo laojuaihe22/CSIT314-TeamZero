@@ -12,9 +12,6 @@ def delete_property_listing_page():
     
     if request.method == "POST":
         delete_property = request.form["address"]
-        print()
-        print((delete_property))
-        print()
 
         deletePropertyListingController = DeletePropertyListingController()
         property_deleted = deletePropertyListingController.deletePropertyListing(delete_property)
