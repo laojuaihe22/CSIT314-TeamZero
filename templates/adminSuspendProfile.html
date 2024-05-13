@@ -1,95 +1,50 @@
 {% extends "baseAdmin.html" %}
 
 {% block style %}
-h1 {
-    font-size: 24px;
-    margin-top: 10px;
-}
-
-p {
-    font-size: 16px;
-}
-
-form {
-    max-width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #dc3545;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #c82333;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.create-profile-admin select {
-    width: calc(100% - 20px);
+.button {
+    margin-top: 20px;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 24px;
-    appearance: none; /* Remove default dropdown arrow */
-    background-color: #fff; /* Dropdown background color */
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: calc(100% - 10px) center;
-    cursor: pointer;
+    border-radius: 8px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+
+.delete-acc-admin {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-acc-admin input,
+.delete-acc-admin select {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.delete-acc-admin p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: black;
+}
+
+.delete-message{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 {% endblock style %}
 
 {% block content %}
-<h1>Suspend User Profile</h1>
-<p>Are you sure you want to suspend this user profile?</p>
-<form action="/suspendUserProfile" method="post">
-    <label for="email">Select User Email:</label>
-    <select id="nemail" name="email" required>
-        {% for user in users %}
-            <option value="{{ user['email'] }}">{{ user['email'] }}</option>
-        {% endfor %}
-    </select>
-    <button type="submit">Suspend</button>
-    <a href="/">Cancel</a>
+<form class="delete-acc-admin" id="adminDeleteForm" method="post" action="/suspendUserProfile">
+    <div class="admin-action-title"><u><b>Suspend User Profile</b></u></div>
+    <p>Enter the Email to Suspend:</p>
+    <input id="email" name="email" type="email" placeholder="Email Address" required>
+    <p>Re-type Email:</p>
+    <input id="email_re" name="email_re" type="email" placeholder="Re-enter Email Address" required>
+    <button class="button" type="submit">Suspend</button>
+
     <!-- error message here -->
     {% with messages = get_flashed_messages() %}        
         {% if messages %}
@@ -98,5 +53,6 @@ a:hover {
             {% endfor %}
         {% endif %}
     {% endwith %}
+
 </form>
 {% endblock %}
