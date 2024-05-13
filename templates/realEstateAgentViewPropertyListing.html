@@ -1,7 +1,6 @@
 {% extends "baseUserDashboard.html" %}
 
 {% block style %}
-
 .agent-main{
     position: absolute;
     margin: 50px;
@@ -37,7 +36,7 @@
     border-radius: 10px;
 }
 
-.hidden {
+.list {
     display: block;
     position: absolute;
     margin-top: 8%;
@@ -101,28 +100,26 @@ button[type="submit"]:hover {
 
 <div class="agent-main">
     
-    
-    
-    <!-- Listing Section -->
+    <!-- Property Listing  -->
     <div class="agent-body">
-    <div id="listings" class="hidden">
-        <h2>Create New Listing</h2>
+    <div id="listings" class="list">
+        <h2>Property Listing</h2>
         <form id="listingForm" enctype="multipart/form-data" method = 'POST' action = 'createPropertyListing'>
             <div class="form-group">
-                <label for="name">Seller email:</label>
-                <input type="text" id="name" name="sellerID" placeholder="Email address" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Type of Property" required>
             </div>
             <div class="form-group">
                 <label for="propertyType">Type of Property:</label>
-                <select id="propertyType" name="type" required>
+                <select id="propertyType" name="propertyType" required>
                     <option value="Condo">Condo</option>
-                    <option value="Landed">Landed</option>
+                    <option value="Land">Landed</option>
                     <!-- Add more options as needed -->
                 </select>
             </div>
             <div class="form-group">
                 <label for="location">Location:</label>
-                <input type="text" id="location" name="address" required>
+                <input type="text" id="location" name="location" required>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
@@ -138,5 +135,5 @@ button[type="submit"]:hover {
 </div>
 
 </div>
-{% endblock content %}
 
+{% endblock content %}
