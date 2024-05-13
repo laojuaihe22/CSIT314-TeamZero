@@ -1,7 +1,7 @@
 from entity.PropertyListing import PropertyListing
 
 class DeletePropertyListingController():
-    def deletePropertyListing(address):
+    def deletePropertyListing(self, address):
 
         propertyListing = PropertyListing()
         property_deleted = propertyListing.deletePropertyListing(address)

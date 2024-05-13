@@ -59,6 +59,7 @@ listings{% extends "baseUserDashboard.html" %}
     padding: 20px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
     /* Add shadow */
+    text-align: center;
 }
 
 .listing-card img {
@@ -69,8 +70,8 @@ listings{% extends "baseUserDashboard.html" %}
 }
 
 .listing-info .location-text {
-    padding: 20px;
-    font-size: 12px;
+    font-size: 20px;
+    color: black
     /* Adjust the font size as desired */
 }
 
@@ -116,23 +117,30 @@ listings{% extends "baseUserDashboard.html" %}
         <div id="listings" class="hidden">
             <h2 class="title-delete">Your Listings</h2>
             <div class="listing-cards">
-                <div class="listing-card">
-                    <img src="image1.jpg" alt="Listing 1">
-                    <div class="listing-info">
-                        <h3>The Vision</h3>
-                        <h4 style="color: darkgreen;">$1,188,888</h4>
-                        <p class="location-text" style="color: grey;">88 Reindeer Drive
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8mins</p>
+                <!-- star from here for loop -->
+                    {% for property in propertyListing %}
+                    <div class="listing-card">
+                        <div class="listing-info">
+                            <h3>The Vision</h3>
+                            <h4 style="color: darkgreen;">${{property.price}}</h4>
+                            <p class="location-text">Address: {{property.address}}</p>
+                            <p class="location-text">Type: {{property.type}}</p>
+                            <input type="hidden" name="address" value="{{property.address}}">
+                        </div>
+                        <form action="/deletePropertyListing" method="post">
+                            <input type="hidden" name="address" value="{{property.address}}">
+                            <button class="delete-btn" type="submit">Delete</button>
+                        </form>
                     </div>
-                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
-                </div>
+                    {% endfor %}
+                </form>
             </div>
         </div>
     </div>
 
     <!-- Messages Section -->
-    <div id="messages" class="hidden">
-        <p>Messages Content Goes Here</p>
+    <div id="messages">
+        <p>{{message}}</p>
     </div>
 </div>
 

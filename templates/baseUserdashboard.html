@@ -75,13 +75,14 @@
 <body>
     <span class="navbar">
         <a class="title" href="page1.html">ZeroRealEstate</a>
-        <a class="logout" href="index.html"><img src="{{ url_for('static', filename='logout.avif')}}"></a>
+        <a class="logout" href="/logout"><img src="{{ url_for('static', filename='logout.avif')}}"></a>
         <a class="active" href="myprofile.html"><button>My Profile</button></a>
         <a href="myActivities.html">My Activities</a>
         <a href="contact.html">Contact</a>
         <a href="about.html">About</a>
         <a href="page1.html">Home</a>
     </span>
+    
 {% block content %}
 
 {% endblock content %}
