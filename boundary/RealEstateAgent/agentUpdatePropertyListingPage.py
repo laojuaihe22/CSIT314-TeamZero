@@ -5,7 +5,7 @@ update_property_listing_app = Blueprint('update_property_listing_app', __name__)
 
 
 
-@update_property_listing_app.route('/updatePropertyListing', methods = ['POST'])
+@update_property_listing_app.route('/updatePropertyListing', methods = ['POST', "GET"])
 def update_property_listing_page():
     if request.method == 'POST':
 
@@ -14,12 +14,21 @@ def update_property_listing_page():
         value = request.form['value']
 
         update_property_listing = UpdatePropertyListingController()
+
+        if field == "price":
+            try:
+                value = int(value)  # Convert value to integer
+            except ValueError:
+                flash('Price must be an integer', 'error')
+                return render_template('realEstateAgentUpdatePropertyListing.html')
+
+        update_property_listing = UpdatePropertyListingController()
         updated_property = update_property_listing.updatePropertyListing(address, field, value)
         
         if updated_property:
             flash(f'Property successfully updated', 'success')
-            return render_template('updatePropertyListing.html', updated_property=updated_property)
+            return render_template('realEstateAgentUpdatePropertyListing.html', updated_property=updated_property)
         else:
             flash('Failed to update the property', 'error')
 
-    return render_template('updateListing.html')
+    return render_template('realEstateAgentUpdatePropertyListing.html')

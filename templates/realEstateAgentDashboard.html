@@ -65,26 +65,26 @@ button[class="column"]:hover {
         <p>content</p>
     </button>
 
-    <button class="column" method = "GET" action = "/viewPropertyListingPage">
+    <button class="column" onclick="window.location.href='/viewPropertyListingPage'">
         <img src="{{ url_for('static', filename='buyer.png')}}" alt="Image">
         <h4>View Property Listings</h4>
         <p>content</p>
     </button>
     
 
-    <button class="column" onclick="window.location.href='agent.html'">
+    <button class="column" onclick="window.location.href='/updatePropertyListing'">
         <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
         <h4>Update Property Listings</h4>
         <p>content</p>
     </button>
 
-    <button class="column" onclick="window.location.href='/deletePropertyListing'">
+    <button class="column" onclick="window.location.href='agent.html'">
         <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
         <h4>Delete Property Listings</h4> 
         <p>content</p>
     </button>
     
-    <button class="column" onclick="window.location.href='agent.html'">
+    <button class="column" onclick="window.location.href='/searchPropertyListing'">
         <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
         <h4>Search Property Listings</h4>
                 <p>content</p>

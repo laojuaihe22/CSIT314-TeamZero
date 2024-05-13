@@ -5,7 +5,7 @@ view_property_listing_app = Blueprint('view_property_listing_app', __name__)
 
 
 
-@view_property_listing_app.route('/viewPropertyListingPage', methods = ['POST'])
+@view_property_listing_app.route('/viewPropertyListingPage', methods = ['POST', 'GET'])
 def view_property_listing_page():
     if request.method == "GET":
 
