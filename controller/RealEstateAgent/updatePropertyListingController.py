@@ -2,7 +2,7 @@ from entity.PropertyListing import PropertyListing
 
 class UpdatePropertyListingController():
 
-    def updatePropertyListing(address, field, value):
+    def updatePropertyListing(self, address, field, value):
 
         propertyListing = PropertyListing()
         updated_property = propertyListing.updatePropertyListing(address, field, value)

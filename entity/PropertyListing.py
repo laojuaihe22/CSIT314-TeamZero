@@ -112,10 +112,10 @@ class PropertyListing:
         elif filter == 'price':
             target_property = list(collection.find({'price': {'$lte': value}})) # less than or equal to price
         
-        elif filter == 'region':
+        # elif filter == 'region':
             
-            target_property =list(collection.find({'region':value})) # north, south, east, west
-            return target_property
+        #     target_property =list(collection.find({'region':value})) # north, south, east, west
+        #     return target_property
         
         if not target_property:
             return None  

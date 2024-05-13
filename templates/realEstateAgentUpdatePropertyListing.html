@@ -1,0 +1,136 @@
+{% extends "baseUserDashboard.html" %}
+
+{% block style %}
+
+.agent-main{
+    position: absolute;
+    margin: 50px;
+}
+
+.agent-main p {
+    font-size: 45px;
+}
+
+
+.profile-nav {
+    font-size: 15px;
+    margin-top: -20px;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5); /* Add shadow */
+    max-width: fit-content;
+}
+
+.Pnav-item {
+    font-weight: bold;
+    padding: 10px 25px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+}
+
+.Pnav-item.active {
+    font-weight: normal;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: block;
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 50%; 
+}
+
+#listings {
+    left: 50%;
+    position: relative;
+    width: 550px; /* Adjust the width as needed */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+    width: calc(100% - 16px); /* Adjusted width to accommodate border and padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color:black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: grey;
+}
+
+.logout img {
+    margin: -15px;
+    width: 50px;
+    height: auto;
+    color: black;
+}
+{% endblock style %}
+
+{% block content %}
+
+<div class="agent-main">
+    <div class="agent-body">
+    <div id="listings" class="hidden">
+        <h2>Update Property Listing</h2>
+        <form id="listingForm" enctype="multipart/form-data" method = 'POST' action = '/updatePropertyListing'>
+            <div class="form-group">
+                <label for="name">Seller email:</label>
+                <input type="text" id="name" name="sellerID" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Which Property Location that u wish to update:</label>
+                <input type="text" id="location" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="field">Select one to be updated:</label>
+                <select id="field" name="field" required>
+                    <option value="">-- Select Field --</option>
+                    <option value="price">price</option>
+                    <option value="description">description</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="value">New value for the selected field:</label>
+                <input type="text" id="value" name="value" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+</div>
+{% endblock content %}
+
