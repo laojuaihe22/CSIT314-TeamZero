@@ -20,6 +20,10 @@ class PropertyListing:
         property_listing_collection = db["propertyListing"]
         user_collection = db["User"]
 
+        # Check if seller email exists in the user collection
+        if user_collection.count_documents({'email': sellerID}) == 0:
+            return False  # Seller email not found, return False
+        
         # Create the property listing document
         property_listing = {
             'agentID': agentID,
@@ -42,10 +46,10 @@ class PropertyListing:
 
         agent_update_result =user_collection.update_one({'email': agentID}, agent_profile_update)
 
-        if user_collection.count_documents({'email': sellerID, 'profile.propertyListings': {'$exists': False}}) > 0:
-            seller_profile_update = {'$set': {'profile.propertyListings': [property_listing_id]}}
+        if user_collection.count_documents({'email': sellerID, 'profile.propertyID': {'$exists': False}}) > 0:
+            seller_profile_update = {'$set': {'profile.propertyID': [property_listing_id]}}
         else:
-            seller_profile_update = {'$push': {'profile.propertyListings': property_listing_id}}
+            seller_profile_update = {'$push': {'profile.propertyID': property_listing_id}}
 
         seller_update_result = user_collection.update_one({'email': sellerID}, seller_profile_update)
 
@@ -74,6 +78,7 @@ class PropertyListing:
         db = client["CSIT314"]
         collection = db["propertyListing"]
 
+        
         property_doc = collection.find_one({'address':address})
         
         if property_doc:
@@ -110,13 +115,8 @@ class PropertyListing:
             target_property =list(collection.find({'type':value})) # landed, condo, hdb
 
         elif filter == 'price':
-            target_property = list(collection.find({'price': {'$lte': value}})) # less than or equal to price
-        
-        # elif filter == 'region':
-            
-        #     target_property =list(collection.find({'region':value})) # north, south, east, west
-        #     return target_property
-        
+            target_property = list(collection.find({'price': {'$lte': int(value)}})) # price less than or equal to provided value
+
         if not target_property:
             return None  
         

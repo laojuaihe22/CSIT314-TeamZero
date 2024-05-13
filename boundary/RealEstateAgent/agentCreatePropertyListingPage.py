@@ -22,8 +22,10 @@ def create_property_listing_page():
                                                                                  property_price, property_type, property_description)
         
         if property_Created:
-            flash(f'Successfully added to property listing', 'success')
+            flash('Successfully created', 'success')
+            return render_template('realEstateAgentCreatePropertyListing.html')
         else:
-            flash('Failed to add to property listing', 'error')
+            flash('Error: Invalid email address', 'error')
+            return render_template('realEstateAgentCreatePropertyListing.html')
         
     return render_template('realEstateAgentCreatePropertyListing.html')
