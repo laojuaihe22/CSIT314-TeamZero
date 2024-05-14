@@ -6,9 +6,6 @@ class CreateUserAccountController:
         userAccount = UserAccount()
         isCreated = userAccount.createUserAccount(user_email,user_pass,role)
         
-        if isCreated:
-            return True
-        else:
-            return False
+        return isCreated
         
     
