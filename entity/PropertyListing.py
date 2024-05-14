@@ -14,27 +14,33 @@ class PropertyListing:
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentID, sellerID, address, region, price, type, description):
+    def createPropertyListing(self, agentID, sellerID, name, address, region, price, type, description,bedroom, bathroom, totalviews,saved):
 
         client = self.get_database()
         
         db = client["CSIT314"]
         property_listing_collection = db["propertyListing"]
-        user_collection = db["UserAccount"]
+        user_account = db["UserAccount"]
+        user_profile = db["UserProfile"]
 
         # Check if seller email exists in the user collection
-        if user_collection.count_documents({'email': sellerID}) == 0:
+        if user_account.count_documents({'email': sellerID}) == 0:
             return False  # Seller email not found, return False
         
         # Create the property listing document
         property_listing = {
             'agentID': agentID,
             'sellerID': sellerID,
+            'name': name,
             'address': address,
             'region': region,
             'price': price,
             'type': type,
-            'description': description
+            'description': description,
+            'bedroom': bedroom,
+            'bathroom': bathroom,
+            'totalviews': totalviews,
+            'saved': saved
         }
 
         # Insert the property listing into the propertyListing collection
@@ -42,19 +48,19 @@ class PropertyListing:
         property_listing_id = result.inserted_id
 
         
-        if user_collection.count_documents({'email': agentID, 'profile.propertyListings': {'$exists': False}}) > 0:
+        if user_account.count_documents({'email': agentID, 'profile.propertyListings': {'$exists': False}}) > 0:
             agent_profile_update = {'$set': {'profile.propertyListings': [property_listing_id]}}
         else:
             agent_profile_update = {'$push': {'profile.propertyListings': property_listing_id}}
 
-        agent_update_result =user_collection.update_one({'email': agentID}, agent_profile_update)
+        agent_update_result =user_account.update_one({'email': agentID}, agent_profile_update)
 
-        if user_collection.count_documents({'email': sellerID, 'profile.propertyID': {'$exists': False}}) > 0:
+        if user_account.count_documents({'email': sellerID, 'profile.propertyID': {'$exists': False}}) > 0:
             seller_profile_update = {'$set': {'profile.propertyID': [property_listing_id]}}
         else:
             seller_profile_update = {'$push': {'profile.propertyID': property_listing_id}}
 
-        seller_update_result = user_collection.update_one({'email': sellerID}, seller_profile_update)
+        seller_update_result = user_account.update_one({'email': sellerID}, seller_profile_update)
 
         if agent_update_result.matched_count > 0 and seller_update_result.matched_count > 0:
             return True
