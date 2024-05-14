@@ -10,6 +10,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    text-align: center;
 }
 
 .admin-action-title {
@@ -31,7 +32,7 @@
 .create-profile-admin textarea {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -42,7 +43,7 @@
     color: #dc3545;
     margin-top: 5px;
     font-size: 14px;
-    text-align: center;
+    <!-- text-align: center; -->
 }
 
 .button {
@@ -60,23 +61,6 @@
     background-color: #e0e0e0;
 }
 
-
-.create-profile-admin select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-    appearance: none; /* Remove default dropdown arrow */
-    background-color: #fff; /* Dropdown background color */
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: calc(100% - 10px) center;
-    cursor: pointer;
-}
-
 {% endblock style %}
 
 {% block content %}
@@ -88,14 +72,16 @@
     <input type="text" id="name" name="name" placeholder="Name" required>
     <label for="description">Description:</label>
     <textarea id="description" name="description" placeholder="Description" required></textarea>
-    <!-- error message here -->
+        <!-- error message here -->
     {% with messages = get_flashed_messages() %}        
         {% if messages %}
             {% for msg in messages %}
-            <div id="exsistingEmail" class="error-message">{{msg}}</div>
+            <div id="exsistingEmail" class="error-message"><p>{{msg}}</p></div>
             {% endfor %}
         {% endif %}
     {% endwith %}
     <button class="button" type="submit">Create</button>
+
 </form>
+
 {% endblock content %}
