@@ -12,13 +12,14 @@ def create_property_listing_page():
         agentID = session["user_email"]
         sellerID = request.form["sellerID"]
         property_address = request.form["address"]
+        property_region = request.form["region"]
         property_price = int(request.form["price"])
         property_type = request.form["type"]
         property_description = request.form["description"]
 
         createPropertyListingController = CreatePropertyListingController()
 
-        property_Created = createPropertyListingController.createPropertyListing(agentID, sellerID, property_address, 
+        property_Created = createPropertyListingController.createPropertyListing(agentID, sellerID, property_address, property_region,  
                                                                                  property_price, property_type, property_description)
         
         if property_Created:

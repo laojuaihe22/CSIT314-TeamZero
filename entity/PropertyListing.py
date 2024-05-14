@@ -8,17 +8,19 @@ class PropertyListing:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb://localhost:27017")
+            
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentID, sellerID, address, price, type, description):
+    def createPropertyListing(self, agentID, sellerID, address, region, price, type, description):
 
         client = self.get_database()
         
         db = client["CSIT314"]
         property_listing_collection = db["propertyListing"]
-        user_collection = db["User"]
+        user_collection = db["UserAccount"]
 
         # Check if seller email exists in the user collection
         if user_collection.count_documents({'email': sellerID}) == 0:
@@ -29,6 +31,7 @@ class PropertyListing:
             'agentID': agentID,
             'sellerID': sellerID,
             'address': address,
+            'region': region,
             'price': price,
             'type': type,
             'description': description
@@ -116,6 +119,9 @@ class PropertyListing:
 
         elif filter == 'price':
             target_property = list(collection.find({'price': {'$lte': int(value)}})) # price less than or equal to provided value
+
+        elif filter == 'region':
+            target_property = list(collection.find({'region': value}))
 
         if not target_property:
             return None  

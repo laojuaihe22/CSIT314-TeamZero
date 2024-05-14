@@ -30,11 +30,11 @@ def update_profile_page():
         updateUser = updateUserProfileController.updateUserProfile(user_email, field, value)
 
         if updateUser:
-            flash(f'{user_email}\'s user profile updated!', 'success')
-            return render_template('/adminUpdateProfile.html', updateUser=updateUser,  users=user_account_data)
+            
+            return render_template('/adminUpdateProfile.html', updateUser=updateUser,  users=user_account_data, message = 'User profile updated!')
         else:
-            flash('No profile has been updated', 'error')
-            return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data)
+            
+            return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data, message = 'No profile has been updated')
     
     
     return render_template('/adminUpdateProfile.html', users=user_account_data)

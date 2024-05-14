@@ -6,7 +6,9 @@ class UserAccount:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb://localhost:27017")
+            
         return self.database
     
     #61 As a system admin, I want to log in to the management system, so that I can perform administrative tasks and manage the system effectively.
@@ -17,51 +19,54 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
 
-        # Now you can perform database operations using the collection object
-        user = collection.find_one({"email": email, "password": password})
-        
-        if user:
-            return True, user['profile']['role']
-        else:
-            return False, "None"
+        # Find the user account by email
+        user_account = db.UserAccount.find_one({'email': email})
+
+        if user_account and password == user_account['password']:
+            # User is verified, now fetch the user's profile
+            user_profile = db.UserProfile.find_one({'userAccountId': user_account['_id']})
+            
+            if user_profile:
+                print("here")
+                return True, user_profile['role']
+
+
+        return False, "None"
     
     def createUserAccount(self,user_email,user_pass,role):
-        
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
         
-        try:
-            # Check if email already exists in the database
-            existing_user = collection.find_one({'email': user_email})
-            
-            if existing_user:
-                return False
-            
+        # Check if email already exists in the database
+        existing_user = db.UserAccount.find_one({'email': user_email})
+
+        if not existing_user:
+
             user_data = {
                 "email": user_email,
                 "password": user_pass,
-                "status":True,
-                "profile":{"role":role,
-                           "status":True,
-                           }
+                "status": True
             }
-            
-            # Insert user data into the database
-            collection.insert_one(user_data)
+            # Insert user data into the UserAccount collection
+            user_account_result = db.UserAccount.insert_one(user_data)
+
+            user_profile_role = {
+                "userAccountId": user_account_result.inserted_id,
+                "role": role
+            }
+
+            db.UserProfile.insert_one(user_profile_role)
+
             return True
-        
-        except Exception as e:
-            # Log the exception or return an error message
+        else:
             return False
         
     def suspendUserAccount(self, user_email):
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
+        collection = db["User"]
         
         user = collection.find_one({"email": user_email})    
         
@@ -78,7 +83,7 @@ class UserAccount:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
+        collection = db["User"]
         
         user = collection.find_one({"email": user_email}) 
         
@@ -96,7 +101,7 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
+        collection = db["User"]
         
         user_account_data = list(collection.find())
         
@@ -106,8 +111,8 @@ class UserAccount:
     
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
-            
+        collection = db["User"]
+        
         user = collection.find_one({"email": email})  
         
         if user:

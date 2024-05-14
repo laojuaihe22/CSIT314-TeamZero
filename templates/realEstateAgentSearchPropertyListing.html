@@ -151,6 +151,7 @@ button[type="submit"]:hover {
                     <option value="">-- Select Field --</option>
                     <option value="price">Price</option>
                     <option value="type">Type</option>
+                    <option value="region">Region</option>
                     <!-- Add more options as needed -->
                 </select>
             </div>
@@ -174,8 +175,9 @@ button[type="submit"]:hover {
                         <h3>The Vision</h3>
                         <h4 style="color: darkgreen;">{{ property.price }}</h4>
                         <p class="location-text" style="color: grey;">{{ property.address }}</p>
+                        <p class="location-text" style="color: grey;">{{ property.region }}</p>
                     </div>
-                    <button class="delete-btn" type="submit"">Delete</button>
+                    <button class="delete-btn" type="submit">Delete</button>
                 </div>
             </div>
         {% endfor %}
@@ -221,7 +223,7 @@ button[type="submit"]:hover {
             selectField.name = 'value';
             selectField.required = true;
             // Add options for property types (replace this with your actual data)
-            var propertyTypes = ['Condo', 'Landed', 'Apartment'];
+            var propertyTypes = ['Condominium', 'Landed', 'HDB'];
             propertyTypes.forEach(function(type) {
                 var option = document.createElement('option');
                 option.value = type;
@@ -229,9 +231,25 @@ button[type="submit"]:hover {
                 selectField.appendChild(option);
             });
             valueInput.appendChild(selectField);
+        } else if (selectedFilter === 'region') {
+            // Create dropdown box for region
+            var selectField = document.createElement('select');
+            selectField.id = 'value';
+            selectField.name = 'value';
+            selectField.required = true;
+            // Add options for regions (replace this with your actual data)
+            var regions = ['North', 'South', 'East', 'West', 'Central'];
+            regions.forEach(function(region) {
+                var option = document.createElement('option');
+                option.value = region;
+                option.textContent = region;
+                selectField.appendChild(option);
+            });
+            valueInput.appendChild(selectField);
         }
     });
 });
+
 
 
 </script>
