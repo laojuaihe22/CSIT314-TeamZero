@@ -52,7 +52,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
 }
 
@@ -110,19 +110,34 @@ button[type="submit"]:hover {
         <form id="listingForm" enctype="multipart/form-data" method = 'POST' action = 'createPropertyListing'>
             <div class="form-group">
                 <label for="name">Seller email:</label>
-                <input type="text" id="name" name="sellerID" placeholder="Email address" required>
+                <input type="text" id="name" name="sellerEmail" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <label for="sellerName">Seller name:</label>
+                <input type="text" id="sellerName" name="sellerName" required>
             </div>
             <div class="form-group">
                 <label for="propertyType">Type of Property:</label>
                 <select id="propertyType" name="type" required>
-                    <option value="Condo">Condo</option>
+                    <option value="Condo">Condominium</option>
                     <option value="Landed">Landed</option>
+                    <option value="HDB">HDB</option>
                     <!-- Add more options as needed -->
                 </select>
             </div>
             <div class="form-group">
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="address" required>
+                <label for="address">Location:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="Central">Central</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
@@ -131,6 +146,14 @@ button[type="submit"]:hover {
             <div class="form-group">
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="description" required>
+            </div>
+            <div class="form-group">
+                <label for="bedroom">Bedroom:</label>
+                <input type="text" id="bedroom" name="bedroom" required>
+            </div>
+            <div class="form-group">
+                <label for="bathroom">Bathroom:</label>
+                <input type="text" id="bathroom" name="bathroom" required>
             </div>
             <button type="submit">Submit</button>
             <!-- error message here -->

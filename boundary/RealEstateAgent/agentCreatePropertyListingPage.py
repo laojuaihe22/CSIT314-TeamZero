@@ -9,24 +9,28 @@ create_property_listing_app = Blueprint('create_property_listing_app', __name__)
 def create_property_listing_page():
      
     if request.method == "POST":
-        agentID = session["user_email"]
-        sellerID = request.form["sellerID"]
+        agentEmail = session["user_email"]
+        sellerEmail = request.form["sellerEmail"]
+        sellerName = request.form["sellerName"]
         property_address = request.form["address"]
         property_region = request.form["region"]
         property_price = int(request.form["price"])
         property_type = request.form["type"]
         property_description = request.form["description"]
-
+        property_bedroom = request.form["bedroom"]
+        property_bathroom = request.form["bathroom"]
+        
         createPropertyListingController = CreatePropertyListingController()
 
-        property_Created = createPropertyListingController.createPropertyListing(agentID, sellerID, property_address, property_region,  
-                                                                                 property_price, property_type, property_description)
+        property_Created = createPropertyListingController.createPropertyListing(agentEmail, sellerEmail, sellerName, property_address,
+                                                                                 property_region,  
+                                                                                 property_price, property_type, property_description,
+                                                                                 property_bedroom, property_bathroom)                                                                                
         
         if property_Created:
-            flash('Successfully created', 'success')
-            return render_template('realEstateAgentCreatePropertyListing.html')
+            
+            return render_template('realEstateAgentCreatePropertyListing.html', message = 'Successfully created')
         else:
-            flash('Error: Invalid email address', 'error')
-            return render_template('realEstateAgentCreatePropertyListing.html')
+            return render_template('realEstateAgentCreatePropertyListing.html', message = 'Failed to create')
         
     return render_template('realEstateAgentCreatePropertyListing.html')
