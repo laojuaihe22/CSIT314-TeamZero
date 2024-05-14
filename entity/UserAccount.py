@@ -88,12 +88,11 @@ class UserAccount:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
         
-        user = collection.find_one({"email": user_email}) 
+        user = db.UserAccount.find_one({"email": user_email}) 
         
         if user:
-            collection.update_one(
+            db.UserAccount.update_one(
                 {"email": user_email},
                 {"$set": {field: value}}
             )

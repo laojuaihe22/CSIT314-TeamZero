@@ -17,8 +17,8 @@ def suspend_profile_page():
         is_suspended = suspendUserProfile.suspendUserProfile(user_email)
 
         if is_suspended:
-            flash(f'User Profile successfully suspended!', 'success')
+            return render_template('adminSuspendProfile.html',msg='User Profile successfully suspended!')
         else:
-            flash('Email doesn\'t exists, please enter again', 'error')
+            return render_template('adminSuspendProfile.html',msg='Email doesn\'t exists, please enter again')
     
     return render_template('adminSuspendProfile.html')

@@ -32,6 +32,7 @@
     color: red;
     font-size: 13px;
     font-weight: bold;
+    margin-top: 15px;
 }
 
 {% endblock style %}
@@ -45,14 +46,7 @@
     <input id="email_re" name="email_re" type="email" placeholder="Re-enter Email Address" required>
     <button class="button" type="submit">Suspend</button>
 
-    <!-- error message here -->
-    {% with messages = get_flashed_messages() %}        
-        {% if messages %}
-            {% for msg in messages %}
-            <div id="exsistingEmail" class="error-message">{{msg}}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+    <div class="delete-message">{{msg}}</div>
 
 </form>
 {% endblock %}
