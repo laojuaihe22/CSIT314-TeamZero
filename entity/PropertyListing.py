@@ -50,7 +50,6 @@ class PropertyListing:
         return True
         
             
-
     #view property listing
     def viewPropertyListing(self):
  

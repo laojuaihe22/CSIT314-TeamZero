@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.SystemAdmin.updateUserAccountController import UpdateUserAccountController
+import re
 
 update_account_app = Blueprint('update_account_app', __name__)
 
@@ -11,6 +12,10 @@ def update_profile_page():
         user_email = request.form["email"]
         field = request.form["field"]
         value = request.form["value"]
+        
+        # Validate email format
+        if field == "email" and not is_valid_email(value):
+            return render_template('adminUpdateAccount.html', message="Invalid email format")
         
         if field == "status":
             # Convert value to boolean if field is status
@@ -31,3 +36,7 @@ def update_profile_page():
             return render_template('adminUpdateAccount.html',message="Email doesn\'t exists ")
         
     return render_template('adminUpdateAccount.html')
+
+def is_valid_email(email):
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(email_regex, email) is not None
