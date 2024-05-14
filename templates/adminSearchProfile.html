@@ -43,7 +43,7 @@ th {
 
 {% block content %}
 <form class="search-acc-admin" id="AdminSearchForm" action="/searchUserProfile" method="post">
-    <div class="admin-action-title"><u><b>Search Account</b></u></div>
+    <div class="admin-action-title"><u><b>Search Profile</b></u></div>
     <p>Enter the Email to Search:</p>
     <input id="email" name="email" type="email" placeholder="Email Address" required>
     <button class="button" type="submit">Search</button>
@@ -54,12 +54,8 @@ th {
                 <th colspan="2">User Profile Details</th>
             </tr>
             <tr>
-                <td><strong>Email</strong></td>
-                <td>{{user.email}}</td>
-            </tr>
-            <tr>
                 <td><strong>Name</strong></td>
-                <td>{{user.profile.name}}</td>  
+                <td>{{user.name}}</td>  
             </tr>
             <tr>
                 <td><strong>Status</strong></td>
@@ -74,11 +70,11 @@ th {
             </tr>
             <tr>
                 <td><strong>Role</strong></td>
-                <td>{{user.profile.role}}</td>
+                <td>{{user.role}}</td>
             </tr>
             <tr>
                 <td><strong>Description</strong></td>
-                <td>{{user.profile.description}}</td>
+                <td>{{user.description}}</td>
             </tr>
         </table>
         {% else %}

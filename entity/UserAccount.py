@@ -6,7 +6,9 @@ class UserAccount:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb://localhost:27017")
+            
         return self.database
     
     #61 As a system admin, I want to log in to the management system, so that I can perform administrative tasks and manage the system effectively.
@@ -28,6 +30,7 @@ class UserAccount:
                 return True, user_profile['role']
         
         # If verification fails
+
         return False, "None"
     
     def createUserAccount(self,user_email,user_pass,role):
@@ -39,6 +42,7 @@ class UserAccount:
         
         if not existing_user:
             
+
             user_data = {
                 "email": user_email,
                 "password": user_pass,
@@ -48,6 +52,7 @@ class UserAccount:
             user_account_result = db.UserAccount.insert_one(user_data)
             
             # Create user profile with role and reference to the user account
+
             user_profile_role = {
                 "userAccountId": user_account_result.inserted_id,
                 "role": role
@@ -55,6 +60,7 @@ class UserAccount:
             
             db.UserProfile.insert_one(user_profile_role)
             
+
             return True
         else:
             return False
@@ -82,7 +88,7 @@ class UserAccount:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["UserAccount"]
+        collection = db["User"]
         
         user = collection.find_one({"email": user_email}) 
         
@@ -110,6 +116,7 @@ class UserAccount:
         client = self.get_database()
         db = client["CSIT314"]
         collection = db["UserAccount"]
+
 
         user = collection.find_one({"email": email})  
         

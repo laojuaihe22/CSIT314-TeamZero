@@ -36,6 +36,36 @@
     border: 1px solid gray;
 }
 
+table {
+    position: absolute;
+    margin-top: 10px;
+    color: black;
+    font-size: 15px;
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid black;
+}
+
+th {
+    text-align: center;
+    background-color: lightgrey;
+}
+
+td {
+    text-align: left;
+    border: 1px solid black;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.delete-message{
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 
 {% endblock style %}
 
@@ -47,11 +77,7 @@
     <label for="Action">
         <p>Email:</p>
     </label>
-    <select id="nemail" name="email" required>
-        {% for user in users %}
-            <option value="{{ user['email'] }}">{{ user['email'] }}</option>
-        {% endfor %}
-    </select>
+    <input id="email" name="email" type="email" placeholder="Enter User Email wanted to update" required>
     <label for="Action">
         <p>Field to Update</p>
     </label>
@@ -64,15 +90,15 @@
         <p>Update Value</p>
     </label>
     <input id="value" name="value" type="text" placeholder="Enter value to update" required>
-    <div id="exsistingEmail" class="error-message">{{message}}</div>
+    
     <button class="button" type="submit">Update</button>
 </form>
     {% if updateUser %}
-    <h1>User profile updated</h1>
+    <div id="searchResults" class="details-container">
     <table>
         <thead>
             <tr>
-                <th>Email</th>
+               
                 <th>Name</th>
                 <th>Status</th>
                 <th>Description</th>
@@ -80,26 +106,20 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ updateUser.email }}</td>
-                <td>{{ updateUser.profile.name }}</td>
-                <td>{{ updateUser.profile.status }}</td>
-                <td>{{ updateUser.profile.description }}</td>
+                <td>{{ updateUser.name }}</td>
+                <td>{{ updateUser.status }}</td>
+                <td>{{ updateUser.description }}</td>
             </tr>
         </tbody>
     </table>
+    </div>
     {% else %}
     {% if updateUser is none %}
-            <h1>No user found with the provided email.</h1>
+    <!-- <p style="color:red">{{message}}</p> -->
+    <p class="delete-message" style="color: red;font-size: 13px;font-weight: bold;">{{message}}</p>
         {% else %}
             <h1></h1>
         {% endif %}
     {% endif %}
-    <!-- error message here -->
-    {% with messages = get_flashed_messages() %}        
-        {% if messages %}
-            {% for msg in messages %}
-            <div id="exsistingEmail" class="error-message">{{msg}}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+    
 {% endblock %}

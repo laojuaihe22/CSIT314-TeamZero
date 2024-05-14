@@ -73,22 +73,17 @@ button:hover {
     <tbody>
         {% for user in users %}
         <tr>
-            <td>{{ user.email }}</td>
-            {% if user.profile %}
-            <td>{{ user.profile.name }}</td>     
+            <td>{{ user.name }}</td>
+            
+            <td>{{ user.name }}</td>     
             <td>
-                {% if user['status'] %}
+                {% if user.status %}
                 Activate
                 {% else %}
                 Deactivate
                 {% endif %}
             </td>        
-            <td>{{ user.profile.description }}</td>
-            {% else %}
-            <td></td>
-            <td></td>
-            <td></td>
-            {% endif %}
+            <td>{{ user.description }}</td>            
             
         {% endfor %}
     </tbody>

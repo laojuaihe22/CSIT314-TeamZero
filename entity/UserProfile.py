@@ -8,7 +8,9 @@ class UserProfile:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb://localhost:27017")
+            
         return self.database
     
 
@@ -19,24 +21,24 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["User"]
 
-        try:
-            # Check if email exists in the database
-            existing_user = collection.find_one({'email': user_email})
-            
-            if existing_user:
-                updated_user_data = {
-                    "$set": {
-                        "profile.name": user_name,
-                        "profile.description": user_description,
-                        }
-                    }
-                
-                collection.update_one({"email": user_email}, updated_user_data)
-                return True
+
+        # Check if email exists in the database
+        existing_user = db.UserAccount.find_one({'email': user_email})
         
-        except Exception as e:
+        if existing_user:
+            updated_user_data = {
+                "$set": {
+                    "name": user_name,
+                    "status": True,
+                    "description": user_description,
+                    }
+                }
+            print("jhere")
+            db.UserProfile.update_one({"userAccountId": existing_user["_id"]}, updated_user_data)
+            return True
+    
+        else:
             # Log the exception or return an error message
             return False
     
@@ -46,9 +48,8 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["User"]
 
-        user_profile_data = list(collection.find())
+        user_profile_data = list(db.UserProfile.find())
         
         return user_profile_data
 
@@ -58,13 +59,12 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["User"]
 
-        user = collection.find_one({"email": user_email})    
+        user = db.UserAccount.find_one({"email": user_email})    
         
         if user:
             # suspend profile
-            collection.update_one({"email": user_email}, {"$set":{"status": False}})
+            db.UserProfile.update_one({"userAccountId":user["_id"]}, {"$set":{"status": False}})
             return True
         else:
             return False
@@ -75,9 +75,10 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["User"]
+        
 
-        userObj = collection.find_one({"email": user_email})
+        user = db.UserAccount.find_one({"email": user_email})
+        userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
         return userObj
     
     #update user profile
@@ -85,11 +86,15 @@ class UserProfile:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        
 
-        user = collection.find_one({"email": email})  
-
+        user = db.UserAccount.find_one({"email": email})  
         if user:
+            userPro = db.UserProfile.find_one({"userAccountId":user["_id"]})
+        else:
+            return None
+
+        if userPro:
             if field == "role":
                 if value in ["buyer", "seller", "real estate agent"]:  # Check if value is one of the allowed roles
                     update_query = {"$set": {"profile." + field: value}}
@@ -106,9 +111,8 @@ class UserProfile:
                 # Handle the case where the field is not "role" or "status"
                 update_query = {"$set": {"profile." + field: value}}
 
-            collection.update_one({"email": email}, update_query)
-            updated_user = collection.find_one({'email': email})
+            db.UserProfile.update_one({"userAccountId":user["_id"]}, update_query)
+            updated_user = db.UserProfile.find_one({"userAccountId":user["_id"]})
             return updated_user
         else:
             return None
-        
