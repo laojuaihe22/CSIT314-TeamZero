@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding: 5%;
 }
 
@@ -89,6 +89,13 @@ button[class="column"]:hover {
         <h4>Search Property Listings</h4>
                 <p>content</p>
     </button>
+
+    <button class="column" onclick="window.location.href='/agentViewFeedback'">
+        <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
+        <h4>View Feedback</h4>
+                <p>content</p>
+    </button>
+
 </div>
 
 {% endblock content %}

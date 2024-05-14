@@ -1,0 +1,138 @@
+{% extends "baseUserdashboard.html" %}
+
+{% block style %}
+.agent-main {
+    position: absolute;
+    margin: 50px;
+}
+
+.agent-main p {
+    font-size: 45px;
+}
+
+.profile-nav {
+    font-size: 15px;
+    margin-top: -20px;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    /* Add shadow */
+    max-width: fit-content;
+}
+
+.Pnav-item {
+    font-weight: bold;
+    padding: 10px 25px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+}
+
+.Pnav-item.active {
+    font-weight: normal;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: contents;
+    
+}
+
+.listing-cards {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* Start from left */
+}
+
+.listing-card {
+    margin: 20px;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    /* Add shadow */
+    text-align: center;
+}
+
+.listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.listing-info .location-text {
+    font-size: 20px;
+    color: black
+    /* Adjust the font size as desired */
+}
+
+.listing-info h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.agent-body {
+    margin: auto;
+    
+}
+
+.title-delete{
+    margin-top: 50px;
+}
+
+#listings{
+    flex-wrap: wrap;
+}
+{% endblock style %}
+
+{% block content %}
+<div class="agent-main">
+    <!-- Listing Section -->
+    <div class="agent-body">
+        <div id="listings" class="hidden">
+            <h2 class="title-delete">Your Listings</h2>
+            {%for rating in rating_listing%}
+            {% if rating %}
+            <div class="listing-cards">
+                <!-- star from here for loop -->
+                
+                    <div class="listing-card">
+                        <div class="listing-info">
+                            <h4 style="color: darkgreen;">Name:{{rating.profile.name}}</h4>
+                            <p class="location-text">Review: {{rating.profile.description}}</p>
+                            <p class="location-text">Rating: {{rating.profile.feedback[0].rating}}</p>
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Messages Section -->
+    <div id="messages">
+        <p>{{message}}</p>
+    </div>
+
+</div>
+{% endblock content %}
