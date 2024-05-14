@@ -14,12 +14,10 @@ def search_property_listing_page():
 
         # search_query = request.form['searchQuery']
 
-
         searchPropertyListingController = SearchPropertyListingController()
         property_list = searchPropertyListingController.searchPropertyListing(filter_type, filter_value)
 
         if property_list:
-            flash('Results found', 'success')
             return render_template('/realEstateAgentSearchPropertyListing.html', property_list=property_list)
         else:
             flash('No similar result', 'error')

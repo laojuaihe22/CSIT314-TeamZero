@@ -17,6 +17,7 @@ from boundary.RealEstateAgent.agentUpdatePropertyListingPage import update_prope
 from boundary.RealEstateAgent.agentDeletePropertyListingPage import delete_property_listing_app
 from boundary.RealEstateAgent.agentSearchPropertyListingPage import search_property_listing_app
 from boundary.RealEstateAgent.agentDashboardPage import rea_dashboard_app
+from boundary.RealEstateAgent.agentViewRating import rating_app
 
 from datetime import timedelta
 
@@ -43,6 +44,7 @@ app.register_blueprint(update_property_listing_app)
 app.register_blueprint(delete_property_listing_app)
 app.register_blueprint(search_property_listing_app)
 app.register_blueprint(rea_dashboard_app)
+app.register_blueprint(rating_app)
 
 # Run the Flask application
 if __name__ == "__main__":  

@@ -17,7 +17,7 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        collection = db["UserAccount"]
 
         # Now you can perform database operations using the collection object
         user = collection.find_one({"email": email, "password": password})
@@ -31,7 +31,7 @@ class UserAccount:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        collection = db["UserAccount"]
         
         try:
             # Check if email already exists in the database
@@ -61,7 +61,7 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        collection = db["UserAccount"]
         
         user = collection.find_one({"email": user_email})    
         
@@ -78,7 +78,7 @@ class UserAccount:
         
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        collection = db["UserAccount"]
         
         user = collection.find_one({"email": user_email}) 
         
@@ -96,7 +96,7 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
+        collection = db["UserAccount"]
         
         user_account_data = list(collection.find())
         
@@ -106,8 +106,8 @@ class UserAccount:
     
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
-        
+        collection = db["UserAccount"]
+            
         user = collection.find_one({"email": email})  
         
         if user:

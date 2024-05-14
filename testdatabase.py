@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+client = MongoClient("mongodb://localhost:27017")
 
 # Access a specific database
 db = client["CSIT314"]
@@ -9,9 +9,9 @@ db = client["CSIT314"]
 collection = db["User"]
 property_collection = db["PropertyListing"]
 
-email = "admin3@gmail.com"
+email = "rea@gmail.com"
 
-user = collection.find_one({"email":email})
+user = collection.find({"email":email})
 
-# print(user["profile"]["role"])
-print(user["profile"]["role"])
+for document in user:
+    print(document["_id"])

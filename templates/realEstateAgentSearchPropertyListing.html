@@ -173,10 +173,9 @@ button[type="submit"]:hover {
                     <div class="listing-info">
                         <h3>The Vision</h3>
                         <h4 style="color: darkgreen;">{{ property.price }}</h4>
-                        <p class="location-text" style="color: grey;">{{ property.address }}
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8mins</p>
+                        <p class="location-text" style="color: grey;">{{ property.address }}</p>
                     </div>
-                    <button class="delete-btn" onclick="deleteListing(this)">Delete</button>
+                    <button class="delete-btn" type="submit"">Delete</button>
                 </div>
             </div>
         {% endfor %}
@@ -213,6 +212,7 @@ button[type="submit"]:hover {
             inputField.name = 'value';
             inputField.placeholder = 'Enter price';
             inputField.required = true;
+            inputField.min = 1;
             valueInput.appendChild(inputField);
         } else if (selectedFilter === 'type') {
             // Create dropdown box for type
