@@ -22,26 +22,26 @@ class UserAccount:
 
         # Find the user account by email
         user_account = db.UserAccount.find_one({'email': email})
-
+        
         if user_account and password == user_account['password']:
             # User is verified, now fetch the user's profile
             user_profile = db.UserProfile.find_one({'userAccountId': user_account['_id']})
-            
             if user_profile:
-                print("here")
                 return True, user_profile['role']
-
+        
+        # If verification fails
 
         return False, "None"
     
     def createUserAccount(self,user_email,user_pass,role):
         client = self.get_database()
         db = client["CSIT314"]
-        
+
         # Check if email already exists in the database
         existing_user = db.UserAccount.find_one({'email': user_email})
-
+        
         if not existing_user:
+            
 
             user_data = {
                 "email": user_email,
@@ -50,28 +50,33 @@ class UserAccount:
             }
             # Insert user data into the UserAccount collection
             user_account_result = db.UserAccount.insert_one(user_data)
+            
+            # Create user profile with role and reference to the user account
 
             user_profile_role = {
                 "userAccountId": user_account_result.inserted_id,
                 "role": role
             }
-
+            
             db.UserProfile.insert_one(user_profile_role)
+            
 
             return True
         else:
             return False
         
+
+        
+        
     def suspendUserAccount(self, user_email):
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
         
-        user = collection.find_one({"email": user_email})    
+        user = db.UserAccount.find_one({"email": user_email})    
         
         if user:
-            collection.update_one(
+            db.UserAccount.update_one(
                 {"email": user_email},
                 {"$set": {"status": False}}
             )
@@ -101,9 +106,8 @@ class UserAccount:
 
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
         
-        user_account_data = list(collection.find())
+        user_account_data = list(db.UserAccount.find())
         
         return user_account_data
         
@@ -111,8 +115,9 @@ class UserAccount:
     
         client = self.get_database()
         db = client["CSIT314"]
-        collection = db["User"]
-        
+        collection = db["UserAccount"]
+
+
         user = collection.find_one({"email": email})  
         
         if user:

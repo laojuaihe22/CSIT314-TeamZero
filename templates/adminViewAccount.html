@@ -56,7 +56,6 @@ tr:nth-child(even) {
                 <tr>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Role</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,13 +69,6 @@ tr:nth-child(even) {
                         {% else %}
                             Deactivate
                         {% endif %}
-                        </td>
-                        <td>
-                            {% if user['profile']['role'] == "rea" %}
-                                Real Estate Agent
-                            {% else %}
-                            {{user['profile']['role']}}
-                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
