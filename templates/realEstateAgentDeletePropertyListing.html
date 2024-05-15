@@ -129,6 +129,9 @@ height: auto; /* Maintain aspect ratio */
     <div class="agent-body">
         <div id="listings" class="hidden">
             <h2 class="title-delete">Your Listings</h2>
+            <div id="messages">
+                <strong><p>{{message}}</p></strong>
+            </div>
             <div class="listing-cards">
                 <!-- star from here for loop -->
                 {% for property in propertyListing %}
@@ -173,11 +176,6 @@ height: auto; /* Maintain aspect ratio */
             </div>
         </div>
     </div>
-    <!-- Messages Section -->
-    <div id="messages">
-        <p>{{message}}</p>
-    </div>
-
 </div>
 
 {% endblock content %}

@@ -63,6 +63,25 @@ class PropertyListing:
         
         return propertyListing
     
+        #view property listing
+    def viewPropertyListingbyAgentEmail(self,agentEmail):
+ 
+        client = self.get_database()
+        
+        db = client["CSIT314"]
+        
+        agent = db.UserAccount.find_one({"email":agentEmail})
+        
+        if not agent:
+            return False
+
+        propertyListing = list(db.propertyListing.find({"agentID":agent["_id"]}))
+        
+        if propertyListing:
+            return propertyListing
+        else:
+            return False
+    
     #update property listing
     def updatePropertyListing(self, address, field, value):
 

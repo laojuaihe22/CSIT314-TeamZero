@@ -7,9 +7,6 @@
     margin: 50px;
 }
 
-.agent-main p {
-    font-size: 45px;
-}
 
 .profile-nav {
     font-size: 15px;
@@ -40,44 +37,6 @@
 .hidden {
     display: contents;
     
-}
-
-.listing-cards {
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    /* Start from left */
-}
-
-.listing-card {
-    margin: 20px;
-    width: 250px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
-    /* Add shadow */
-    text-align: center;
-}
-
-.listing-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-}
-
-.listing-info .location-text {
-    font-size: 20px;
-    color: black
-    /* Adjust the font size as desired */
-}
-
-.listing-info h3 {
-    font-size: 15px;
-    margin-bottom: 10px;
 }
 
 .delete-btn {
@@ -158,6 +117,53 @@ button[type="submit"]:hover {
     margin-top: 8%;
     margin-left: 50%; 
 }
+
+.listing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.listing-card {
+    position: relative;
+    margin: 20px;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.listing-info .location-text {
+    padding: 20px;
+    font-size: 12px;
+}
+
+.listing-info h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.listing-bedrooms,
+.listing-bathrooms {
+display: flex;
+align-items: center;
+}
+
+.listing-bedrooms img,
+.listing-bathrooms img {
+width: 50px; /* Adjust the width as needed */
+height: auto; /* Maintain aspect ratio */
+}
+
 {% endblock style %}
 
 
@@ -192,23 +198,44 @@ button[type="submit"]:hover {
 <div class="card-main">
     <div class="card-body">
         <div id="listings" class="hidden">
+            {% if property_list %}
             <h2 class="title-delete">Your Listings</h2>
             <div class="listing-cards">
-                <!-- star from here for loop -->
-        {% if property_list %}
-        {% for property in property_list %}
-            <div class="listing-cards">
+                {% for property in property_list %}
                 <div class="listing-card">
                     <div class="listing-info">
-                        <h3>The Vision</h3>
-                        <h4 style="color: darkgreen;">{{ property.price }}</h4>
-                        <p class="location-text" style="color: grey;">{{ property.address }}</p>
-                        <p class="location-text" style="color: grey;">{{ property.region }}</p>
+                        <h3 class="listing-name">{{ property.propertyName }}</h3>
+                        <h4 class="listing-price" style="color: darkgreen;">${{ property.price }}</h4>
+                        <div class="listing-address">
+                            <p>Address: {{ property.address }}</p>
+                        </div>
+                        <div class="listing-type">
+                            <p>Type: {{ property.type }}</p>
+                        </div>
+                        <div class="listing-region">
+                            <p>Region: {{ property.region }}</p>
+                        </div>
+                        <div class="listing-description">
+                            <p>Description: {{ property.description }}</p>
+                        </div>
+                        <div class="listing-seller">
+                            <p>Seller/Agent: {{ property.agent }}</p>
+                        </div>
+                        <div class="listing-bedrooms">
+                            <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>: {{ property.bedroom }}</span>
+                        </div>
+                        <div class="listing-bathrooms">
+                            <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
+                        </div>
+                        <div class="listing-views">
+                            <p>Total Views: {{ property.totalviews }}</p>
+                        </div>
+                        <div class="listing-saved">
+                            <p>Shortlisted: <span class="save-count">{{ property.shortlisted }}</span></p>
+                        </div>
                     </div>
-                    <button class="delete-btn" type="submit">Delete</button>
                 </div>
-            </div>
-        {% endfor %}
+                {% endfor %}
         {% else %}
         <!-- Display nothing if property_list is None -->
         {% endif %}
@@ -251,7 +278,7 @@ button[type="submit"]:hover {
             selectField.name = 'value';
             selectField.required = true;
             // Add options for property types (replace this with your actual data)
-            var propertyTypes = ['Condominium', 'Landed', 'HDB'];
+            var propertyTypes = ['Condo', 'Landed', 'HDB'];
             propertyTypes.forEach(function(type) {
                 var option = document.createElement('option');
                 option.value = type;

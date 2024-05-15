@@ -22,5 +22,9 @@ def delete_property_listing_page():
             message = "Failed to delete from property listing"
             
     viewPropertyListingController = ViewPropertyListingController()
-    property_list = viewPropertyListingController.viewPropertyListing()  
-    return render_template('realEstateAgentDeletePropertyListing.html',message=message,propertyListing=property_list)
+    property_list = viewPropertyListingController.viewPropertyListingbyAgentEmail(session["user_email"])  
+    
+    if property_list:
+        return render_template('realEstateAgentDeletePropertyListing.html',message=message,propertyListing=property_list)
+    else:
+        return render_template('realEstateAgentDeletePropertyListing.html',message="No Property Listing can be displayed!")
