@@ -18,6 +18,7 @@
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    /* Add shadow */
     max-width: fit-content;
 }
 
@@ -37,62 +38,8 @@
 }
 
 .hidden {
-    display: block;
-    position: absolute;
-    margin-top: 8%;
-    margin-left: 50%; 
-}
-
-#listings {
-    left: 50%;
-    position: relative;
-    width: 550px; /* Adjust the width as needed */
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 300px);
-    overflow-y: auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="number"],
-select,
-input[type="file"] {
-    width: calc(100% - 16px); /* Adjusted width to accommodate border and padding */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: grey;
-}
-
-.logout img {
-    margin: -15px;
-    width: 50px;
-    height: auto;
-    color: black;
+    display: contents;
+    
 }
 
 .listing-cards {
@@ -112,6 +59,7 @@ button[type="submit"]:hover {
     padding: 20px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
     /* Add shadow */
+    text-align: center;
 }
 
 .listing-card img {
@@ -122,8 +70,8 @@ button[type="submit"]:hover {
 }
 
 .listing-info .location-text {
-    padding: 20px;
-    font-size: 12px;
+    font-size: 20px;
+    color: black
     /* Adjust the font size as desired */
 }
 
@@ -132,7 +80,84 @@ button[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.agent-body {
+    margin: auto;
+    
+}
+
+.title-delete{
+    margin-top: 50px;
+}
+
+#listings{
+    flex-wrap: wrap;
+}
+
+#properties {
+    left: 50%;
+    position: relative;
+    width: 550px; /* Adjust the width as needed */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+input[type="file"] {
+    width: calc(100% - 16px); /* Adjusted width to accommodate border and padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color:black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: grey;
+}
+
+.he {
+    display: block;
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 50%; 
+}
 {% endblock style %}
 
 
@@ -141,7 +166,7 @@ button[type="submit"]:hover {
 
 <div class="agent-main">
     <div class="agent-body">
-    <div id="listings" class="hidden">
+    <div id="properties" class="he">
         <h2 class="title-delete">Search property</h2>
 
         <form id="listingForm" enctype="multipart/form-data" method="POST" action="/searchPropertyListing">
@@ -164,13 +189,16 @@ button[type="submit"]:hover {
     </div>
 </div>
 
-<div class="agent-main">
-    <div class="agent-body">
+<div class="card-main">
+    <div class="card-body">
+        <div id="listings" class="hidden">
+            <h2 class="title-delete">Your Listings</h2>
+            <div class="listing-cards">
+                <!-- star from here for loop -->
         {% if property_list %}
         {% for property in property_list %}
             <div class="listing-cards">
                 <div class="listing-card">
-                    <img src="image1.jpg" alt="Listing 1">
                     <div class="listing-info">
                         <h3>The Vision</h3>
                         <h4 style="color: darkgreen;">{{ property.price }}</h4>
