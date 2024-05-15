@@ -21,7 +21,7 @@ from boundary.RealEstateAgent.agentViewFeedback import feedback_app
 
 from boundary.Buyer.buyerDashboardPage import buyer_dashboard_app
 from boundary.Buyer.buyerViewPropertyListingPage import buyer_view_property_listing_app
-
+from boundary.Buyer.buyerSavePropertyListingPage import save_new_property_into_favourite_app
 from datetime import timedelta
 
 app = Flask(__name__)
@@ -50,7 +50,7 @@ app.register_blueprint(rea_dashboard_app)
 app.register_blueprint(feedback_app)
 app.register_blueprint(buyer_dashboard_app)
 app.register_blueprint(buyer_view_property_listing_app)
-
+app.register_blueprint(save_new_property_into_favourite_app)
 # Run the Flask application
 if __name__ == "__main__":  
     app.run(debug=True)
