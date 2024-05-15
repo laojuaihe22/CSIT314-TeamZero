@@ -11,7 +11,6 @@ def view_property_listing_page():
 
         viewPropertyListingController = ViewPropertyListingController()
         property_list = viewPropertyListingController.viewPropertyListing()
-
         return render_template('realEstateAgentViewPropertyListing.html',property_list=property_list)
     
     return redirect('/home')

@@ -32,6 +32,7 @@ class PropertyListing:
             'agentID': agent["_id"],
             'sellerID': seller["_id"],
             'propertyName': propertyName,
+
             'address': address,
             'region': region,
             'price': price,
