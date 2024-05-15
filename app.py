@@ -17,7 +17,7 @@ from boundary.RealEstateAgent.agentUpdatePropertyListingPage import update_prope
 from boundary.RealEstateAgent.agentDeletePropertyListingPage import delete_property_listing_app
 from boundary.RealEstateAgent.agentSearchPropertyListingPage import search_property_listing_app
 from boundary.RealEstateAgent.agentDashboardPage import rea_dashboard_app
-from boundary.RealEstateAgent.agentViewRating import rating_app
+from boundary.RealEstateAgent.agentViewFeedback import rating_app
 
 from datetime import timedelta
 

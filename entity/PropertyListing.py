@@ -31,7 +31,7 @@ class PropertyListing:
         property_listing = {
             'agentID': agent["_id"],
             'sellerID': seller["_id"],
-            'sellerName': name,
+            'name': name,
             'address': address,
             'region': region,
             'price': price,

@@ -6,7 +6,24 @@
     margin: 50px;
 }
 
-.agent-main p {
+.navbar {
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    background-color: white;
+}
+
+.buyer-main {
+    position: fixed;
+    margin-top: 60px;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    padding-left: 45px;
+    background-color: white;
+}
+
+.buyer-main p {
     font-size: 45px;
 }
 
@@ -17,15 +34,15 @@
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
-    /* Add shadow */
     max-width: fit-content;
+    background-color: white;
 }
 
 .Pnav-item {
     font-weight: bold;
     padding: 10px 25px;
     cursor: pointer;
-    width: 120px;
+    width: 150px;
     text-align: center;
 }
 
@@ -38,18 +55,27 @@
 
 .hidden {
     display: contents;
-    
+}
+
+.buyer-body {
+    display: flex;
+    padding-left: 50px;
+    align-items: left;
+    flex-direction: column;
+    padding-top: 250px;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    z-index: 1;
 }
 
 .listing-cards {
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* Start from left */
 }
 
 .listing-card {
+    position: relative;
     margin: 20px;
     width: 250px;
     background-color: #fff;
@@ -57,8 +83,6 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
-    /* Add shadow */
-    text-align: center;
 }
 
 .listing-card img {
@@ -69,9 +93,8 @@
 }
 
 .listing-info .location-text {
-    font-size: 20px;
-    color: black
-    /* Adjust the font size as desired */
+    padding: 20px;
+    font-size: 12px;
 }
 
 .listing-info h3 {
@@ -79,31 +102,22 @@
     margin-bottom: 10px;
 }
 
-.delete-btn {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.listing-bedrooms,
+.listing-bathrooms {
+display: flex;
+align-items: center;
 }
 
-.delete-btn:hover {
-    background-color: darkred;
-}
-
-.agent-body {
-    margin: auto;
-    
+.listing-bedrooms img,
+.listing-bathrooms img {
+width: 50px; /* Adjust the width as needed */
+height: auto; /* Maintain aspect ratio */
 }
 
 .title-delete{
     margin-top: 50px;
 }
 
-#listings{
-    flex-wrap: wrap;
-}
 {% endblock style %}
 
 {% block content %}
@@ -111,22 +125,19 @@
     <!-- Listing Section -->
     <div class="agent-body">
         <div id="listings" class="hidden">
-            <h2 class="title-delete">Your Listings</h2>
-            {%for rating in rating_listing%}
-            {% if rating %}
+            <h2 class="title-delete">Your Feedback</h2>
             <div class="listing-cards">
-                <!-- star from here for loop -->
-                
-                    <div class="listing-card">
-                        <div class="listing-info">
-                            <h4 style="color: darkgreen;">Name:{{rating.profile.name}}</h4>
-                            <p class="location-text">Review: {{rating.profile.description}}</p>
-                            <p class="location-text">Rating: {{rating.profile.feedback[0].rating}}</p>
-                        </div>
+                {% for feedback in  feedback_listing %}
+                <div class="listing-card" >
+                    <div class="listing-info">
+                        <h3>Sender name: {{feedback["sender_name"]}}</h3>
+                        <h3>Rating: {{feedback["rating_value"]}}</h3>
+                        <h3>Review: {{feedback["review_text"]}}</h3>
                     </div>
+                </div>
+                <!-- Add more listing cards here -->
+                {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
         </div>
     </div>
     <!-- Messages Section -->
