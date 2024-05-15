@@ -196,42 +196,57 @@ button.calculate-btn:hover {
     <div id="listings" class="hidden">
         <h2>All Listings</h2>
         <div class="listing-cards">
+            {% for property in property_list %}
             <div class="listing-card" data-id="1">
-                <button class="save-btn" onclick="saveListing(this)">Save</button>
+
+                <form id="savePropertyForm" action="/saveNewProperty" method="post">
+                    <input type="hidden" name="propertyID" value="{{ property._id }}">
+                    <button class="save-btn" onclick="saveListing(this)">Save</button>
+                </form>
+                
+                
                 <div class="listing-info">
-                    <h3 class="listing-name">The Vision</h3>
-                    <h4 class="listing-price" style="color: darkgreen;">$1,188,888</h4>
+                    <h3 class="listing-name">{{ property.propertyName }}</h3>
+                    <h4 class="listing-price" style="color: darkgreen;">${{ property.price }}</h4>
                     <div class="listing-address">
-                        <p>Address: 88 Reindeer Drive</p>
+                        <p>Address: {{ property.address }}</p>
                     </div>
                     <div class="listing-type">
-                        <p>Type: Single Family Home</p>
+                        <p>Type: {{ property.type }}</p>
                     </div>
                     <div class="listing-region">
-                        <p>Region: California</p>
+                        <p>Region:{{ property.region }}</p>
                     </div>
                     <div class="listing-description">
-                        <p>Description: Once belong to a single mom of 4 kids</p>
+                        <p>Description: {{ property.description }}</p>
                     </div>
                     <div class="listing-seller">
-                        <p>Seller/Agent: John Doe</p>
+                        <!-- {% for agent in agentList %}
+                            {% if agent._id ==  property.agentID%}
+                                <p>Seller/Agent:{{ agent.email }}</p>
+                            {% endif %}
+                        {% endfor %} -->
+                        <p>Seller/Agent:{{ property.agentID }}</p>
                     </div>
                     <div class="listing-bedrooms">
-                        <img src="bedroom.png" alt="Bedroom"> <span>: 4</span>
+                        <img src="bedroom.png" alt="Bedroom"> <span>:{{ property.bedroom }}</span>
                     </div>
                     <div class="listing-bathrooms">
-                        <img src="bathroom.png" alt="Bathroom"> <span>: 3</span>
+                        <img src="bathroom.png" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
                     </div>
                     <div class="listing-views">
-                        <p>Total Views: 250</p>
+                        <p>Total Views: {{ property.totalviews }}</p>
                     </div>
                     <div class="listing-saved">
-                        <p>Saved by: <span class="save-count">10</span> users</p>
+                        <p>Saved by: <span class="save-count">{{ property.shortlisted }}</span> users</p>
+                    </div>
+                    <div class="listing-status">
+                        <p>Status: {{ property.status }}</p>
                     </div>
                 </div>
             </div>
             <!-- Add more listing cards here -->
-            
+            {% endfor %}
         </div>
     </div>
 
@@ -290,14 +305,36 @@ button.calculate-btn:hover {
     }
 
     function saveListing(button) {
-        button.classList.toggle('saved');
-        if (button.classList.contains('saved')) {
-            button.textContent = 'Saved';
-        } else {
-            button.textContent = 'Save';
-        }
+    button.classList.toggle('saved');
+    if (button.classList.contains('saved')) {
+        button.textContent = 'Saved';
+    } else {
+        button.textContent = 'Save';
     }
 
+    var form = button.closest('form'); // Find the closest form element to the button
+    var formData = new FormData(form); // Get form data
+
+    var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+    xhr.open(form.method, form.action, true); // Open a new request
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Request was successful, handle response accordingly
+            // For example, display a success message or update the UI
+            // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
+        } else {
+            // Request failed, handle errors
+            // For example, display an error message or log the error
+        }
+    };
+    xhr.onerror = function() {
+        // Request failed, handle errors
+        // For example, display an error message or log the error
+    };
+    xhr.send(formData); // Send the form data asynchronously
+
+    event.preventDefault(); // Prevent the default form submission behavior
+}
     function calculateMortgage(event) {
         event.preventDefault();
 
@@ -318,8 +355,33 @@ button.calculate-btn:hover {
             document.querySelector('#monthlyPayment span').textContent = 'Invalid input';
         }
     }
+
+    document.getElementById("savePropertyForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var form = event.target;
+        var formData = new FormData(form); // Get form data
+        var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+        xhr.open(form.method, form.action, true); // Open a new request
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Request was successful, handle response accordingly
+                // For example, display a success message or update the UI
+                // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
+            } else {
+                // Request failed, handle errors
+                // For example, display an error message or log the error
+            }
+        };
+        xhr.onerror = function() {
+            // Request failed, handle errors
+            // For example, display an error message or log the error
+        };
+        xhr.send(formData); // Send the form data asynchronously
+    });
+
+    
 </script>
 
 
-{% endblock content %}
+{% endblock %}
 
