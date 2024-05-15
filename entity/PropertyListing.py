@@ -57,10 +57,22 @@ class PropertyListing:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["propertyListing"]
+        
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserAccount',
+                    'localField': 'agentID',
+                    'foreignField': '_id',
+                    'as': 'userInfo'
+                }
+            },
+            {
+                '$unwind': '$userInfo'
+            }
+        ]
 
-        propertyListing = list(collection.find())
-        # agentList = list(db.UserAccount.find())
+        propertyListing = list(db.propertyListing.aggregate(pipeline))
 
         return propertyListing
     

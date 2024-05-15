@@ -226,13 +226,13 @@ button.calculate-btn:hover {
                                 <p>Seller/Agent:{{ agent.email }}</p>
                             {% endif %}
                         {% endfor %} -->
-                        <p>Seller/Agent:{{ property.agentID }}</p>
+                        <p>Agent:{{ property.userInfo["email"]}}</p>
                     </div>
                     <div class="listing-bedrooms">
-                        <img src="bedroom.png" alt="Bedroom"> <span>:{{ property.bedroom }}</span>
+                        <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>:{{ property.bedroom }}</span>
                     </div>
                     <div class="listing-bathrooms">
-                        <img src="bathroom.png" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
+                        <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
                     </div>
                     <div class="listing-views">
                         <p>Total Views: {{ property.totalviews }}</p>
@@ -263,19 +263,19 @@ button.calculate-btn:hover {
             <form id="mortgageCalculator" onsubmit="calculateMortgage(event)">
                 <div class="form-group">
                     <label for="propertyPrice">Property Price ($):</label>
-                    <input type="number" id="propertyPrice" required>
+                    <input type="number" id="propertyPrice" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="downPayment">Down Payment ($):</label>
-                    <input type="number" id="downPayment" required>
+                    <input type="number" id="downPayment" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="interestRate">Interest Rate (%):</label>
-                    <input type="number" id="interestRate" step="0.01" required>
+                    <input type="number" id="interestRate" min="0" step="0.01" required>
                 </div>
                 <div class="form-group">
                     <label for="loanTerm">Loan Term (years):</label>
-                    <input type="number" id="loanTerm" required>
+                    <input type="number" id="loanTerm" min="0" required>
                 </div>
                 <button type="submit" class="calculate-btn">Calculate</button>
             </form>
