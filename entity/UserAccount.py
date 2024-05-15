@@ -23,7 +23,7 @@ class UserAccount:
         # Find the user account by email
         user_account = db.UserAccount.find_one({'email': email})
         
-        if user_account and password == user_account['password']:
+        if user_account and password == user_account['password'] and user_account["status"]:
             # User is verified, now fetch the user's profile
             user_profile = db.UserProfile.find_one({'userAccountId': user_account['_id']})
             if user_profile:
