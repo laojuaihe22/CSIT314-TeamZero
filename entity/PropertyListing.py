@@ -14,7 +14,7 @@ class PropertyListing:
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentEmail, sellerEmail, name, address, region, price, type, description, bedroom, bathroom):
+    def createPropertyListing(self, agentEmail, sellerEmail, propertyName, address, region, price, type, description, bedroom, bathroom):
 
         client = self.get_database()
         
@@ -31,7 +31,7 @@ class PropertyListing:
         property_listing = {
             'agentID': agent["_id"],
             'sellerID': seller["_id"],
-            'sellerName': name,
+            'propertyName': propertyName,
             'address': address,
             'region': region,
             'price': price,
@@ -39,9 +39,9 @@ class PropertyListing:
             'description': description,
             'bedroom': bedroom,
             'bathroom': bathroom,
+            'status': 'unsold',
             'totalviews': 0,
             'shortlisted': 0
-            
         }
 
         # Insert the property listing into the propertyListing collection
@@ -68,15 +68,13 @@ class PropertyListing:
         client = self.get_database()
         
         db = client["CSIT314"]
-        collection = db["propertyListing"]
-
         
-        property_doc = collection.find_one({'address':address})
+        property_doc = db.propertyListing.find_one({'address':address})
         
         if property_doc:
             update_query = {"$set": {field: value}}
-            collection.update_one({"address": address}, update_query)
-            updated_property = collection.find_one({'address': address})
+            db.propertyListing.update_one({"address": address}, update_query)
+            updated_property = db.propertyListing.find_one({'address': address})
             return updated_property
         else:
             return None
