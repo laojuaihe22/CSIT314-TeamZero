@@ -20,19 +20,18 @@ class PropertyListing:
         
         db = client["CSIT314"]
         
-        # # Check if seller email exists in the user collection
-        
-        if db.UserAccount.count_documents({'email': sellerEmail}) == 0:
-            return False  # Seller email not found, return False
-        
         
         agent = db.UserAccount.find_one({"email":agentEmail})
         seller = db.UserAccount.find_one({"email":sellerEmail})
-        # Create the property listing document
+        
+        if not agent or not seller:
+            return False
+        
+        # Create the property listing document      
         property_listing = {
             'agentID': agent["_id"],
             'sellerID': seller["_id"],
-            'name': name,
+            'sellerName': name,
             'address': address,
             'region': region,
             'price': price,
@@ -42,6 +41,7 @@ class PropertyListing:
             'bathroom': bathroom,
             'totalviews': 0,
             'shortlisted': 0
+            
         }
 
         # Insert the property listing into the propertyListing collection
