@@ -1,0 +1,325 @@
+{% extends "baseUserDashboard.html" %}
+
+
+{% block style %}
+.navbar {
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    background-color: white;
+}
+
+.buyer-main {
+    position: fixed;
+    margin-top: 60px;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    padding-left: 45px;
+    background-color: white;
+}
+
+.buyer-main p {
+    font-size: 45px;
+}
+
+.profile-nav {
+    font-size: 15px;
+    margin-top: -20px;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    max-width: fit-content;
+    background-color: white;
+}
+
+.Pnav-item {
+    font-weight: bold;
+    padding: 10px 25px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+}
+
+.Pnav-item.active {
+    font-weight: normal;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.buyer-body {
+    display: flex;
+    padding-left: 50px;
+    align-items: left;
+    flex-direction: column;
+    padding-top: 250px;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    z-index: 1;
+}
+
+.listing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.listing-card {
+    position: relative;
+    margin: 20px;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.listing-info .location-text {
+    padding: 20px;
+    font-size: 12px;
+}
+
+.listing-info h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.listing-bedrooms,
+.listing-bathrooms {
+display: flex;
+align-items: center;
+}
+
+.listing-bedrooms img,
+.listing-bathrooms img {
+width: 50px; /* Adjust the width as needed */
+height: auto; /* Maintain aspect ratio */
+}
+
+.save-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 10px;
+    width: 60px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+}
+
+.save-btn.saved {
+    background-color: green;
+}
+
+.save-btn:hover {
+    background-color: #087b17;
+}
+
+.calculator-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.form-group {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+button.calculate-btn {
+    padding: 10px 15px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button.calculate-btn:hover {
+    background-color: #087b17;
+}
+
+{% endblock style %}
+
+
+
+{% block content %}
+
+<div class="buyer-main">
+    <p>Your Profile</p>
+    <div class="profile-nav">
+        <div class="Pnav-item active" onclick="showSection('listings')">All Listings</div>
+        <div class="Pnav-item" onclick="showSection('saved')">Saved Listings</div>
+        <div class="Pnav-item" onclick="showSection('mortgage')">Mortgage Calculator</div>
+    </div>
+</div>
+
+<div class="buyer-body">
+    <!-- Listing Section -->
+    <div id="listings" class="hidden">
+        <h2>All Listings</h2>
+        <div class="listing-cards">
+            <div class="listing-card" data-id="1">
+                <button class="save-btn" onclick="saveListing(this)">Save</button>
+                <div class="listing-info">
+                    <h3 class="listing-name">The Vision</h3>
+                    <h4 class="listing-price" style="color: darkgreen;">$1,188,888</h4>
+                    <div class="listing-address">
+                        <p>Address: 88 Reindeer Drive</p>
+                    </div>
+                    <div class="listing-type">
+                        <p>Type: Single Family Home</p>
+                    </div>
+                    <div class="listing-region">
+                        <p>Region: California</p>
+                    </div>
+                    <div class="listing-description">
+                        <p>Description: Once belong to a single mom of 4 kids</p>
+                    </div>
+                    <div class="listing-seller">
+                        <p>Seller/Agent: John Doe</p>
+                    </div>
+                    <div class="listing-bedrooms">
+                        <img src="bedroom.png" alt="Bedroom"> <span>: 4</span>
+                    </div>
+                    <div class="listing-bathrooms">
+                        <img src="bathroom.png" alt="Bathroom"> <span>: 3</span>
+                    </div>
+                    <div class="listing-views">
+                        <p>Total Views: 250</p>
+                    </div>
+                    <div class="listing-saved">
+                        <p>Saved by: <span class="save-count">10</span> users</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more listing cards here -->
+            
+        </div>
+    </div>
+
+    <!-- Saved Listing Section -->
+    <div id="saved" class="hidden">
+        <h2>Saved Listings</h2>
+        <p>Saved Listings Content Goes Here</p>
+    </div>
+
+    <!-- Mortgage Calculator Section -->
+    <div id="mortgage" class="hidden">
+        <h2>Mortgage Calculator</h2>
+        <div class="calculator-container">
+            <form id="mortgageCalculator" onsubmit="calculateMortgage(event)">
+                <div class="form-group">
+                    <label for="propertyPrice">Property Price ($):</label>
+                    <input type="number" id="propertyPrice" required>
+                </div>
+                <div class="form-group">
+                    <label for="downPayment">Down Payment ($):</label>
+                    <input type="number" id="downPayment" required>
+                </div>
+                <div class="form-group">
+                    <label for="interestRate">Interest Rate (%):</label>
+                    <input type="number" id="interestRate" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="loanTerm">Loan Term (years):</label>
+                    <input type="number" id="loanTerm" required>
+                </div>
+                <button type="submit" class="calculate-btn">Calculate</button>
+            </form>
+            <p id="monthlyPayment">Your monthly payment: <span></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        showSection('listings'); // Show listings by default
+    });
+
+    function showSection(sectionId) {
+        var sections = ['listings', 'saved', 'mortgage'];
+        sections.forEach(function (id) {
+            var section = document.getElementById(id);
+            var navItem = document.querySelector(".Pnav-item[onclick=\"showSection('" + id + "')\"]");
+            if (id === sectionId) {
+                section.style.display = "block";
+                navItem.classList.add("active");
+            } else {
+                section.style.display = "none";
+                navItem.classList.remove("active");
+            }
+        });
+    }
+
+    function saveListing(button) {
+        button.classList.toggle('saved');
+        if (button.classList.contains('saved')) {
+            button.textContent = 'Saved';
+        } else {
+            button.textContent = 'Save';
+        }
+    }
+
+    function calculateMortgage(event) {
+        event.preventDefault();
+
+        var propertyPrice = parseFloat(document.getElementById('propertyPrice').value);
+        var downPayment = parseFloat(document.getElementById('downPayment').value);
+        var interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+        var loanTerm = parseFloat(document.getElementById('loanTerm').value);
+
+        var loanAmount = propertyPrice - downPayment;
+        var monthlyInterestRate = interestRate / 12;
+        var numberOfPayments = loanTerm * 12;
+
+        var monthlyPayment = loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments) / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+
+        if (isFinite(monthlyPayment)) {
+            document.querySelector('#monthlyPayment span').textContent = `$${monthlyPayment.toFixed(2)}`;
+        } else {
+            document.querySelector('#monthlyPayment span').textContent = 'Invalid input';
+        }
+    }
+</script>
+
+
+{% endblock content %}
+
