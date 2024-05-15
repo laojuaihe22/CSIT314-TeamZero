@@ -3,11 +3,11 @@ from controller.Buyer.saveNewPropertyIntoFavouriteController import SaveNewPrope
 from controller.Buyer.viewAllPropertyController import ViewAllPropertyListing
 from flask import jsonify
 
-save_new_property_into_favourite_app = Blueprint('save_new_property_into_favourite_app', __name__)
+buyer_save_property_into_favourite_app = Blueprint('buyer_save_property_into_favourite_app', __name__)
 
 
 
-@save_new_property_into_favourite_app.route('/saveNewProperty', methods=['POST', 'GET'])
+@buyer_save_property_into_favourite_app.route('/saveNewProperty', methods=['POST', 'GET'])
 def save_new_property_page():
     if request.method == "POST":
         buyerID = session["user_email"]
