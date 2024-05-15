@@ -2,11 +2,11 @@ from flask import Flask, redirect, url_for, render_template, request, session, B
 from controller.RealEstateAgent.viewRatingController import ViewRatingController
 from controller.RealEstateAgent.viewReviewController import ViewReviewController
 
-rating_app = Blueprint('rating_app', __name__)
+feedback_app = Blueprint('feedback_app', __name__)
 
 
-@rating_app.route('/agentViewFeedback', methods = ['GET'])
-def feedback_app():
+@feedback_app.route('/agentViewFeedback', methods = ['GET'])
+def feedback_app_page():
     
     if request.method == "GET":
         view_rating_controller = ViewRatingController()

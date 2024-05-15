@@ -1,0 +1,89 @@
+{% extends "baseUserDashboard.html" %}
+
+{% block style %}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-weight: 700;
+    z-index: 1000;
+}
+
+.logout img {
+    margin: -15px;
+    width: 50px;
+    height: auto;
+    color: black;
+}
+
+.para {
+    margin-top: 15%;
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 200px;
+}
+
+.column {
+    flex: 0 0 25%;
+    padding: 30px;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    margin: 2% 5%;
+}
+
+.column img {
+    max-width: 30%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.column h4 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+button[class="column"]:hover {
+    background-color: rgb(240, 239, 239);
+}
+
+{% endblock style %}
+
+
+
+{% block content %}
+
+<div class="para">
+    <p>Buyer</p>
+</div>
+
+<div class="container">
+    <button class="column" onclick="location.href='/viewAllPropertyListing'">
+        <img src="{{ url_for('static', filename='buyer.png')}}" alt="Image">
+        <h4>View All Listing</h4>
+        <p>Browse through all our available units up for sale!</p>
+    </button>
+
+    <button class="column" onclick="window.location.href='buyerSearch.html'">
+        <img src="{{ url_for('static', filename='search.png')}}" alt="Image">
+        <h4>Search For Listing</h4>
+        <p>Filter through all our available units!</p>
+    </button>
+</div>
+
+{% endblock content %}

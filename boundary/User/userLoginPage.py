@@ -34,6 +34,9 @@ def displayHomePage():
             return render_template('adminDashboard.html')
         elif session['roles'] == "rea":
             return render_template("realEstateAgentDashboard.html")
+        elif session['roles'] == "buyer":
+            return render_template("buyerDashboard.html")
+            
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))
