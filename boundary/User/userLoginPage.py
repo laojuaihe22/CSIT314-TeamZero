@@ -39,7 +39,7 @@ def displayHomePage():
         elif session['roles'] == "buyer":
             return render_template("buyerDashboard.html")   
         elif session['roles'] == "seller":
-            return render_template("buyerDashboard.html")
+            return render_template("sellerDashboard.html")
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))

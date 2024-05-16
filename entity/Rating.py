@@ -28,3 +28,40 @@ class Rating:
             else:
                 return False;
         
+    def submitRating(self, receiver, sender, rating):
+        client = self.get_database()
+        db = client["CSIT314"]
+
+        
+        agent = db.UserAccount.find_one({"email": receiver})
+
+        if agent:
+            agent_id = agent["_id"]
+
+            profile_info = db.UserProfile.find_one({"userAccountId": agent_id})
+
+            if profile_info and profile_info["role"] == "rea":
+
+                existing_rating = db.review.find_one({
+                "sender_id": ObjectId(sender),
+                "receiver_id": agent["_id"]
+                })
+
+                if existing_rating:
+                # If a review already exists, return False indicating that the review cannot be submitted again
+                    return False
+                else:
+                    submit_rating = db.rating.insert_one({
+                        "sender_id": ObjectId(sender),
+                        "receiver_id": agent["_id"],
+                        "rating": rating
+                    })
+
+                    if submit_rating:
+                        return True
+                    else:
+                        return False
+            else:
+                return False
+        else:
+            return False
