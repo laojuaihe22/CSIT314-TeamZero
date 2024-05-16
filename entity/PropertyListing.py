@@ -176,4 +176,33 @@ class PropertyListing:
             return True
         else:
             return False
+        
+    
+    
 
+    def buyerViewFavouritePropertyListing(self,buyer_id):
+        client = self.get_database()
+        db = client["CSIT314"]
+        
+        pipline = [
+        {
+            '$match': {
+                'buyerID': buyer_id,
+            }
+        }, {
+            '$lookup': {
+                'from': 'propertyListing', 
+                'localField': 'propertyID', 
+                'foreignField': '_id', 
+                'as': 'result'
+            }
+        }, {'$unwind': '$result'}
+        ]
+        
+        property_list = db.Favourite.aggregate(pipline)
+        
+        if property_list:
+            return property_list
+        else:
+            return False
+    
