@@ -11,8 +11,7 @@ def search_property_listing_page():
     if request.method == "POST":
         filter_type = request.form['filter']
         filter_value = request.form['value']
-
-        # search_query = request.form['searchQuery']
+        
 
         searchPropertyListingController = SearchPropertyListingController()
         property_list = searchPropertyListingController.searchPropertyListing(filter_type, filter_value)
