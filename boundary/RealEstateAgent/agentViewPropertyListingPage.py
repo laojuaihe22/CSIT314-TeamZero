@@ -9,7 +9,7 @@ view_property_listing_app = Blueprint('view_property_listing_app', __name__)
 def view_property_listing_page():
     if request.method == "GET":
         viewPropertyListingController = ViewPropertyListingController()
-        property_list = viewPropertyListingController.viewPropertyListingbyAgentId(session["id"])
+        property_list = viewPropertyListingController.viewPropertyListingbyId(session["id"])
         
         if property_list:
             return render_template('realEstateAgentViewPropertyListing.html',property_list=property_list)

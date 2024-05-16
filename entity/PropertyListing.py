@@ -75,18 +75,18 @@ class PropertyListing:
         return propertyListing
     
         #view property listing
-    def viewPropertyListingbyAgentId(self,agentId):
+    def viewPropertyListingbyId(self,user_id):
  
         client = self.get_database()
         
         db = client["CSIT314"]
         
-        agent = db.UserAccount.find_one({"_id":ObjectId(agentId)})
+        agent = db.UserAccount.find_one({"_id":ObjectId(user_id)})
         
         if not agent:
             return False
 
-        propertyListing = list(db.propertyListing.find({"agentID":ObjectId(agentId)}))
+        propertyListing = list(db.propertyListing.find({"agentID":ObjectId(user_id)}))
         
         if propertyListing:
             return propertyListing
@@ -141,7 +141,6 @@ class PropertyListing:
 
         elif filter_type == 'region':
             target_property = list(collection.find({'agentID':ObjectId(agentID),'region': value}))
-            
 
         return target_property
     
