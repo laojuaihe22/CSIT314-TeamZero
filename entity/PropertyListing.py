@@ -145,40 +145,7 @@ class PropertyListing:
             return None  
         
         return target_property
-        
-    
-    def appendFavouriteList(self, buyerID, propertyID):
-        client = self.get_database()
-        db = client["CSIT314"]
-
-        # Insert the document into the Favourite collection
-        inserted = db.Favourite.insert_one({"buyerID": buyerID, "propertyID": propertyID})
-
-        if inserted:
-            return True
-        else:
-            return False
-
-
-    def shortlistedIncrement(self, propertyID):
-        client = self.get_database()
-        db = client["CSIT314"]
-        objID = ObjectId(propertyID)
-        
-        property_doc = db.propertyListing.find_one({"_id": objID})
-        
-        if property_doc:
-            new_shortlisted_count = property_doc.get("shortlisted", 0) + 1
-            increment = {"$set": {"shortlisted": new_shortlisted_count}}
-            
-            # Use objID instead of propertyID in the update query
-            db.propertyListing.update_one({"_id": objID}, increment)
-            return True
-        else:
-            return False
-        
-    
-    
+       
 
     def buyerViewFavouritePropertyListing(self,buyer_id):
         client = self.get_database()
@@ -205,4 +172,5 @@ class PropertyListing:
             return property_list
         else:
             return False
+
     

@@ -5,10 +5,9 @@ from controller.Buyer.viewNewPropertyFavouriteController import ViewNewPropertyF
 
 buyer_view_property_listing_app = Blueprint('buyer_view_property_listing_app', __name__)
 
-
 @buyer_view_property_listing_app.route('/viewAllPropertyListing', methods = ['GET'])
 def buyer_view_all_property_listing_page():
-    
+
     if request.method == "GET":
         viewAllPropertyListing = ViewAllPropertyListing()
         property_list = viewAllPropertyListing.viewAllPropertyListing()

@@ -195,12 +195,14 @@ button.calculate-btn:hover {
     <div id="listings" class="hidden">
         <h2>All Listings</h2>
         <div class="listing-cards">
+
             {% for property in property_list %}
             <div class="listing-card" data-id="1">
 
-                <form id="savePropertyForm" action="/saveNewProperty" method="post">
+                <form id="savePropertyForm" action="/saveNewProperty" method="POST">
                     <input type="hidden" name="propertyID" value="{{ property._id }}">
-                    <button class="save-btn" onclick="saveListing(this)">Save</button>
+                    <button class="save-btn" type="submit" onclick="saveListing(this)">Save</button>
+                    <div class="error-message"><p>{{message}}</p></div>
                 </form>
                 
                 
@@ -270,6 +272,7 @@ button.calculate-btn:hover {
         </div>
     </div>
 </div>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
