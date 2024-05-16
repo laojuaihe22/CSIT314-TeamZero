@@ -1,27 +1,31 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-client = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+client = MongoClient("mongodb://localhost:27017")
 
 # Access a specific database
 db = client["CSIT314"]
 
-pipeline = [
+buyer_email = "buyer@gmail.com"
+
+
+pipline = [
     {
-        '$lookup': {
-            'from': 'UserAccount',
-            'localField': 'agentID',
-            'foreignField': '_id',
-            'as': 'userInfo'
+        '$match': {
+            'buyerID': buyer_email
         }
-    },
-    {
-        '$unwind': '$userInfo'
-    }
+    }, {
+        '$lookup': {
+            'from': 'propertyListing', 
+            'localField': 'propertyID', 
+            'foreignField': '_id', 
+            'as': 'result'
+        }
+    }, {'$unwind': '$result'}
 ]
 
-result = list(db.propertyListing.aggregate(pipeline))
+result_here = db.Favourite.aggregate(pipline)
 
-for doc in result:
-    print()
-    print(doc)
+for doc in result_here:
+  
+  print(doc)
