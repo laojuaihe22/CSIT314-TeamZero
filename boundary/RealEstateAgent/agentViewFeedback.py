@@ -15,29 +15,24 @@ def feedback_app_page():
         view_review_controller = ViewReviewController()
         review_list = view_review_controller.viewReviewByagentId(session['id'])
         
-        if not rating_list and not review_list:
+        if not rating_list or not review_list:
             return render_template('realEstateAgentViewFeedback.html', message="No Feedback!")
         
         feedback_list = combine_review_rating(rating_list, review_list)
-        print(feedback_list)
-
+        
         return render_template('realEstateAgentViewFeedback.html', feedback_listing=feedback_list)
     
 
 
 
 def combine_review_rating(rating_list,review_list):
-    
+
     combine_list = []
+    for rating, review in zip(rating_list, review_list):
+        combine_list.append({"id":rating['sender_id'],"rating_value":rating['rating'],"review_text":review['review']})
     
-    for rating in rating_list:
-        for review in review_list:
-            if rating["receiver_id"] == review["receiver_id"]:
-                combine_list.append({
-                    "rating_value": rating["rating"],
-                    "review_text": review["review"],
-                    "sender_name": review["sender_name"]
-                })
-                
+
+        
+
     
     return combine_list

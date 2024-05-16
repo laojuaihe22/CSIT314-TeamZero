@@ -126,7 +126,7 @@ class PropertyListing:
             return False  # Document not found or not deleted
         
     #search property listing
-    def searchPropertyListing(self, filter_type, value):
+    def searchPropertyListingbyAgentId(self, agentID, filter_type, value):
         client = self.get_database()
         
         db = client["CSIT314"]
@@ -134,14 +134,14 @@ class PropertyListing:
     
 
         if filter_type == 'type':
-            target_property =list(collection.find({'type':value})) # landed, condo, hdb
+            target_property =list(collection.find({'agentID':ObjectId(agentID), 'type':value})) # landed, condo, hdb
 
         elif filter_type == 'price':
-            target_property = list(collection.find({'price': {'$lte': int(value)}})) # price less than or equal to provided value
+            target_property = list(collection.find({'agentID':ObjectId(agentID),'price': {'$lte': int(value)}})) # price less than or equal to provided value
 
         elif filter_type == 'region':
-            target_property = list(collection.find({'region': value}))
-            print(target_property)
+            target_property = list(collection.find({'agentID':ObjectId(agentID),'region': value}))
+            
 
         return target_property
     
@@ -164,7 +164,6 @@ class PropertyListing:
             return property_list
         else:
             return False
-            
         
             
             

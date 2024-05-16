@@ -21,7 +21,7 @@ class Review:
         agent = db.UserAccount.find_one({"_id":ObjectId(agentId)})
         
         if agent:
-            review_list = list(db.review.find({"receiver_id":ObjectId(agentId)}))
+            review_list = list(db.Review.find({"receiver_id":ObjectId(agentId)}))
             
             if review_list:
                 return review_list
@@ -35,32 +35,16 @@ class Review:
         agent = db.UserAccount.find_one({"email": receiver})
             
         if agent:
-            
             agent_id = agent["_id"]
-
             profile_info = db.UserProfile.find_one({"userAccountId": agent_id})
 
             if profile_info and profile_info["role"] == "rea":
-
-                existing_review = db.review.find_one({
-                "sender_id": ObjectId(sender),
-                "receiver_id": agent["_id"]
+                submit_review = db.Review.insert_one({
+                    "sender_id": ObjectId(sender),
+                    "receiver_id": agent["_id"],
+                    "review": review
                 })
-
-                if existing_review:
-                # If a review already exists, return False indicating that the review cannot be submitted again
-                    return False
+                if submit_review:
+                    return True
                 else:
-                    submit_review = db.review.insert_one({
-                        "sender_id": ObjectId(sender),
-                        "receiver_id": agent["_id"],
-                        "review": review
-                    })
-                    if submit_review:
-                        return True
-                    else:
-                        return False
-            else:
-                return False
-        else:
-            return False
+                    return False

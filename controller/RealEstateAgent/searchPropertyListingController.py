@@ -2,9 +2,9 @@ from entity.PropertyListing import PropertyListing
 
 class SearchPropertyListingController():
 
-    def searchPropertyListing(self, filter_type, value):
+    def searchPropertyListingbyAgentId(self, agentID, filter_type, value):
 
         propertyListing = PropertyListing()
-        filtered_property_list = propertyListing.searchPropertyListing(filter_type, value)
+        filtered_property_list = propertyListing.searchPropertyListingbyAgentId(agentID, filter_type, value)
 
         return filtered_property_list
