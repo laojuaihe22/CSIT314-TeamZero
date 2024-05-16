@@ -7,13 +7,15 @@ db = client["CSIT314"]
 
 
 
-# target_property =list(collection.find({'type':value})) # landed, condo, hdb
+# Sort the results based on the price_sort value
+price_sort = 'desc'
+
+if price_sort == 'asc':
+    sort_order = [('price', 1)]
+elif price_sort == 'desc':
+    sort_order = [('price', -1)]
 
 
-# target_property = list(collection.find({'price': {'$lte': int(value)}})) # price less than or equal to provided value
+property_list = list(db.propertyListing.find({"region":"North","type":"Condo","status":"unsold"}).sort(sort_order))
 
-
-target_property = list(db.propertyListing.find())
-
-
-print(target_property)
+print(property_list)

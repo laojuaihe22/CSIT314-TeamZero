@@ -131,9 +131,7 @@ class PropertyListing:
         
         db = client["CSIT314"]
         collection = db["propertyListing"]
-        
-        
-        target_property=None
+    
 
         if filter_type == 'type':
             target_property =list(collection.find({'type':value})) # landed, condo, hdb
@@ -146,6 +144,30 @@ class PropertyListing:
             print(target_property)
 
         return target_property
+    
+    def buyer_search_property(self,region,property_type,price_sort,status):
+        
+        client = self.get_database()
+        db = client["CSIT314"]
+        
+        
+        # Sort the results based on the price_sort value
+        sort_order = None
+        if price_sort == 'asc':
+            sort_order = [('price', 1)]
+        elif price_sort == 'desc':
+            sort_order = [('price', -1)]
+        
+        property_list = list(db.propertyListing.find({"region":region,"type":property_type,"status":status}).sort(sort_order))
+        
+        if property_list:
+            return property_list
+        else:
+            return False
+            
+        
+            
+            
         
        
 
