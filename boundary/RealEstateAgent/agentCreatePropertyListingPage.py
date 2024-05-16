@@ -30,7 +30,7 @@ def create_property_listing_page():
             elif field_name == "bathroom":
                 return render_template('realEstateAgentCreatePropertyListing.html', message="Number of bathroom must be an integer")
 
-        agentEmail = session["user_email"]
+        agentId = session["id"]
         sellerEmail = request.form["sellerEmail"]
         propertyName = request.form["propertyName"]
         property_address = request.form["address"]
@@ -40,14 +40,14 @@ def create_property_listing_page():
 
         createPropertyListingController = CreatePropertyListingController()
         property_Created = createPropertyListingController.createPropertyListing(
-            agentEmail, sellerEmail, propertyName, property_address,
+            agentId, sellerEmail, propertyName, property_address,
             property_region, property_price, property_type, property_description,
             property_bedroom, property_bathroom
         )
 
         if property_Created:
-            return render_template('realEstateAgentCreatePropertyListing.html', message='Successfully created')
+            return render_template('realEstateAgentCreatePropertyListing.html', message='Successfully created!')
         else:
-            return render_template('realEstateAgentCreatePropertyListing.html', message='Failed to create')
+            return render_template('realEstateAgentCreatePropertyListing.html', message='Seller Email not existed!')
 
     return render_template('realEstateAgentCreatePropertyListing.html')

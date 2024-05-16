@@ -8,31 +8,29 @@ class PropertyListing:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
-            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
-            # self.database = MongoClient("mongodb://localhost:27017")
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+            self.database = MongoClient("mongodb://localhost:27017")
             
         return self.database
     
     #create property listing
-    def createPropertyListing(self, agentEmail, sellerEmail, propertyName, address, region, price, type, description, bedroom, bathroom):
+    def createPropertyListing(self, agentId, sellerEmail, propertyName, address, region, price, type, description, bedroom, bathroom):
 
         client = self.get_database()
         
         db = client["CSIT314"]
         
-        
-        agent = db.UserAccount.find_one({"email":agentEmail})
+    
         seller = db.UserAccount.find_one({"email":sellerEmail})
         
-        if not agent or not seller:
+        if not seller:
             return False
         
         # Create the property listing document      
         property_listing = {
-            'agentID': agent["_id"],
+            'agentID': ObjectId(agentId),
             'sellerID': seller["_id"],
             'propertyName': propertyName,
-
             'address': address,
             'region': region,
             'price': price,
@@ -52,7 +50,7 @@ class PropertyListing:
         
             
     #view property listing
-    def viewPropertyListing(self):
+    def viewAllPropertyListing(self):
  
         client = self.get_database()
         
@@ -77,18 +75,18 @@ class PropertyListing:
         return propertyListing
     
         #view property listing
-    def viewPropertyListingbyAgentEmail(self,agentEmail):
+    def viewPropertyListingbyAgentId(self,agentId):
  
         client = self.get_database()
         
         db = client["CSIT314"]
         
-        agent = db.UserAccount.find_one({"email":agentEmail})
+        agent = db.UserAccount.find_one({"_id":ObjectId(agentId)})
         
         if not agent:
             return False
 
-        propertyListing = list(db.propertyListing.find({"agentID":agent["_id"]}))
+        propertyListing = list(db.propertyListing.find({"agentID":ObjectId(agentId)}))
         
         if propertyListing:
             return propertyListing
