@@ -2,9 +2,9 @@ from entity.PropertyListing import PropertyListing
 
 class ViewPropertyListingController():
 
-    def viewPropertyListingbyAgentId(self, agentId):
+    def viewPropertyListingbyId(self, user_id):
         
         propertyListing = PropertyListing()
-        property_list = propertyListing.viewPropertyListingbyAgentId(agentId)
+        property_list = propertyListing.viewPropertyListingbyId(user_id)
 
         return property_list
