@@ -126,25 +126,27 @@ class PropertyListing:
             return False  # Document not found or not deleted
         
     #search property listing
-    def searchPropertyListing(self, filter, value):
+    def searchPropertyListing(self, filter_type, value):
         client = self.get_database()
         
         db = client["CSIT314"]
         collection = db["propertyListing"]
+        
+        
+        target_property=None
 
-        if filter == 'type':
+        if filter_type == 'type':
             target_property =list(collection.find({'type':value})) # landed, condo, hdb
 
-        elif filter == 'price':
+        elif filter_type == 'price':
             target_property = list(collection.find({'price': {'$lte': int(value)}})) # price less than or equal to provided value
 
-        elif filter == 'region':
+        elif filter_type == 'region':
             target_property = list(collection.find({'region': value}))
+            print(target_property)
 
-        if not target_property:
-            return None  
-        
         return target_property
+        
        
 
 

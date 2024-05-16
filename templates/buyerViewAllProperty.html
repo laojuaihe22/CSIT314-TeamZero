@@ -200,13 +200,20 @@ button.calculate-btn:hover {
         <div class="listing-cards">
             {% for property in property_list %}
             <div class="listing-card" data-id="1">
+                {% if  property.status == "unsold"%}
                 <form id="savePropertyForm" action="/saveNewProperty" method="POST">
                     <input type="hidden" name="propertyID" value="{{ property._id }}">
                     <button class="save-btn" type="submit">Save</button>
                 </form>
+                {% elif  property.status == "sold"%}
+                <form id="savePropertyForm" action="/saveSoldProperty" method="POST">
+                    <input type="hidden" name="propertyID" value="{{ property._id }}">
+                    <button class="save-btn" type="submit">Save</button>
+                </form>
+                {% endif %}
                 
                 <div class="listing-info">
-                    <h3 class="listing-name">{{ property.propertyName }}</h3>
+                    <h3 class="listing-name">{{ property.name }}</h3>
                     <h4 class="listing-price" style="color: darkgreen;">${{ property.price }}</h4>
                     <div class="listing-address">
                         <p>Address: {{ property.address }}</p>

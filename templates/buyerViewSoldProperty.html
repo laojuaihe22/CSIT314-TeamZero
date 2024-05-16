@@ -185,7 +185,7 @@ button.calculate-btn:hover {
 <div class="buyer-main">
     <p>Your Profile</p>
     <div class="profile-nav">
-        <div class="Pnav-item active" onclick="showSection('listings')">Favourite Sold Property</div>
+        <div class="Pnav-item active" onclick="showSection('listings')" >All Listings</div>
         <div class="Pnav-item" onclick="showSection('mortgage')">Mortgage Calculator</div>
     </div>
 </div>
@@ -193,50 +193,49 @@ button.calculate-btn:hover {
 <div class="buyer-body">
     <!-- Listing Section -->
     <div id="listings" class="hidden">
-        <h2>All Listings</h2>
+        <h2>Favourite Sold Listings</h2>
+        <div id="messages">
+            <strong><p>{{ message }}</p></strong>
+        </div>
         <div class="listing-cards">
+            {% set special_condition = False %}
             {% for property in property_list %}
-            <div class="listing-card" data-id="1">
-
-                <form id="savePropertyForm" action="/saveNewProperty" method="post">
-                    <input type="hidden" name="propertyID" value="{{ property._id }}">
-                    <button class="save-btn" onclick="saveListing(this)">Save</button>
-                </form>
-                
-                
-                <div class="listing-info">
-                    <h3 class="listing-name">{{ property.result['propertyName'] }}</h3>
-                    <h4 class="listing-price" style="color: darkgreen;">${{ property.result['price'] }}</h4>
-                    <div class="listing-address">
-                        <p>Address: {{ property.result['address'] }}</p>
+                {% if property.result['status'] == "sold" %}
+                    {% set special_condition = True %}
+                    <div class="listing-card">
+                        <div class="listing-info">
+                            <h3 class="listing-name">{{ property.result['propertyName'] }}</h3>
+                            <h4 class="listing-price" style="color: darkgreen;">${{ property.result['price'] }}</h4>
+                            <div class="listing-address">
+                                <p>Address: {{ property.result['address'] }}</p>
+                            </div>
+                            <div class="listing-type">
+                                <p>Type: {{ property.result['type'] }}</p>
+                            </div>
+                            <div class="listing-region">
+                                <p>Region:{{ property.result['region'] }}</p>
+                            </div>
+                            <div class="listing-description">
+                                <p>Description: {{ property.result['description'] }}</p>
+                            </div>
+                            <div class="listing-bedrooms">
+                                <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>:{{ property.result['bedroom'] }}</span>
+                            </div>
+                            <div class="listing-bathrooms">
+                                <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.result['bathroom'] }}</span>
+                            </div>
+                            <div class="listing-views">
+                                <p>Total Views: {{ property.result['totalviews'] }}</p>
+                            </div>
+                            <div class="listing-saved">
+                                <p>Saved by: <span class="save-count">{{ property.result['shortlisted'] }}</span> users</p>
+                            </div>
+                            <div class="listing-status">
+                                <p>Status: {{ property.result['status'] }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="listing-type">
-                        <p>Type: {{ property.result['type'] }}</p>
-                    </div>
-                    <div class="listing-region">
-                        <p>Region:{{ property.result['region'] }}</p>
-                    </div>
-                    <div class="listing-description">
-                        <p>Description: {{ property.result['description'] }}</p>
-                    </div>
-                    <div class="listing-bedrooms">
-                        <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>:{{ property.result['bedroom'] }}</span>
-                    </div>
-                    <div class="listing-bathrooms">
-                        <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.result['bathroom'] }}</span>
-                    </div>
-                    <div class="listing-views">
-                        <p>Total Views: {{ property.result['totalviews'] }}</p>
-                    </div>
-                    <div class="listing-saved">
-                        <p>Saved by: <span class="save-count">{{ property.result['shortlisted'] }}</span> users</p>
-                    </div>
-                    <div class="listing-status">
-                        <p>Status: {{ property.result['status'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more listing cards here -->
+                {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -268,6 +267,7 @@ button.calculate-btn:hover {
     </div>
 </div>
 
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         showSection('listings'); // Show listings by default
@@ -288,37 +288,6 @@ button.calculate-btn:hover {
         });
     }
 
-    function saveListing(button) {
-    button.classList.toggle('saved');
-    if (button.classList.contains('saved')) {
-        button.textContent = 'Saved';
-    } else {
-        button.textContent = 'Save';
-    }
-
-    var form = button.closest('form'); // Find the closest form element to the button
-    var formData = new FormData(form); // Get form data
-
-    var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-    xhr.open(form.method, form.action, true); // Open a new request
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Request was successful, handle response accordingly
-            // For example, display a success message or update the UI
-            // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
-        } else {
-            // Request failed, handle errors
-            // For example, display an error message or log the error
-        }
-    };
-    xhr.onerror = function() {
-        // Request failed, handle errors
-        // For example, display an error message or log the error
-    };
-    xhr.send(formData); // Send the form data asynchronously
-
-    event.preventDefault(); // Prevent the default form submission behavior
-}
     function calculateMortgage(event) {
         event.preventDefault();
 
@@ -339,29 +308,6 @@ button.calculate-btn:hover {
             document.querySelector('#monthlyPayment span').textContent = 'Invalid input';
         }
     }
-
-    document.getElementById("savePropertyForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        var form = event.target;
-        var formData = new FormData(form); // Get form data
-        var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-        xhr.open(form.method, form.action, true); // Open a new request
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Request was successful, handle response accordingly
-                // For example, display a success message or update the UI
-                // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
-            } else {
-                // Request failed, handle errors
-                // For example, display an error message or log the error
-            }
-        };
-        xhr.onerror = function() {
-            // Request failed, handle errors
-            // For example, display an error message or log the error
-        };
-        xhr.send(formData); // Send the form data asynchronously
-    });
 
     
 </script>
