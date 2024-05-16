@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from bson import ObjectId
 
-class Favourite:
+class NewFavourite:
     def __init__(self):
         self.database = None
         
@@ -14,43 +14,26 @@ class Favourite:
             
         return self.database
     
-    def appendFavouriteList(self, buyerID, propertyID):
+    def saveNewProperty(self, buyerID, propertyID):
         client = self.get_database()
         db = client["CSIT314"]
 
-        existing_document = db.Favourite.find_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+        existing_document = db.NewFavouriteListing.find_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
 
         if existing_document:
             return False
         else:
             # Insert the document into the Favourite collection
-    
-            inserted = db.Favourite.insert_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+            inserted = db.NewFavouriteListing.insert_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
 
             if inserted:
                 return True
             else:
                 return False
 
-    def shortlistedIncrement(self, propertyID):
-        client = self.get_database()
-        db = client["CSIT314"]
-        objID = ObjectId(propertyID)
-        
-        property_doc = db.propertyListing.find_one({"_id": objID})
-        
-        if property_doc:
-            new_shortlisted_count = property_doc.get("shortlisted", 0) + 1
-            increment = {"$set": {"shortlisted": new_shortlisted_count}}
-            
-            # Use objID instead of propertyID in the update query
-            db.propertyListing.update_one({"_id": objID}, increment)
-            return True
-        else:
-            return False
         
         
-    def buyerViewFavouritePropertyListing(self,buyer_id):
+    def buyerViewFavouriteNewPropertyListing(self,buyer_id):
         client = self.get_database()
         db = client["CSIT314"]
         
@@ -69,7 +52,7 @@ class Favourite:
         }, {'$unwind': '$result'}
         ]
         
-        property_list = db.Favourite.aggregate(pipline)
+        property_list = list(db.NewFavouriteListing.aggregate(pipline))
         
         if property_list:
             return property_list

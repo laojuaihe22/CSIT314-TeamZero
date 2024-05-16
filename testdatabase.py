@@ -3,29 +3,19 @@ from bson.objectid import ObjectId
 
 client = MongoClient("mongodb://localhost:27017")
 
-# Access a specific database
 db = client["CSIT314"]
 
-buyer_email = "buyer@gmail.com"
 
 
-pipline = [
-    {
-        '$match': {
-            'buyerID': buyer_email
-        }
-    }, {
-        '$lookup': {
-            'from': 'propertyListing', 
-            'localField': 'propertyID', 
-            'foreignField': '_id', 
-            'as': 'result'
-        }
-    }, {'$unwind': '$result'}
-]
+# Sort the results based on the price_sort value
+price_sort = 'desc'
 
-result_here = db.Favourite.aggregate(pipline)
+if price_sort == 'asc':
+    sort_order = [('price', 1)]
+elif price_sort == 'desc':
+    sort_order = [('price', -1)]
 
-for doc in result_here:
-  
-  print(doc)
+
+property_list = list(db.propertyListing.find({"region":"North","type":"Condo","status":"unsold"}).sort(sort_order))
+
+print(property_list)

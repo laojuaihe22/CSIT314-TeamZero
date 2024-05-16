@@ -1,11 +1,11 @@
-from entity.Favourite import Favourite
+from entity.NewFavouriteListing import NewFavourite
 
 class ViewNewPropertyFavouriteController:
     
     
     def buyerViewFavouriteNewPropertyListing(self,buyer_id):
-        favourite = Favourite()
-        new_favourite_list = favourite.buyerViewFavouritePropertyListing(buyer_id)
+        new_favourite = NewFavourite()
+        new_favourite_list = new_favourite.buyerViewFavouriteNewPropertyListing(buyer_id)
         
         return new_favourite_list
         

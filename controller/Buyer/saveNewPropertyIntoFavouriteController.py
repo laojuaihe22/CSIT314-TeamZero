@@ -1,14 +1,11 @@
-from entity.Favourite import Favourite
+from entity.NewFavouriteListing import NewFavourite
 
 class SaveNewPropertyController():
 
-    def saveNewPropertyController(self, buyerID, propertyID):
+    def saveNewProperty(self, buyerID, propertyID):
 
-        favourite = Favourite()
+        new_favourite = NewFavourite()
 
-        appendFavourite = favourite.appendFavouriteList(buyerID, propertyID)
+        is_inserted = new_favourite.saveNewProperty(buyerID, propertyID)
         
-        if appendFavourite: 
-            shortListedIncreament = favourite.shortlistedIncrement(propertyID)
-
-            return shortListedIncreament
+        return is_inserted
