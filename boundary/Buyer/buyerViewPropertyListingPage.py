@@ -22,17 +22,17 @@ def buyer_view_favourtie_new_property_listing_page():
     
     if request.method == "GET":
         viewNewProperty = ViewNewPropertyFavouriteController()
-        property_list = viewNewProperty.buyerViewFavouriteNewPropertyListing(session["user_email"])
+        property_list = viewNewProperty.buyerViewFavouriteNewPropertyListing(session["id"])
         return render_template('buyerViewNewProperty.html', property_list = property_list)
     
     return redirect('/home')
 
-@buyer_view_property_listing_app.route('/buyerFavouriteSoldPropertyListing', methods = ['GET'])
-def buyer_view_favourtie_sold_property_listing_page():
+# @buyer_view_property_listing_app.route('/buyerFavouriteSoldPropertyListing', methods = ['GET'])
+# def buyer_view_favourtie_sold_property_listing_page():
     
-    if request.method == "GET":
-        viewNewProperty = ViewNewPropertyFavouriteController()
-        property_list = viewNewProperty.buyerViewFavouriteNewPropertyListing(session["user_email"])
-        return render_template('buyerViewSoldProperty.html', property_list = property_list)
+#     if request.method == "GET":
+#         viewNewProperty = ViewNewPropertyFavouriteController()
+#         property_list = viewNewProperty.buyerViewFavouriteNewPropertyListing(session["user_email"])
+#         return render_template('buyerViewSoldProperty.html', property_list = property_list)
     
-    return redirect('/home')
+#     return redirect('/home')

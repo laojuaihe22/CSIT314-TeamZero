@@ -194,17 +194,16 @@ button.calculate-btn:hover {
     <!-- Listing Section -->
     <div id="listings" class="hidden">
         <h2>All Listings</h2>
+        <div id="messages">
+            <strong><p>{{message}}</p></strong>
+        </div>
         <div class="listing-cards">
-
             {% for property in property_list %}
             <div class="listing-card" data-id="1">
-
                 <form id="savePropertyForm" action="/saveNewProperty" method="POST">
                     <input type="hidden" name="propertyID" value="{{ property._id }}">
-                    <button class="save-btn" type="submit" onclick="saveListing(this)">Save</button>
-                    <div class="error-message"><p>{{message}}</p></div>
+                    <button class="save-btn" type="submit">Save</button>
                 </form>
-                
                 
                 <div class="listing-info">
                     <h3 class="listing-name">{{ property.propertyName }}</h3>
@@ -294,37 +293,6 @@ button.calculate-btn:hover {
         });
     }
 
-    function saveListing(button) {
-    button.classList.toggle('saved');
-    if (button.classList.contains('saved')) {
-        button.textContent = 'Saved';
-    } else {
-        button.textContent = 'Save';
-    }
-
-    var form = button.closest('form'); // Find the closest form element to the button
-    var formData = new FormData(form); // Get form data
-
-    var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-    xhr.open(form.method, form.action, true); // Open a new request
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Request was successful, handle response accordingly
-            // For example, display a success message or update the UI
-            // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
-        } else {
-            // Request failed, handle errors
-            // For example, display an error message or log the error
-        }
-    };
-    xhr.onerror = function() {
-        // Request failed, handle errors
-        // For example, display an error message or log the error
-    };
-    xhr.send(formData); // Send the form data asynchronously
-
-    event.preventDefault(); // Prevent the default form submission behavior
-}
     function calculateMortgage(event) {
         event.preventDefault();
 
@@ -345,29 +313,6 @@ button.calculate-btn:hover {
             document.querySelector('#monthlyPayment span').textContent = 'Invalid input';
         }
     }
-
-    document.getElementById("savePropertyForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        var form = event.target;
-        var formData = new FormData(form); // Get form data
-        var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-        xhr.open(form.method, form.action, true); // Open a new request
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Request was successful, handle response accordingly
-                // For example, display a success message or update the UI
-                // You can use JSON.parse(xhr.responseText) to parse the response if it's JSON
-            } else {
-                // Request failed, handle errors
-                // For example, display an error message or log the error
-            }
-        };
-        xhr.onerror = function() {
-            // Request failed, handle errors
-            // For example, display an error message or log the error
-        };
-        xhr.send(formData); // Send the form data asynchronously
-    });
 
     
 </script>

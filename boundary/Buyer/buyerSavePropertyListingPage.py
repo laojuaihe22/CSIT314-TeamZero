@@ -8,6 +8,7 @@ buyer_save_property_into_favourite_app = Blueprint('buyer_save_property_into_fav
 
 @buyer_save_property_into_favourite_app.route('/saveNewProperty', methods=['POST', 'GET'])
 def save_new_property_page():
+    message=""
     
     if request.method == "POST":
         buyerID = session["id"]
@@ -15,11 +16,14 @@ def save_new_property_page():
         saveNewPropertyController = SaveNewPropertyController()
         shortListedIncreament = saveNewPropertyController.saveNewPropertyController(buyerID, propertyID)
         
+        
         # Check if shortListedIncreament is None
         if shortListedIncreament :
-            return render_template('buyerViewAllProperty.html', message = "Successfully added into your favourite list")
+           message = "Successfully added into your favourite list"
         else:
-            return render_template('buyerViewAllProperty.html', message = "Property listing already added.")
-    
-    return render_template('buyerViewAllProperty.html')
+            message="Property listing already added."
+            
+    viewAllPropertyListing = ViewAllPropertyListing()
+    property_list = viewAllPropertyListing.viewAllPropertyListing()
+    return render_template('buyerViewAllProperty.html',property_list=property_list,message=message)
 

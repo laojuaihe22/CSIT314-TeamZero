@@ -196,6 +196,7 @@ button.calculate-btn:hover {
         <h2>All Listings</h2>
         <div class="listing-cards">
             {% for property in property_list %}
+            {% if property.result['status'] == "unsold" %}
             <div class="listing-card" data-id="1">
                         
                 <form id="savePropertyForm" action="/saveNewProperty" method="post">
@@ -237,6 +238,7 @@ button.calculate-btn:hover {
                 </div>
             </div>
             <!-- Add more listing cards here -->
+            {% endif %}
             {% endfor %}
         </div>
     </div>
