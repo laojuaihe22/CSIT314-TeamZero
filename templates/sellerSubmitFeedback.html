@@ -1,0 +1,194 @@
+{% extends "baseUserDashboard.html" %}
+
+{% block style %}
+
+        .navbar {
+            z-index: 10;
+            width: 100%;
+            top: 0;
+            background-color: white;
+        }
+
+        .seller-main {
+            position: fixed;
+            margin-top: 60px;
+            z-index: 10;
+            width: 100%;
+            top: 0;
+            padding-left: 45px;
+            background-color: white;
+        }
+
+        .seller-main p {
+            font-size: 45px;
+        }
+
+        .review p {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .seller-body {
+            display: flex;
+            padding-left: 50px;
+            align-items: left;
+            flex-direction: column;
+            padding-top: 250px;
+            overflow-y: auto;
+            max-height: calc(100vh - 250px);
+            z-index: 1;
+        }
+
+        .review-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .review-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group button:hover {
+            background-color: #087b17;
+        }
+
+        .confirmation-message {
+            display: none;
+            background-color: #e0ffe0;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: green;
+            text-align: center;
+        }
+    
+{% endblock style %}
+
+{% block content %}
+        
+
+<div class="no-scroll">
+    <span class="navbar">
+        <a class="title" href="page1.html">ZeroRealEstate</a>
+        <a class="logout" href="index.html"><img src="logout.avif"></a>
+        <a class="active" href="myprofile.html"><button>My Profile</button></a>
+        <a href="myActivities.html">My Activities</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="page1.html">Home</a>
+    </span>
+
+    <div class="seller-main">
+        <p>Your Profile</p>
+        <div class="review">
+            <p>Please leave a review and rating for the agent!</p>
+        </div>
+    </div>
+
+    <div class="seller-body">
+        <!-- Review Form Section -->
+        <div class="review-form">
+            <h2>Submit a Review</h2>
+            <form id="reviewForm" onsubmit="submitReview(event)" action ="/submitFeedback" method = "POST">
+                <div class="form-group">
+                    <label for="email">Agent Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="review">Review:</label>
+                    <textarea id="review" name="review" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating:</label>
+                    <select id="rating" name="rating" required>
+                        <option value="" disabled selected>Select your rating</option>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="1">1 - Poor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit Review</button>
+                </div>
+            </form>
+            <div id="confirmationMessage" class="confirmation-message">
+                Thank you for your review!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            showSection('listings'); // Show listings by default
+        });
+
+        function showSection(sectionId) {
+            var sections = ['listings', 'saved', 'mortgage'];
+            sections.forEach(function (id) {
+                var section = document.getElementById(id);
+                var navItem = document.querySelector(".Pnav-item[onclick=\"showSection('" + id + "')\"]");
+                if (section) {
+                    if (id === sectionId) {
+                        section.style.display = "block";
+                        navItem.classList.add("active");
+                    } else {
+                        section.style.display = "none";
+                        navItem.classList.remove("active");
+                    }
+                }
+            });
+        }
+
+        function submitReview(event) {
+            event.preventDefault();
+            // Display confirmation message
+            document.getElementById('confirmationMessage').style.display = 'block';
+            // Clear the form
+            document.getElementById('reviewForm').reset();
+        }
+    </script>
+
+</div>
+
+{% endblock content %}
