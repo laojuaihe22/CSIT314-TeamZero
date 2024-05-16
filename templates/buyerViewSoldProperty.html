@@ -185,7 +185,7 @@ button.calculate-btn:hover {
 <div class="buyer-main">
     <p>Your Profile</p>
     <div class="profile-nav">
-        <div class="Pnav-item active" onclick="showSection('listings')">Favourite New Property</div>
+        <div class="Pnav-item active" onclick="showSection('listings')">Favourite Sold Property</div>
         <div class="Pnav-item" onclick="showSection('mortgage')">Mortgage Calculator</div>
     </div>
 </div>
@@ -197,7 +197,7 @@ button.calculate-btn:hover {
         <div class="listing-cards">
             {% for property in property_list %}
             <div class="listing-card" data-id="1">
-                        
+
                 <form id="savePropertyForm" action="/saveNewProperty" method="post">
                     <input type="hidden" name="propertyID" value="{{ property._id }}">
                     <button class="save-btn" onclick="saveListing(this)">Save</button>
