@@ -2,26 +2,8 @@
 
 {% block style %}
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    background-color: #ffffff;
-    font-weight: 700;
-    z-index: 1000;
-}
-
-.logout img {
-    margin: -15px;
-    width: 50px;
-    height: auto;
-    color: black;
-}
-
 .para {
-    margin-top: 15%;
+    margin-top: 15%; /* Adjust the margin-top value */
     color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -29,22 +11,26 @@
     font-size: 40px;
 }
 
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 200px;
+    padding: 5%;
 }
 
 .column {
-    flex: 0 0 25%;
+    flex: 0 0 20%;
+    background-color: rgb(240, 239, 239);
     padding: 30px;
+    margin: 10px;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 10px;
-    border: none;
-    margin: 2% 5%;
+    border-radius: 10px; /* Adjust the value to control the curvature */
+    border: none; /* Add this line to remove the border */
+    margin-top: 0;
 }
 
 .column img {
@@ -58,8 +44,9 @@
     margin-bottom: 10px;
 }
 
+
 button[class="column"]:hover {
-    background-color: rgb(240, 239, 239);
+    background-color: white;
 }
 
 {% endblock style %}
@@ -77,6 +64,24 @@ button[class="column"]:hover {
         <img src="{{ url_for('static', filename='buyer.png')}}" alt="Image">
         <h4>View All Listing</h4>
         <p>Browse through all our available units up for sale!</p>
+    </button>
+
+    <button class="column" onclick="window.location.href='/buyerFavouriteNewPropertyListing'">
+        <img src="{{ url_for('static', filename='search.png')}}" alt="Image">
+        <h4>Search For Listing</h4>
+        <p>Filter through all our available units!</p>
+    </button>
+
+    <button class="column" onclick="window.location.href='buyerSearch.html'">
+        <img src="{{ url_for('static', filename='search.png')}}" alt="Image">
+        <h4>Search For Listing</h4>
+        <p>Filter through all our available units!</p>
+    </button>
+
+    <button class="column" onclick="window.location.href='buyerSearch.html'">
+        <img src="{{ url_for('static', filename='search.png')}}" alt="Image">
+        <h4>Search For Listing</h4>
+        <p>Filter through all our available units!</p>
     </button>
 
     <button class="column" onclick="window.location.href='buyerSearch.html'">

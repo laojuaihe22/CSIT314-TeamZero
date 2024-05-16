@@ -151,7 +151,6 @@ class PropertyListing:
         client = self.get_database()
         db = client["CSIT314"]
 
-        
         # Insert the document into the Favourite collection
         inserted = db.Favourite.insert_one({"buyerID": buyerID, "propertyID": propertyID})
 

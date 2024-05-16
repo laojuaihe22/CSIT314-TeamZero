@@ -185,9 +185,7 @@ button.calculate-btn:hover {
 <div class="buyer-main">
     <p>Your Profile</p>
     <div class="profile-nav">
-        <div class="Pnav-item active" onclick="showSection('listings')" action="/viewAllPropertyListing" method="get" >All Listings</div>
-        <div class="Pnav-item" onclick="showSection('saved')">Saved New Listings</div>
-        <div class="Pnav-item" onclick="showSection('savedOld')">Saved Sold Listings</div>
+        <div class="Pnav-item active" onclick="showSection('listings')" >All Listings</div>
         <div class="Pnav-item" onclick="showSection('mortgage')">Mortgage Calculator</div>
     </div>
 </div>
@@ -245,19 +243,6 @@ button.calculate-btn:hover {
             {% endfor %}
         </div>
     </div>
-
-    <!-- Saved Listing Section -->
-    <div id="saved" class="hidden">
-        <h2>Saved Listings</h2>
-        <p>Saved Listings Content Goes Here</p>
-    </div>
-
-        <!-- Saved Listing Section -->
-    <div id="savedOld" class="hidden">
-        <h2>Saved Listings</h2>
-        <p>Saved Listings Content Goes Here</p>
-    </div>
-
     <!-- Mortgage Calculator Section -->
     <div id="mortgage" class="hidden">
         <h2>Mortgage Calculator</h2>
@@ -292,7 +277,7 @@ button.calculate-btn:hover {
     });
 
     function showSection(sectionId) {
-        var sections = ['listings', 'saved','savedOld', 'mortgage'];
+        var sections = ['listings','mortgage'];
         sections.forEach(function (id) {
             var section = document.getElementById(id);
             var navItem = document.querySelector(".Pnav-item[onclick=\"showSection('" + id + "')\"]");
