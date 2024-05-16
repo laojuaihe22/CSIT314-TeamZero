@@ -41,27 +41,14 @@ class Rating:
             profile_info = db.UserProfile.find_one({"userAccountId": agent_id})
 
             if profile_info and profile_info["role"] == "rea":
-
-                existing_rating = db.review.find_one({
-                "sender_id": ObjectId(sender),
-                "receiver_id": agent["_id"]
+                
+                submit_rating = db.Rating.insert_one({
+                    "sender_id": ObjectId(sender),
+                    "receiver_id": agent["_id"],
+                    "rating": rating,
                 })
 
-                if existing_rating:
-                # If a review already exists, return False indicating that the review cannot be submitted again
-                    return False
+                if submit_rating:
+                    return True
                 else:
-                    submit_rating = db.rating.insert_one({
-                        "sender_id": ObjectId(sender),
-                        "receiver_id": agent["_id"],
-                        "rating": rating
-                    })
-
-                    if submit_rating:
-                        return True
-                    else:
-                        return False
-            else:
-                return False
-        else:
-            return False
+                    return False

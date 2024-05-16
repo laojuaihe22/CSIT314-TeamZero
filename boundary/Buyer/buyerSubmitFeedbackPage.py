@@ -17,10 +17,8 @@ def buyer_Submit_Feedback_page():
         submitRatingController = SubmitRatingController()
         submitReviewController = SubmitReviewController()
 
-        submitRating = submitRatingController.submitRatingController(agent_email, sender_id, buyer_rating)
-        submitReview = submitReviewController.submitReviewController(agent_email, sender_id, buyer_review)
-        
-       
+        submitRating = submitRatingController.buyersubmitRating(agent_email, sender_id, buyer_rating)
+        submitReview = submitReviewController.buyersubmitReview(agent_email, sender_id, buyer_review)
 
         if submitRating and submitReview:
             
