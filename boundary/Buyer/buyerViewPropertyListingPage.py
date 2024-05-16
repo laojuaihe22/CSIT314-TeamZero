@@ -25,7 +25,6 @@ def buyer_view_favourtie_new_property_listing_page():
     if request.method == "GET":
         viewAllPropertyListing = ViewAllPropertyListing()
         property_list = viewAllPropertyListing.buyerFavouriteNewPropertyListing()
-        print("hello")
         return render_template('buyerViewAllProperty.html', new_favourite_list = property_list)
     
     return redirect('/home')
