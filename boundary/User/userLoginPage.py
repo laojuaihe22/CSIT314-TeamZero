@@ -17,11 +17,13 @@ def processLoginPage():
     user_pass = request.form["password"]
     
     loginController = LoginController()
-    verifyUser, user_role = loginController.verifyAccount(user_email, user_pass)
+    verifyUser, user_role, user_id = loginController.verifyAccount(user_email, user_pass)
     
     if verifyUser:
+        session["id"] = user_id
         session["user_email"] = user_email
         session["roles"] = user_role  
+        print(user_id)
         return redirect(url_for('login_app.displayHomePage'))
     else:
         flash('Invalid email or password', 'error')     
@@ -35,8 +37,9 @@ def displayHomePage():
         elif session['roles'] == "rea":
             return render_template("realEstateAgentDashboard.html")
         elif session['roles'] == "buyer":
+            return render_template("buyerDashboard.html")   
+        elif session['roles'] == "seller":
             return render_template("buyerDashboard.html")
-            
     else:
         flash("You need to log in first", 'error')
         return redirect(url_for('login_app.displayLoginPage'))

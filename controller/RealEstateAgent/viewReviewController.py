@@ -2,8 +2,8 @@ from entity.Review import Review
 
 class ViewReviewController:
     
-    def viewReviewByagentEmail(self,email):
+    def viewReviewByagentId(self,agentId):
         agent_review = Review()
-        review_list = agent_review.viewReviewByagentEmail(email)
+        review_list = agent_review.viewReviewByagentId(agentId)
         
         return review_list

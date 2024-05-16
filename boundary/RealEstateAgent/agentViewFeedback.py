@@ -10,10 +10,10 @@ def feedback_app_page():
     
     if request.method == "GET":
         view_rating_controller = ViewRatingController()
-        rating_list = view_rating_controller.viewRatingByagentEmail(session['user_email'])
+        rating_list = view_rating_controller.viewRatingByagentId(session['id'])
         
         view_review_controller = ViewReviewController()
-        review_list = view_review_controller.viewReviewByagentEmail(session['user_email'])
+        review_list = view_review_controller.viewReviewByagentId(session['id'])
         
         if not rating_list and not review_list:
             return render_template('realEstateAgentViewFeedback.html', message="No Feedback!")

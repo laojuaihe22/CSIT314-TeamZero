@@ -6,8 +6,8 @@ class UserAccount:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
-            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
-            # self.database = MongoClient("mongodb://localhost:27017")
+            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+            self.database = MongoClient("mongodb://localhost:27017")
             
         return self.database
     
@@ -27,11 +27,10 @@ class UserAccount:
             # User is verified, now fetch the user's profile
             user_profile = db.UserProfile.find_one({'userAccountId': user_account['_id']})
             if user_profile:
-                return True, user_profile['role']
+                return True, user_profile['role'], str(user_account['_id'])
         
         # If verification fails
-
-        return False, "None"
+        return False, "None", "None"
     
     def createUserAccount(self,user_email,user_pass,role):
         client = self.get_database()

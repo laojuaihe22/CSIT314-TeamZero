@@ -1,5 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, flash
 from controller.Buyer.viewAllPropertyController import ViewAllPropertyListing
+# from controller.Buyer.viewNewPropertyFavouriteController import ViewNewPropertyFavouriteController
+# from controller.Buyer.viewSoldPropertyFavouriteController import ViewSoldPropertyFavouriteController
 
 buyer_view_property_listing_app = Blueprint('buyer_view_property_listing_app', __name__)
 
@@ -17,5 +19,14 @@ def buyer_view_all_property_listing_page():
     return redirect('/home')
 
 
-
+@buyer_view_property_listing_app.route('/buyerFavouriteNewPropertyListing', methods = ['GET'])
+def buyer_view_favourtie_new_property_listing_page():
+    
+    if request.method == "GET":
+        viewAllPropertyListing = ViewAllPropertyListing()
+        property_list = viewAllPropertyListing.buyerFavouriteNewPropertyListing()
+        print("hello")
+        return render_template('buyerViewAllProperty.html', new_favourite_list = property_list)
+    
+    return redirect('/home')
 

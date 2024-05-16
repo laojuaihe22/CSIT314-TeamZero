@@ -50,7 +50,7 @@
 }
 
 .hidden {
-    display: none;
+    display: contents;
 }
 
 .buyer-body {
@@ -185,8 +185,9 @@ button.calculate-btn:hover {
 <div class="buyer-main">
     <p>Your Profile</p>
     <div class="profile-nav">
-        <div class="Pnav-item active" onclick="showSection('listings')">All Listings</div>
-        <div class="Pnav-item" onclick="showSection('saved')">Saved Listings</div>
+        <div class="Pnav-item active" onclick="showSection('listings')"  action="/viewAllPropertyListing" method="get" >All Property Listings</div>
+        <div class="Pnav-item" onclick="showSection('saved')" action="/buyerFavouriteNewPropertyListing" method="get" >Favourite New PropertyListings</div>
+        <div class="Pnav-item" onclick="showSection('savedOld')">Favourite Sold PropertyListings</div>
         <div class="Pnav-item" onclick="showSection('mortgage')">Mortgage Calculator</div>
     </div>
 </div>
@@ -221,11 +222,7 @@ button.calculate-btn:hover {
                         <p>Description: {{ property.description }}</p>
                     </div>
                     <div class="listing-seller">
-                        <!-- {% for agent in agentList %}
-                            {% if agent._id ==  property.agentID%}
-                                <p>Seller/Agent:{{ agent.email }}</p>
-                            {% endif %}
-                        {% endfor %} -->
+
                         <p>Agent:{{ property.userInfo["email"]}}</p>
                     </div>
                     <div class="listing-bedrooms">
@@ -252,8 +249,55 @@ button.calculate-btn:hover {
 
     <!-- Saved Listing Section -->
     <div id="saved" class="hidden">
-        <h2>Saved Listings</h2>
-        <p>Saved Listings Content Goes Here</p>
+        <div id="listings" class="hidden">
+            <h2>Favourite New Listings</h2>
+            <div class="listing-cards">
+                {% for property in property_list %}
+                <div class="listing-card">
+                    <div class="listing-info">
+                        <h3 class="listing-name">{{ property.propertyName }}</h3>
+                        <h4 class="listing-price" style="color: darkgreen;">${{ property.price }}</h4>
+                        <div class="listing-address">
+                            <p>Address: {{ property.address }}</p>
+                        </div>
+                        <div class="listing-type">
+                            <p>Type: {{ property.type }}</p>
+                        </div>
+                        <div class="listing-region">
+                            <p>Region:{{ property.region }}</p>
+                        </div>
+                        <div class="listing-description">
+                            <p>Description: {{ property.description }}</p>
+                        </div>
+                        <div class="listing-seller">
+                            <p>Agent:{{ property.userInfo["email"]}}</p>
+                        </div>
+                        <div class="listing-bedrooms">
+                            <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>:{{ property.bedroom }}</span>
+                        </div>
+                        <div class="listing-bathrooms">
+                            <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
+                        </div>
+                        <div class="listing-views">
+                            <p>Total Views: {{ property.totalviews }}</p>
+                        </div>
+                        <div class="listing-saved">
+                            <p>Saved by: <span class="save-count">{{ property.shortlisted }}</span> users</p>
+                        </div>
+                        <div class="listing-status">
+                            <p>Status: {{ property.status }}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more listing cards here -->
+                {% endfor %}
+            </div>
+    </div>
+
+    <!-- Saved Listing Section -->
+    <div id="savedOld" class="hidden" onClick="location.href='url-here'">
+        <h2>Saved Old Listings</h2>
+        <p>Saved Old Listings Content Goes Here</p>
     </div>
 
     <!-- Mortgage Calculator Section -->
@@ -290,7 +334,7 @@ button.calculate-btn:hover {
     });
 
     function showSection(sectionId) {
-        var sections = ['listings', 'saved', 'mortgage'];
+        var sections = ['listings', 'saved', 'savedOld','mortgage'];
         sections.forEach(function (id) {
             var section = document.getElementById(id);
             var navItem = document.querySelector(".Pnav-item[onclick=\"showSection('" + id + "')\"]");

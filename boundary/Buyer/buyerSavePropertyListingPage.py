@@ -9,15 +9,14 @@ buyer_save_property_into_favourite_app = Blueprint('buyer_save_property_into_fav
 
 @buyer_save_property_into_favourite_app.route('/saveNewProperty', methods=['POST', 'GET'])
 def save_new_property_page():
+    
     if request.method == "POST":
         buyerID = session["user_email"]
         propertyID = request.form["propertyID"]
 
         saveNewPropertyController = SaveNewPropertyController()
         shortListedIncreament = saveNewPropertyController.saveNewPropertyController(buyerID, propertyID)
-
-        viewAllPropertyListing = ViewAllPropertyListing()
-        property_list = viewAllPropertyListing.viewAllPropertyListing()
+        
         # Check if shortListedIncreament is None
         if shortListedIncreament :
             return jsonify({"message": "Saved to favourite", "success": True})
