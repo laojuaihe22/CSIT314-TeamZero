@@ -17,15 +17,15 @@ def buyer_Submit_Feedback_page():
         submitRatingController = SubmitRatingController()
         submitReviewController = SubmitReviewController()
 
-        submitRating = submitRatingController.buyersubmitRating(agent_email, sender_id, buyer_rating)
-        submitReview = submitReviewController.buyersubmitReview(agent_email, sender_id, buyer_review)
+        submitRating = submitRatingController.buyerSubmitRating(agent_email, sender_id, buyer_rating)
+        submitReview = submitReviewController.buyerSubmitReview(agent_email, sender_id, buyer_review)
 
         if submitRating and submitReview:
             
             return render_template('buyerSubmitFeedback.html', message = 'Feedback submitted successfully!')
         else:
            
-            return render_template('buyerSubmitFeedback.html', message = 'Error in submitting feedback. Please try again.')
+            return render_template('buyerSubmitFeedback.html', message = 'Agent email not existed. Please try again.')
         
 
     return render_template('buyerSubmitFeedback.html')

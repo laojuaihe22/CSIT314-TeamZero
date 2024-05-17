@@ -143,42 +143,9 @@
             </div>
             <strong><p>{{message}}</p></strong>
         </form>
-        <div id="confirmationMessage" class="confirmation-message">
-            Thank you for your review!
-        </div>
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        showSection('listings'); // Show listings by default
-    });
-
-    function showSection(sectionId) {
-        var sections = ['listings', 'saved', 'mortgage'];
-        sections.forEach(function (id) {
-            var section = document.getElementById(id);
-            var navItem = document.querySelector(".Pnav-item[onclick=\"showSection('" + id + "')\"]");
-            if (section) {
-                if (id === sectionId) {
-                    section.style.display = "block";
-                    navItem.classList.add("active");
-                } else {
-                    section.style.display = "none";
-                    navItem.classList.remove("active");
-                }
-            }
-        });
-    }
-
-    function submitreview(event) {
-        event.preventDefault();
-        // Display confirmation message
-        document.getElementById('confirmationMessage').style.display = 'block';
-        // Clear the form
-        document.getElementById('reviewForm').reset();
-    }
-</script>
 
 
 
