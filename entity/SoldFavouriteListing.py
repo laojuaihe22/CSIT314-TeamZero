@@ -52,7 +52,7 @@ class SoldFavourite:
         ]
         
         property_list = list(db.SoldFavouriteListing.aggregate(pipline))
-        print(1)
+        
         if property_list:
             return property_list
         else:

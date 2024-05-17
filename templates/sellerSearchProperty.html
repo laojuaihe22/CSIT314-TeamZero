@@ -1,0 +1,235 @@
+{% extends "baseUserdashboard.html" %}
+
+
+{% block style %}
+.navbar {
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    background-color: white;
+}
+
+.buyer-main {
+    position: fixed;
+    margin-top: 60px;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    padding-left: 45px;
+    background-color: white;
+}
+
+.buyer-main p {
+    font-size: 45px;
+}
+
+.profile-nav {
+    font-size: 15px;
+    margin-top: -20px;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+    max-width: fit-content;
+    background-color: white;
+}
+
+.Pnav-item {
+    font-weight: bold;
+    padding: 10px 25px;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+}
+
+.Pnav-item.active {
+    font-weight: normal;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: block;
+}
+
+.buyer-body {
+    display: flex;
+    padding-left: 50px;
+    align-items: left;
+    flex-direction: column;
+    padding-top: 250px;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+    z-index: 1;
+}
+
+.search-bar {
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.filter-bar {
+    margin-bottom: 20px; 
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+ 
+.listing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.listing-card {
+    position: relative;
+    margin: 20px;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.listing-info .location-text {
+    padding: 20px;
+    font-size: 12px;
+}
+
+.listing-info h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.listing-bedrooms,
+.listing-bathrooms {
+display: flex;
+align-items: center;
+}
+
+.listing-bedrooms img,
+.listing-bathrooms img {
+width: 50px; /* Adjust the width as needed */
+height: auto; /* Maintain aspect ratio */
+}
+
+.form-group {
+    width: 90%; /* Set to 100% to make input boxes take full width of the form group */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: calc(100% - 20px); /* Adjust width as needed */
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="buyer-body">
+    <!-- All Listings Section -->
+    <div id="listings" class="hidden">
+        <h2>Search Listings</h2>
+        <form action="/seller_search_property" method="post">
+        <div class="filter-bar">
+            <label for="region-select">Region:</label>
+            <select id="region-select" name="region">
+                <option value="North">North</option>
+                <option value="South">South</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+                <option value="Central">Central</option>
+            </select>
+            
+            <label for="type-select">Type:</label>
+            <select id="type-select" name="property_type">
+                <option value="Condo">Condominium</option>
+                <option value="HDB">HDB</option>
+                <option value="Landed">Landed</option>
+            </select>
+    
+            <label for="price-sort">Sort Price:</label>
+            <select id="price-sort" name="price">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+
+            <label for="availability">Availability:</label>
+            <select id="availability" name="status">
+                <option value="unsold">New</option>
+                <option value="sold">Sold</option>
+            </select>
+    
+            <button class="button" type="submit">Filter</button>
+        </form>
+        </div>
+        <div class="listing-cards">
+            {% for property in property_list %}
+            <div class="listing-card">
+                <div class="listing-info">
+                    <h3 class="listing-name">{{ property.name }}</h3>
+                    <h4 class="listing-price" style="color: darkgreen;">${{ property.price }}</h4>
+                    <div class="listing-address">
+                        <p>Address: {{ property.address }}</p>
+                    </div>
+                    <div class="listing-type">
+                        <p>Type: {{ property.type }}</p>
+                    </div>
+                    <div class="listing-region">
+                        <p>Region:{{ property.region }}</p>
+                    </div>
+                    <div class="listing-description">
+                        <p>Description: {{ property.description }}</p>
+                    </div>
+                    <div class="listing-seller">
+                        <p>Agent:{{ property.agentID}}</p>
+                    </div>
+                    <div class="listing-bedrooms">
+                        <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>:{{ property.bedroom }}</span>
+                    </div>
+                    <div class="listing-bathrooms">
+                        <img src="{{ url_for('static', filename='bathroom.png') }}" alt="Bathroom"> <span>: {{ property.bathroom }}</span>
+                    </div>
+                    <div class="listing-views">
+                        <p>Total Views: {{ property.totalviews }}</p>
+                    </div>
+                    <div class="listing-saved">
+                        <p>Saved by: <span class="save-count">{{ property.shortlisted }}</span> users</p>
+                    </div>
+                    <div class="listing-status">
+                        <p>Status: {{ property.status }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more listing cards here -->
+            {% endfor %}    
+            <div id="messages">
+                <strong><p>{{message}}</p></strong>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+

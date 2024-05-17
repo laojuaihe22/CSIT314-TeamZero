@@ -2,103 +2,78 @@
 
 {% block style %}
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            background-color: #ffffff;
-            font-weight: 700;
-            z-index: 1000;
-        }
+.para {
+    margin-top: 15%; /* Adjust the margin-top value */
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
 
-        .logout img {
-            margin: -15px;
-            width: 50px;
-            height: auto;
-            color: black;
-        }
 
-        .para {
-            margin-top: 15%;
-            color: black;
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bold;
-            font-size: 40px;
-        }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5%;
+}
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
-        
-        .column {
-            flex: 0 0 25%;
-            padding: 30px;
-            align-items: center;
-            text-align: center;
-            border-radius: 10px;
-            border: none;
-            margin: 0% 2%;
-        }
+.column {
+    flex: 0 0 20%;
+    background-color: rgb(240, 239, 239);
+    padding: 30px;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px; /* Adjust the value to control the curvature */
+    border: none; /* Add this line to remove the border */
+    margin-top: 0;
+}
 
-        .column img {
-            max-width: 30%;
-            height: auto;
-            margin-bottom: 10px;
-        }
+.column img {
+    max-width: 30%;
+    height: auto;
+    margin-bottom: 10px;
+}
 
-        .column h4 {
-            margin: 0;
-            margin-bottom: 10px;
-        }
+.column h4 {
+    margin: 0;
+    margin-bottom: 10px;
+}
 
-        button[class="column"]:hover {
-            background-color: rgb(240, 239, 239);
-        }
+
+button[class="column"]:hover {
+    background-color: white;
+}
+
 
 {% endblock style %}
 
 {% block content %}
 
-<div class="no-scroll">
-    <span class="navbar">
-        <a class="title" href="page1.html">ZeroRealEstate</a>
-        <a class="logout" href="index.html"><img src="logout.avif"></a>
-        <a class="active" href="myprofile.html"><button>My Profile</button></a>
-        <a href="myActivities.html">My Activities</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
-        <a href="page1.html">Home</a>
-    </span>
-    <div class="para">
-        <p>Seller</p>
-    </div>
 
-    <div class="container">
-        <button class="column" onclick="location.href='sellerListing.html'">
-            <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
-            <h4>View All Listing</h4>
-            <p>Look through all my available units in the market right now!</p>
-        </button>
+<div class="para">
+    <p>Seller</p>
+</div>
 
-        <button class="column" onclick="window.location.href='/submitFeedback'">
-            <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
-            <h4>Rating And Review</h4>
-            <p>Leave a rating and review for the agent!</p>
-        </button>
+<div class="container">
+    <button class="column" onclick="location.href='/sellerViewPropertyListing'">
+        <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
+        <h4>View All Listing</h4>
+    </button>
 
-        <button class="column" onclick="window.location.href='sellerSearch.html'">
-            <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
-            <h4>Filter Listing By Location</h4>
-            <p>Filter through my available units by location!</p>
-        </button>
-    </div>
+    <button class="column" onclick="window.location.href='/seller_submit_feedback'">
+        <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
+        <h4>Submit Feedback</h4>
+    </button>
 
+    <button class="column" onclick="window.location.href='/seller_search_property'">
+        <img src="{{ url_for('static', filename='seller.png')}}" alt="Image">
+        <h4>Search Property</h4>
+    </button>
 </div>
 
 {% endblock content %}

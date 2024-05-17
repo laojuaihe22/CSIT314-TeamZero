@@ -28,12 +28,12 @@ class Rating:
             else:
                 return False;
         
-    def submitRating(self, receiver, sender, rating):
+    def submitRating(self, agent_email, sender_id, buyer_rating):
         client = self.get_database()
         db = client["CSIT314"]
 
         
-        agent = db.UserAccount.find_one({"email": receiver})
+        agent = db.UserAccount.find_one({"email": agent_email})
 
         if agent:
             agent_id = agent["_id"]
@@ -43,9 +43,9 @@ class Rating:
             if profile_info and profile_info["role"] == "rea":
                 
                 submit_rating = db.Rating.insert_one({
-                    "sender_id": ObjectId(sender),
+                    "sender_id": ObjectId(sender_id),
                     "receiver_id": agent["_id"],
-                    "rating": rating,
+                    "rating": buyer_rating,
                 })
 
                 if submit_rating:

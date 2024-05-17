@@ -71,22 +71,26 @@ class PropertyListing:
         ]
 
         propertyListing = list(db.propertyListing.aggregate(pipeline))
+        
+        if propertyListing:
+            return propertyListing
+        else:
+            return False
 
-        return propertyListing
     
         #view property listing
-    def viewPropertyListingbyId(self,user_id):
+    def viewPropertyListingbyAgentId(self,agentId):
  
         client = self.get_database()
         
         db = client["CSIT314"]
         
-        agent = db.UserAccount.find_one({"_id":ObjectId(user_id)})
+        agent = db.UserAccount.find_one({"_id":ObjectId(agentId)})
         
         if not agent:
             return False
 
-        propertyListing = list(db.propertyListing.find({"agentID":ObjectId(user_id)}))
+        propertyListing = list(db.propertyListing.find({"agentID":ObjectId(agentId)}))
         
         if propertyListing:
             return propertyListing
@@ -163,7 +167,43 @@ class PropertyListing:
             return property_list
         else:
             return False
+    
+    def seller_search_property(self,sellerId,region,property_type,price_sort,status):
+        client = self.get_database()
+        db = client["CSIT314"]
         
+        
+        # Sort the results based on the price_sort value
+        sort_order = None
+        if price_sort == 'asc':
+            sort_order = [('price', 1)]
+        elif price_sort == 'desc':
+            sort_order = [('price', -1)]
+        
+        property_list = list(db.propertyListing.find({"sellerID":ObjectId(sellerId),"region":region,"type":property_type,"status":status}).sort(sort_order))
+        
+        if property_list:
+            return property_list
+        else:
+            return False
+    
+    def viewPropertyListingbySellerId(self,seller_id):
+ 
+        client = self.get_database()
+        
+        db = client["CSIT314"]
+        
+        agent = db.UserAccount.find_one({"_id":ObjectId(seller_id)})
+        
+        if not agent:
+            return False
+
+        propertyListing = list(db.propertyListing.find({"sellerID":ObjectId(seller_id)}))
+        
+        if propertyListing:
+            return propertyListing
+        else:
+            return False
             
             
         
