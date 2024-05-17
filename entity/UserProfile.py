@@ -76,12 +76,15 @@ class UserProfile:
         db = client["CSIT314"]
 
         user = db.UserAccount.find_one({"email": user_email})
-        userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
-        
-        if userObj:
-            return userObj
-        else:
-            return False
+        print(1)
+        if user:
+            print(user["_id"])
+            userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
+            if userObj:
+                print(3)
+                return userObj
+            else:
+                return False
     
     #124 As a system admin, I want to update user profiles so that I can ensure accurate and up-to-date information.
     def updateUserProfile(self, email, field, value):
