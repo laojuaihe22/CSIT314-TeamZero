@@ -60,3 +60,23 @@ class SoldFavourite:
             return property_list
         else:
             return False
+        
+    
+    def unsaveSoldProperty(self,buyerID, propertyID):
+        client = self.get_database()
+        db = client["CSIT314"]
+
+        existing_document = db.SoldFavouriteListing.find_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+        
+        if not existing_document:
+            return False
+        else:
+            print(2)
+            deleted = db.SoldFavouriteListing.delete_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+            increment_shorlisted = db.NewFavouriteListing.update_one(
+                {"_id":ObjectId(propertyID)},{"$inc": {"shortlisted": -1}})
+
+            if deleted and increment_shorlisted:
+                return True
+            else:
+                return False
