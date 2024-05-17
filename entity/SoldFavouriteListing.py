@@ -13,7 +13,8 @@ class SoldFavourite:
             self.database = MongoClient("mongodb://localhost:27017")
             
         return self.database
-            
+    
+    #258 As a buyer, I want to save sold property listings into a favorite list so that I can understand market trends.
     def saveSoldProperty(self, buyerID, propertyID):
         client = self.get_database()
         db = client["CSIT314"]
@@ -25,13 +26,15 @@ class SoldFavourite:
         else:
             # Insert the document into the Favourite collection
             inserted = db.SoldFavouriteListing.insert_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+            increment_shorlisted = db.propertyListing.update_one(
+                {"_id":ObjectId(propertyID)},{"$inc": {"shortlisted": 1}})
 
-            if inserted:
+            if inserted and increment_shorlisted:
                 return True
             else:
                 return False
             
-            
+    #259 As a buyer, I want to view sold property favorite listings so that I can access property information.
     def buyerViewFavouriteSoldPropertyListing(self,buyer_id):
         client = self.get_database()
         db = client["CSIT314"]

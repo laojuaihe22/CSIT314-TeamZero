@@ -21,7 +21,7 @@ def processLoginPage():
     
     if verifyUser:
         session["id"] = user_id
-        session["user_email"] = user_email
+        session["user_email"] = user_email.lower()
         session["roles"] = user_role  
         print(user_id)
         return redirect(url_for('login_app.displayHomePage'))

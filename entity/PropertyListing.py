@@ -7,13 +7,11 @@ class PropertyListing:
         
     def get_database(self):
         if self.database is None:
-            # Establish a connection to the MongoDB server
-            # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb://localhost:27017")
             
         return self.database
     
-    #create property listing
+    #189 As a real estate agent, I want to create property listings so that buyers can find all the information they need.
     def createPropertyListing(self, agentId, sellerEmail, propertyName, address, region, price, type, description, bedroom, bathroom):
 
         client = self.get_database()
@@ -23,6 +21,7 @@ class PropertyListing:
     
         seller = db.UserAccount.find_one({"email":sellerEmail})
         
+     
         if not seller:
             return False
         
@@ -48,37 +47,7 @@ class PropertyListing:
             
         return True
         
-            
-    #view property listing
-    def viewAllPropertyListing(self):
- 
-        client = self.get_database()
-        
-        db = client["CSIT314"]
-        
-        pipeline = [
-            {
-                '$lookup': {
-                    'from': 'UserAccount',
-                    'localField': 'agentID',
-                    'foreignField': '_id',
-                    'as': 'userInfo'
-                }
-            },
-            {
-                '$unwind': '$userInfo'
-            }
-        ]
-
-        propertyListing = list(db.propertyListing.aggregate(pipeline))
-        
-        if propertyListing:
-            return propertyListing
-        else:
-            return False
-
-    
-        #view property listing
+    #190 As a real estate agent, I want to view property listings in my account, so that I can stay updated on their status.
     def viewPropertyListingbyAgentId(self,agentId):
  
         client = self.get_database()
@@ -97,7 +66,7 @@ class PropertyListing:
         else:
             return False
     
-    #update property listing
+    #191 As a real estate agent, I want to update property listings, so that I can ensure all information is accurate and current.
     def updatePropertyListing(self, address, field, value):
 
         client = self.get_database()
@@ -114,7 +83,7 @@ class PropertyListing:
         else:
             return None
     
-    #delete property listing
+    #192 As a real estate agent, I want to delete property listings, so that I can remove outdated or sold properties from the database.
     def deletePropertyListing(self, address):
 
         client = self.get_database()
@@ -148,6 +117,36 @@ class PropertyListing:
 
         return target_property
     
+    #366 As a buyer, I want to view all property listings so that I can access property information.
+    def viewAllPropertyListing(self):
+ 
+        client = self.get_database()
+        
+        db = client["CSIT314"]
+        
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserAccount',
+                    'localField': 'agentID',
+                    'foreignField': '_id',
+                    'as': 'userInfo'
+                }
+            },
+            {
+                '$unwind': '$userInfo'
+            }
+        ]
+
+        propertyListing = list(db.propertyListing.aggregate(pipeline))
+        increment_view = db.propertyListing.update_many({},{"$inc": {"totalviews": 1}})
+        
+        if propertyListing and increment_view:
+            return propertyListing
+        else:
+            return False
+    
+    #254 As a buyer, I want to search all property listings so that I can easily find properties using keywords.
     def buyer_search_property(self,region,property_type,price_sort,status):
         
         client = self.get_database()
@@ -163,11 +162,12 @@ class PropertyListing:
         
         property_list = list(db.propertyListing.find({"region":region,"type":property_type,"status":status}).sort(sort_order))
         
-        if property_list:
+        if property_list:   
             return property_list
         else:
             return False
     
+    #325 As a seller, I want to search my property listings so that I can easily find properties using keywords.
     def seller_search_property(self,sellerId,region,property_type,price_sort,status):
         client = self.get_database()
         db = client["CSIT314"]
@@ -187,6 +187,7 @@ class PropertyListing:
         else:
             return False
     
+    #320 As a seller, I want to view all my properties so that I can easily manage and track the properties I own.
     def viewPropertyListingbySellerId(self,seller_id):
  
         client = self.get_database()

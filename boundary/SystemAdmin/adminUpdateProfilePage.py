@@ -7,14 +7,15 @@ update_profile_app = Blueprint('update_profile_app', __name__)
 @update_profile_app.route('/updateUserProfile', methods=['GET', 'POST'])
 def update_profile_page():
 
-    viewUserAccountController = ViewUserAccountController()
-    user_account_data = viewUserAccountController.viewUserAccountData()
-
     if request.method == "POST":
 
         user_email = request.form["email"]
         field = request.form["field"]
         value = request.form["value"]
+        
+        # Validate email format
+        if field == "email" and not is_valid_email(value):
+            return render_template('adminUpdateAccount.html', message="Update Value is Invalid email format! Please try again")
         
         if field == "status":
             # Check if the value is a boolean
@@ -24,17 +25,21 @@ def update_profile_page():
                 value = False
             else:
                 flash('Status field requires a boolean value (True or False)', 'error')
-                return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data)
+                return render_template('/adminUpdateProfile.html')
 
         updateUserProfileController = UpdateUserProfileController()
         updateUser = updateUserProfileController.updateUserProfile(user_email, field, value)
 
         if updateUser:
-            
-            return render_template('/adminUpdateProfile.html', updateUser=updateUser,  users=user_account_data, message = 'User profile updated!')
+            return render_template('/adminUpdateProfile.html', message = 'User profile updated!')
         else:
             
-            return render_template('/adminUpdateProfile.html', updateUser=None, users=user_account_data, message = 'No profile has been updated')
+            return render_template('/adminUpdateProfile.html', message = 'No profile has been updated')
     
     
-    return render_template('/adminUpdateProfile.html', users=user_account_data)
+    return render_template('/adminUpdateProfile.html')
+
+
+def is_valid_email(email):
+    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(email_regex, email) is not None

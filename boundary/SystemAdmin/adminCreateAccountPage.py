@@ -8,7 +8,7 @@ create_account_app = Blueprint('create_account_app', __name__)
 def create_account_page():
     
     if request.method == "POST":
-        user_email = request.form["email"]
+        user_email = request.form["email"].lower()
         user_pass = request.form["password"]
         role = request.form.get('role')
         createUserController = CreateUserAccountController()
