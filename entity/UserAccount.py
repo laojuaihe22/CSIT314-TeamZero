@@ -54,7 +54,10 @@ class UserAccount:
 
             user_profile_role = {
                 "userAccountId": user_account_result.inserted_id,
-                "role": role
+                "name":"None",
+                "role": role,
+                "description":"None",
+                "status":True
             }
             
             db.UserProfile.insert_one(user_profile_role)

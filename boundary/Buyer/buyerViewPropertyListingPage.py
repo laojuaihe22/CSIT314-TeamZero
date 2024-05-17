@@ -37,7 +37,7 @@ def buyer_view_favourtie_sold_property_listing_page():
     if request.method == "GET":
         viewSoldProperty = ViewSoldPropertyFavouriteController()
         property_list = viewSoldProperty.buyerViewFavouriteSoldPropertyListing(session["id"])
-        print(property_list)
+        
         if not property_list:
             return render_template('buyerViewSoldProperty.html', message="You have no any favourite sold property!")
         

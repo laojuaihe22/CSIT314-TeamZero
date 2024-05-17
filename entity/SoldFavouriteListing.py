@@ -25,8 +25,10 @@ class SoldFavourite:
         else:
             # Insert the document into the Favourite collection
             inserted = db.SoldFavouriteListing.insert_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+            increment_shorlisted = db.propertyListing.update_one(
+                {"_id":ObjectId(propertyID)},{"$inc": {"shortlisted": 1}})
 
-            if inserted:
+            if inserted and increment_shorlisted:
                 return True
             else:
                 return False

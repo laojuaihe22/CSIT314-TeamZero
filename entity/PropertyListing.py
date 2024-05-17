@@ -71,8 +71,9 @@ class PropertyListing:
         ]
 
         propertyListing = list(db.propertyListing.aggregate(pipeline))
+        increment_view = db.propertyListing.update_many({},{"$inc": {"totalviews": 1}})
         
-        if propertyListing:
+        if propertyListing and increment_view:
             return propertyListing
         else:
             return False
@@ -163,7 +164,7 @@ class PropertyListing:
         
         property_list = list(db.propertyListing.find({"region":region,"type":property_type,"status":status}).sort(sort_order))
         
-        if property_list:
+        if property_list:   
             return property_list
         else:
             return False

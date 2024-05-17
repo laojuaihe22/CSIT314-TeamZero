@@ -15,7 +15,7 @@ def update_profile_page():
         
         # Validate email format
         if field == "email" and not is_valid_email(value):
-            return render_template('adminUpdateAccount.html', message="Invalid email format")
+            return render_template('adminUpdateAccount.html', message="Update Value is Invalid email format! Please try again")
         
         if field == "status":
             # Convert value to boolean if field is status
