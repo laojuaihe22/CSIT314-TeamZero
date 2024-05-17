@@ -90,36 +90,8 @@ th {
         <p>Update Value</p>
     </label>
     <input id="value" name="value" type="text" placeholder="Enter value to update" required>
-    
     <button class="button" type="submit">Update</button>
-</form>
-    {% if updateUser %}
-    <div id="searchResults" class="details-container">
-    <table>
-        <thead>
-            <tr>
-               
-                <th>Name</th>
-                <th>Status</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ updateUser.name }}</td>
-                <td>{{ updateUser.status }}</td>
-                <td>{{ updateUser.description }}</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    {% else %}
-    {% if updateUser is none %}
-    <!-- <p style="color:red">{{message}}</p> -->
     <p class="delete-message" style="color: red;font-size: 13px;font-weight: bold;">{{message}}</p>
-        {% else %}
-            <h1></h1>
-        {% endif %}
-    {% endif %}
+</form>
     
 {% endblock %}

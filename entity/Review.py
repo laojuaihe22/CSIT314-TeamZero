@@ -13,7 +13,7 @@ class Review:
             
         return self.database
     
-    
+    #195 As a real estate agent, I want to view reviews of myself, so that I can understand my clients' feedback and improve my services accordingly.
     def viewReviewByagentId(self,agentId):
         client = self.get_database()
         db = client["CSIT314"]
@@ -28,6 +28,8 @@ class Review:
             else:
                 return False;
 
+    #261 As a buyer, I want to write a review of my experience working with a real estate agent so that other users can learn more about their services
+    #324 As a seller, I want to write a review of my experience working with a real estate agent so that other users can learn more about their services
     def submitReview(self,agent_email, sender_id, buyer_rating):
         client = self.get_database()
         db = client["CSIT314"]

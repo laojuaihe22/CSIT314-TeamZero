@@ -12,9 +12,9 @@ class UserAccount:
         return self.database
     
     #61 As a system admin, I want to log in to the management system, so that I can perform administrative tasks and manage the system effectively.
-    #63 As a real estate agent, I want to be able to log in to the real estate platform using my email address and password.
-    #89 As a buyers, I want to be able to log in to the real estate platform using my email address and password.
-    #91 As a sellers, I want to be able to log in to the real estate platform using my email address and password.
+    #63 As a real estate agent, I want to log in to the real estate platform using my email address and password.
+    #89 As a buyers, I want to log in to the real estate platform using my email address and password.
+    #91 As a sellers, I want to log in to the real estate platform using my email address and password.
     def verifyAccount(self,email,password):
 
         client = self.get_database()
@@ -32,6 +32,8 @@ class UserAccount:
         # If verification fails
         return False, "None", "None"
     
+    
+    #117 As a system admin, I want to create user accounts so that I can grant access to the system to new users.
     def createUserAccount(self,user_email,user_pass,role):
         client = self.get_database()
         db = client["CSIT314"]
@@ -69,7 +71,7 @@ class UserAccount:
         
 
         
-        
+    #120 As a system admin, I want to suspend user accounts so that I can revoke access to the system for users who no longer need it
     def suspendUserAccount(self, user_email):
 
         client = self.get_database()
@@ -85,7 +87,8 @@ class UserAccount:
             return True
         else:
             return False
-        
+
+    #119 As a system admin, I want to update user accounts so that users can change their email and password as needed
     def updateUserAccount(self, user_email, field, value):
         
         client = self.get_database()
@@ -103,6 +106,7 @@ class UserAccount:
         else:
             return False
         
+    #118 As a system admin, I want to view basic information of user accounts, so that I can quickly identify users.    
     def viewUserAccountData(self):
 
         client = self.get_database()
@@ -112,6 +116,8 @@ class UserAccount:
         
         return user_account_data
         
+        
+    #121 As a system admin, I want to search for user accounts so that I can perform administrative tasks for specific users.
     def searchUserAccount(self,email):
     
         client = self.get_database()

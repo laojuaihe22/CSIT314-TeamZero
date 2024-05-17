@@ -70,7 +70,13 @@ th {
             </tr>
             <tr>
                 <td><strong>Role</strong></td>
-                <td>{{user.role}}</td>
+                <td>
+                    {% if user.role == "rea" %}
+                    Real Estate Agent
+                    {% else %}
+                    {{user.role}}
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <td><strong>Description</strong></td>

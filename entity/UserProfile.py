@@ -14,7 +14,7 @@ class UserProfile:
         return self.database
     
     
-    #create user profile
+    #122 As a system admin, I want to create user profile so that I can grant access to the system to new users.
     def createUserProfile(self, user_email, user_name, user_description):
         
         client = self.get_database()
@@ -33,7 +33,7 @@ class UserProfile:
                     "description": user_description,
                     }
                 }
-            print("jhere")
+            
             db.UserProfile.update_one({"userAccountId": existing_user["_id"]}, updated_user_data)
             return True
     
@@ -41,7 +41,7 @@ class UserProfile:
             # Log the exception or return an error message
             return False
     
-    #view userr profiles
+    #123 As a system admin, I want to view basic information of user profile, So that I can quickly identify users
     def adminViewUserProfile(self):
 
         client = self.get_database()
@@ -52,7 +52,7 @@ class UserProfile:
         
         return user_profile_data
 
-    # suspend user profiles
+    # 125 As a system admin, I want to suspend user profile so that I can revoke access to the system for users who no longer need it.
     def suspendUserProfile(self, user_email):
 
         client = self.get_database()
@@ -68,50 +68,36 @@ class UserProfile:
         else:
             return False
         
-    #search user profile
+    #126 As a system admin, I want to search user profiles so that I can quickly locate specific users and review their account details.
     def searchUserProfile(self, user_email):
 
         client = self.get_database()
         
         db = client["CSIT314"]
-        
 
         user = db.UserAccount.find_one({"email": user_email})
         userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
-        return userObj
+        
+        if userObj:
+            return userObj
+        else:
+            return False
     
-    #update user profile
+    #124 As a system admin, I want to update user profiles so that I can ensure accurate and up-to-date information.
     def updateUserProfile(self, email, field, value):
         
         client = self.get_database()
         db = client["CSIT314"]
         
-
-        user = db.UserAccount.find_one({"email": email})  
+        user = db.UserAccount.find_one({"email": email}) 
+        
         if user:
-            userPro = db.UserProfile.find_one({"userAccountId":user["_id"]})
+            user_profile = db.UserProfile.find_one({"userAccountId":user['_id']})
+            if user_profile:
+                db.UserProfile.update_one(
+                    {'_id':user_profile['_id']},
+                    {"$set": {field: value}}
+                )
+                return True
         else:
-            return None
-
-        if userPro:
-            if field == "role":
-                if value in ["buyer", "seller", "real estate agent"]:  # Check if value is one of the allowed roles
-                    update_query = {"$set": {"profile." + field: value}}
-                else:
-                    return None
-                    
-            elif field == "status":
-                if value in ["False", "True"]:  # Check if value is either "False" or "True"
-                    update_query = {"$set": {"profile." + field: value}}
-                else:
-                    return None
-
-            else:
-                # Handle the case where the field is not "role" or "status"
-                update_query = {"$set": {"profile." + field: value}}
-
-            db.UserProfile.update_one({"userAccountId":user["_id"]}, update_query)
-            updated_user = db.UserProfile.find_one({"userAccountId":user["_id"]})
-            return updated_user
-        else:
-            return None
+            return False

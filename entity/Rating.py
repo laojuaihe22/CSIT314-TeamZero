@@ -13,7 +13,7 @@ class Rating:
             self.database = MongoClient("mongodb://localhost:27017")
         return self.database
     
-    
+    #194 As a real estate agent, I want to view my ratings, so that I can see how satisfied my clients are and improve my services if needed.
     def viewRatingByagentId(self,agentId):
         client = self.get_database()
         db = client["CSIT314"]
@@ -27,7 +27,8 @@ class Rating:
                 return rating_list
             else:
                 return False;
-        
+    #260 As a buyer, I want to submit a rating for real estate agents in the system so that I can share my satisfaction and experience with their services
+    #323 As a seller, I want to submit a rating for real estate agents in the system so that I can share my satisfaction and experience with their services.
     def submitRating(self, agent_email, sender_id, buyer_rating):
         client = self.get_database()
         db = client["CSIT314"]
