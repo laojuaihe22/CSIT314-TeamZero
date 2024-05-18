@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "6646ed6219880ce851a46ca7"
+  },
+  "userAccountId": {
+    "$oid": "6646ed6219880ce851a46ca6"
+  },
+  "name": "Admin",
+  "role": "admin",
+  "description": "this is admin hello!",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "6646edcc19880ce851a46cb2"
+  },
+  "userAccountId": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "name": "real estate agent",
+  "role": "rea",
+  "description": "hi i am real estate agent!",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "6646edd319880ce851a46cb5"
+  },
+  "userAccountId": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "name": "Buyer 2 here",
+  "role": "buyer",
+  "description": "buyer 3 here",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "6646edda19880ce851a46cb8"
+  },
+  "userAccountId": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "name": "Seller",
+  "role": "seller",
+  "description": "Hi i am seller!",
+  "status": true
+}]
