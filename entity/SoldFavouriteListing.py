@@ -71,7 +71,6 @@ class SoldFavourite:
         if not existing_document:
             return False
         else:
-            print(2)
             deleted = db.SoldFavouriteListing.delete_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
             increment_shorlisted = db.NewFavouriteListing.update_one(
                 {"_id":ObjectId(propertyID)},{"$inc": {"shortlisted": -1}})

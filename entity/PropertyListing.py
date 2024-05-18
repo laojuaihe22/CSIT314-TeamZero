@@ -74,6 +74,7 @@ class PropertyListing:
         
         property_doc = db.propertyListing.find_one({'address':address})
         
+        
         if property_doc:
             update_query = {"$set": {field: value}}
             db.propertyListing.update_one({"address": address}, update_query)
@@ -90,7 +91,8 @@ class PropertyListing:
         db = client["CSIT314"]  
         collection = db["propertyListing"]
 
-        delete_result = collection.delete_one({"address": address})
+        delete_result = collection.find_one_and_delete({"address": address})
+        
         if delete_result:
             return True  # Document successfully deleted
         else:

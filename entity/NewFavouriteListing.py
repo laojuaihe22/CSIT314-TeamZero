@@ -67,7 +67,6 @@ class NewFavourite:
         db = client["CSIT314"]
 
         existing_document = db.NewFavouriteListing.find_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
-        print(buyerID,propertyID)
         if not existing_document:
             return False
         else:
