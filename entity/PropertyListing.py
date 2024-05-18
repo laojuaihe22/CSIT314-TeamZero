@@ -20,7 +20,6 @@ class PropertyListing:
         
     
         seller = db.UserAccount.find_one({"email":sellerEmail})
-        
      
         if not seller:
             return False
@@ -78,10 +77,10 @@ class PropertyListing:
         if property_doc:
             update_query = {"$set": {field: value}}
             db.propertyListing.update_one({"address": address}, update_query)
-            updated_property = db.propertyListing.find_one({'address': address})
-            return updated_property
+            
+            return True
         else:
-            return None
+            return False
     
     #192 As a real estate agent, I want to delete property listings, so that I can remove outdated or sold properties from the database.
     def deletePropertyListing(self, address):
@@ -92,8 +91,7 @@ class PropertyListing:
         collection = db["propertyListing"]
 
         delete_result = collection.delete_one({"address": address})
-    
-        if delete_result.deleted_count > 0:
+        if delete_result:
             return True  # Document successfully deleted
         else:
             return False  # Document not found or not deleted
