@@ -44,7 +44,7 @@ class TestRealEstateMethods(unittest.TestCase):
         
     def test_search_property_listing_by_agent_id(self):
         
-        result = self.realestate.searchPropertyListingbyAgentId(agentID=self.valid_agent, filter_type="price", value="10000000")
+        result = self.realestate.searchPropertyListingbyAgentId(agentID=self.valid_agent, filter_type="price", value="10000")
         self.assertIsInstance(result, list) 
 
 
@@ -54,6 +54,7 @@ class TestRealEstateMethods(unittest.TestCase):
         
         false_result = self.realestate.deletePropertyListing(address="not valid address")
         self.assertFalse(false_result)
+        
         
     def test_viewRatingByagentId(self):
         # Test with an existing agent id
