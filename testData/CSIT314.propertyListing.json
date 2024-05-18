@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "66485bd0cdfd8d1a0467ea77"
+  },
+  "agentID": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "sellerID": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "propertyName": "test 1 unsold ",
+  "address": "test1",
+  "region": "North",
+  "price": 1,
+  "type": "Condo",
+  "description": "1",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 39,
+  "shortlisted": 5
+},
+{
+  "_id": {
+    "$oid": "66485bdccdfd8d1a0467ea79"
+  },
+  "agentID": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "sellerID": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "propertyName": "test 2 sold",
+  "address": "test2",
+  "region": "North",
+  "price": 1,
+  "type": "Condo",
+  "description": "1",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 39,
+  "shortlisted": 21
+},
+{
+  "_id": {
+    "$oid": "66489918b38fcaf06728c62a"
+  },
+  "agentID": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "sellerID": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "propertyName": "Test Property",
+  "address": "123 Test St",
+  "region": "North",
+  "price": 150000,
+  "type": "unsold",
+  "description": "Test Description",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 1,
+  "shortlisted": 0
+}]
