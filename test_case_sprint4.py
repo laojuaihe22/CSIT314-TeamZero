@@ -90,7 +90,7 @@ class TestBuyerMethods(unittest.TestCase):
         
     def test_submitReview(self):
         
-        review = "Hi this is review"
+        review = "Hi this is buyer review"
         agentemail = "rea@gmail.com"
         not_existed_agentemail = "notexisted@gmail.com"
         
