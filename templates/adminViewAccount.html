@@ -56,19 +56,28 @@ tr:nth-child(even) {
                 <tr>
                     <th>Email</th>
                     <th>Status</th>
+                    <th>Role</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 {% for user in users %}
                     <tr>
-                        <td>{{ user['email'] }}</td>
+                        <td>{{ user.email }}</td>
                         <td>
-                        {% if user['status'] %}
-                            Activate
+                        {% if user.status %}
+                            Activate 
                 
                         {% else %}
                             Deactivate
                         {% endif %}
+                        </td>
+                        <td>
+                            {% if user.result['role'] == "rea"%}
+                            Real Estate Agent
+                            {% else %}
+                            {{user.result['role']}}
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

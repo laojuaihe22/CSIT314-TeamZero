@@ -47,8 +47,23 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
+        
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserAccount', 
+                    'localField': 'userAccountId', 
+                    'foreignField': '_id', 
+                    'as': 'result'
+                }
+            }, {
+                '$unwind': {
+                    'path': '$result'
+                }
+            }
+        ]
 
-        user_profile_data = list(db.UserProfile.find())
+        user_profile_data = list(db.UserProfile.aggregate(pipeline))
         
         return user_profile_data
 

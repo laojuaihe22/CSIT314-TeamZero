@@ -63,6 +63,7 @@ button:hover {
 <table>
     <thead>
         <tr>
+            <th>Email</th>
             <th>Name</th>
             <th>Status</th>            
             <th>Description</th>
@@ -72,6 +73,7 @@ button:hover {
     <tbody>
         {% for user in users %}
         <tr>
+            <td>{{user.result['email']}}</td>
             <td>{{ user.name }}</td>     
             <td>
                 {% if user.status %}
