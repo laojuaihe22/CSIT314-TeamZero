@@ -112,9 +112,25 @@ class UserAccount:
         client = self.get_database()
         db = client["CSIT314"]
         
-        user_account_data = list(db.UserAccount.find())
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserProfile', 
+                    'localField': '_id', 
+                    'foreignField': 'userAccountId', 
+                    'as': 'result'
+                }
+            }, {
+                '$unwind': {
+                    'path': '$result'
+                }
+            }
+        ]
+        
+        user_account_data = list(db.UserAccount.aggregate(pipeline))
         
         return user_account_data
+        
         
         
     #121 As a system admin, I want to search for user accounts so that I can perform administrative tasks for specific users.
