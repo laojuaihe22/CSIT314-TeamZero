@@ -26,8 +26,8 @@ def update_property_listing_page():
         updated_property = update_property_listing.updatePropertyListing(address, field, value)
         
         if updated_property:
-            return render_template('realEstateAgentUpdatePropertyListing.html', updated_property=updated_property, message="Property updated successfully!!")
+            return render_template('realEstateAgentUpdatePropertyListing.html', message="Property updated successfully!!")
         else:
-            return render_template('realEstateAgentUpdatePropertyListing.html', updated_property=updated_property, message="Address is not existed, Failed to update the property")
+            return render_template('realEstateAgentUpdatePropertyListing.html', message="Address is not existed, Failed to update the property")
             
     return render_template('realEstateAgentUpdatePropertyListing.html')

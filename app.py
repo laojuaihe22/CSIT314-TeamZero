@@ -1,4 +1,11 @@
 from flask import Flask
+
+from datetime import timedelta
+
+app = Flask(__name__)
+app.secret_key = "123"
+app.permanent_session_lifetime = timedelta(hours=1)
+
 from boundary.User.userLoginPage import login_app
 from boundary.User.userLogoutPage import logout_app
 from boundary.SystemAdmin.adminCreateAccountPage import create_account_app
@@ -24,12 +31,6 @@ from boundary.Buyer.buyerSearchPropertyListingPage import buyer_search_app
 from boundary.Seller.sellerViewPropertyPage import seller_view_property_listing_app
 from boundary.Seller.sellerSubmitFeedbackPage import seller_submit_feedback_app
 from boundary.Seller.sellerSearchPropertyPage import seller_search_app
-
-from datetime import timedelta
-
-app = Flask(__name__)
-app.secret_key = "123"
-app.permanent_session_lifetime = timedelta(hours=1)
 
 
 app.register_blueprint(login_app)
@@ -57,6 +58,7 @@ app.register_blueprint(buyer_search_app)
 app.register_blueprint(seller_view_property_listing_app)
 app.register_blueprint(seller_submit_feedback_app)
 app.register_blueprint(seller_search_app)
+
 
 # Run the Flask application
 if __name__ == "__main__":  
