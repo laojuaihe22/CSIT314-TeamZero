@@ -4,7 +4,7 @@ from controller.Buyer.searchPropertyController import BuyerSearchPropertyControl
 buyer_search_app = Blueprint('buyer_search_app', __name__)
 
 @buyer_search_app.route('/buyer_search_property', methods=['POST','GET'])
-def buyer_dashboard_page():
+def buyer_search_page():
     
     if request.method == 'POST':
         # Retrieve form values using request.form.get
