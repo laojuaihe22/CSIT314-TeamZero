@@ -31,7 +31,7 @@ class Review:
 
     #261 As a buyer, I want to write a review of my experience working with a real estate agent so that other users can learn more about their services
     #324 As a seller, I want to write a review of my experience working with a real estate agent so that other users can learn more about their services
-    def submitReview(self,agent_email, sender_id, buyer_rating):
+    def submitReview(self,agent_email, sender_id, review):
         client = self.get_database()
         db = client["CSIT314"]
         
@@ -45,9 +45,9 @@ class Review:
                 submit_review = db.Review.insert_one({
                     "sender_id": ObjectId(sender_id),
                     "receiver_id": agent["_id"],
-                    "review": buyer_rating
+                    "review": review
                 })
-                if submit_review:
-                    return True
-                else:
-                    return False
+            if submit_review:
+                return True
+            else:
+                return False
