@@ -10,7 +10,7 @@ class Rating:
         if self.database is None:
             # Establish a connection to the MongoDB server
             # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
-            self.database = MongoClient("mongodb://localhost:27017")
+            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/?tls=true")
         return self.database
     
     #194 As a real estate agent, I want to view my ratings, so that I can see how satisfied my clients are and improve my services if needed.
