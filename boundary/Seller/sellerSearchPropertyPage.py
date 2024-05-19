@@ -13,7 +13,7 @@ def seller_search_property_page():
         status = request.form.get('status')
         
         seller_search_property_controller = SellerSearchPropertyController()
-        property_list = seller_search_property_controller.sellerSearchProperty(session['id'],region,property_type,price_sort,status)
+        property_list = seller_search_property_controller.seller_search_property(session['id'],region,property_type,price_sort,status)
         
         if not property_list:
             return render_template('sellerSearchProperty.html', message="No properties found!")
