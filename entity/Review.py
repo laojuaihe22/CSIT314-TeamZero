@@ -9,7 +9,8 @@ class Review:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
-            self.database = MongoClient("mongodb://localhost:27017")
+            # self.database = MongoClient("mongodb://localhost:27017")
+            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             
         return self.database
     

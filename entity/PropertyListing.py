@@ -7,7 +7,8 @@ class PropertyListing:
         
     def get_database(self):
         if self.database is None:
-            self.database = MongoClient("mongodb://localhost:27017")
+            # self.database = MongoClient("mongodb://localhost:27017")
+            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             
         return self.database
     
@@ -146,7 +147,7 @@ class PropertyListing:
         else:
             return False
     
-    #254 As a buyer, I want to search all property listings so that I can easily find properties using keywords.
+    #377 As a buyer, I want to search all property listings so that I can easily find properties using keywords.
     def buyer_search_property(self,region,property_type,price_sort,status):
         
         client = self.get_database()
