@@ -9,6 +9,7 @@ class PropertyListing:
         if self.database is None:
             self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/?tls=true")
             
+            
         return self.database
     
     #189 As a real estate agent, I want to create property listings so that buyers can find all the information they need.
@@ -20,7 +21,6 @@ class PropertyListing:
         
     
         seller = db.UserAccount.find_one({"email":sellerEmail})
-        
      
         if not seller:
             return False
@@ -75,13 +75,14 @@ class PropertyListing:
         
         property_doc = db.propertyListing.find_one({'address':address})
         
+        
         if property_doc:
             update_query = {"$set": {field: value}}
             db.propertyListing.update_one({"address": address}, update_query)
-            updated_property = db.propertyListing.find_one({'address': address})
-            return updated_property
+            
+            return True
         else:
-            return None
+            return False
     
     #192 As a real estate agent, I want to delete property listings, so that I can remove outdated or sold properties from the database.
     def deletePropertyListing(self, address):
@@ -91,9 +92,9 @@ class PropertyListing:
         db = client["CSIT314"]  
         collection = db["propertyListing"]
 
-        delete_result = collection.delete_one({"address": address})
-    
-        if delete_result.deleted_count > 0:
+        delete_result = collection.find_one_and_delete({"address": address})
+        
+        if delete_result:
             return True  # Document successfully deleted
         else:
             return False  # Document not found or not deleted
@@ -139,14 +140,14 @@ class PropertyListing:
         ]
 
         propertyListing = list(db.propertyListing.aggregate(pipeline))
-        increment_view = db.propertyListing.update_many({},{"$inc": {"totalviews": 1}})
         
-        if propertyListing and increment_view:
+        if propertyListing:
+            increment_view = db.propertyListing.update_many({},{"$inc": {"totalviews": 1}})
             return propertyListing
         else:
             return False
     
-    #254 As a buyer, I want to search all property listings so that I can easily find properties using keywords.
+    #377 As a buyer, I want to search all property listings so that I can easily find properties using keywords.
     def buyer_search_property(self,region,property_type,price_sort,status):
         
         client = self.get_database()

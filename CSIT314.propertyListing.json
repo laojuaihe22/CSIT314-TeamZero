@@ -1,0 +1,2200 @@
+[{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c8b"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f56"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Condo Property",
+  "address": "100 Pine Tree Ln",
+  "region": "East",
+  "price": 255684,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 1019,
+  "shortlisted": 1
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c8c"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f42"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f91"
+  },
+  "propertyName": "Condo Property",
+  "address": "101 Pine Tree Ln",
+  "region": "Central",
+  "price": 213145,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 314,
+  "shortlisted": 1
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c8d"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8c"
+  },
+  "propertyName": "Landed Property",
+  "address": "102 Main St",
+  "region": "South",
+  "price": 301969,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 266,
+  "shortlisted": 2
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c8e"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f54"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8b"
+  },
+  "propertyName": "Condo Property",
+  "address": "103 Ocean Blvd",
+  "region": "South",
+  "price": 338858,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 27,
+  "shortlisted": 1
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c8f"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f53"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f94"
+  },
+  "propertyName": "HDB Property",
+  "address": "104 Pine Tree Ln",
+  "region": "West",
+  "price": 130048,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 734,
+  "shortlisted": 1
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c90"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f42"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Landed Property",
+  "address": "105 Maple Ave",
+  "region": "East",
+  "price": 462688,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 767,
+  "shortlisted": 1
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c91"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f56"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f81"
+  },
+  "propertyName": "Condo Property",
+  "address": "106 Maple Ave",
+  "region": "East",
+  "price": 270508,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 64,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c92"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f82"
+  },
+  "propertyName": "Landed Property",
+  "address": "107 Maple Ave",
+  "region": "East",
+  "price": 308271,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 1019,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c93"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "108 Ocean Blvd",
+  "region": "East",
+  "price": 143142,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 127,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c94"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f53"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "109 Cedar Rd",
+  "region": "South",
+  "price": 448446,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 775,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c95"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8d"
+  },
+  "propertyName": "Landed Property",
+  "address": "110 Maple Ave",
+  "region": "West",
+  "price": 304052,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 493,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c96"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f53"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f91"
+  },
+  "propertyName": "HDB Property",
+  "address": "111 Pine Tree Ln",
+  "region": "West",
+  "price": 234756,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 293,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c97"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f81"
+  },
+  "propertyName": "Condo Property",
+  "address": "112 Maple Ave",
+  "region": "Central",
+  "price": 399015,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 496,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c98"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7c"
+  },
+  "propertyName": "HDB Property",
+  "address": "113 Main St",
+  "region": "West",
+  "price": 172047,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 223,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c99"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f86"
+  },
+  "propertyName": "Landed Property",
+  "address": "114 Maple Ave",
+  "region": "East",
+  "price": 435756,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 870,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9a"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f47"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f85"
+  },
+  "propertyName": "HDB Property",
+  "address": "115 Maple Ave",
+  "region": "West",
+  "price": 342082,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 114,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9b"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f56"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f86"
+  },
+  "propertyName": "HDB Property",
+  "address": "116 Cedar Rd",
+  "region": "Central",
+  "price": 223867,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 852,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9c"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f51"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7f"
+  },
+  "propertyName": "HDB Property",
+  "address": "117 Maple Ave",
+  "region": "South",
+  "price": 468714,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 874,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9d"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "Landed Property",
+  "address": "118 Cedar Rd",
+  "region": "North",
+  "price": 224818,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 940,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9e"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7f"
+  },
+  "propertyName": "Landed Property",
+  "address": "119 Cedar Rd",
+  "region": "East",
+  "price": 154106,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 575,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914c9f"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f49"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f92"
+  },
+  "propertyName": "Condo Property",
+  "address": "120 Main St",
+  "region": "West",
+  "price": 291980,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 956,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca0"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f91"
+  },
+  "propertyName": "HDB Property",
+  "address": "121 Pine Tree Ln",
+  "region": "Central",
+  "price": 188491,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 214,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca1"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7c"
+  },
+  "propertyName": "Condo Property",
+  "address": "122 Pine Tree Ln",
+  "region": "Central",
+  "price": 314651,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 170,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca2"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4f"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f89"
+  },
+  "propertyName": "HDB Property",
+  "address": "123 Ocean Blvd",
+  "region": "West",
+  "price": 495384,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 597,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca3"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4d"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7d"
+  },
+  "propertyName": "Landed Property",
+  "address": "124 Cedar Rd",
+  "region": "North",
+  "price": 435184,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 699,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca4"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f49"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8a"
+  },
+  "propertyName": "Landed Property",
+  "address": "125 Main St",
+  "region": "East",
+  "price": 454236,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 947,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca5"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4e"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "HDB Property",
+  "address": "126 Ocean Blvd",
+  "region": "West",
+  "price": 451266,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 65,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca6"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f52"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f88"
+  },
+  "propertyName": "Landed Property",
+  "address": "127 Cedar Rd",
+  "region": "South",
+  "price": 389094,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 714,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca7"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f52"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "128 Maple Ave",
+  "region": "West",
+  "price": 372831,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 952,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca8"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f84"
+  },
+  "propertyName": "Condo Property",
+  "address": "129 Cedar Rd",
+  "region": "North",
+  "price": 437645,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 84,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ca9"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f50"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f94"
+  },
+  "propertyName": "HDB Property",
+  "address": "130 Cedar Rd",
+  "region": "East",
+  "price": 306826,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 783,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914caa"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f54"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f84"
+  },
+  "propertyName": "HDB Property",
+  "address": "131 Cedar Rd",
+  "region": "South",
+  "price": 220260,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 382,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cab"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f53"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "Condo Property",
+  "address": "132 Ocean Blvd",
+  "region": "North",
+  "price": 484971,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 339,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cac"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "Condo Property",
+  "address": "133 Main St",
+  "region": "North",
+  "price": 187966,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 855,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cad"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f87"
+  },
+  "propertyName": "Condo Property",
+  "address": "134 Pine Tree Ln",
+  "region": "West",
+  "price": 353076,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 70,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cae"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8f"
+  },
+  "propertyName": "Condo Property",
+  "address": "135 Pine Tree Ln",
+  "region": "North",
+  "price": 135372,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 481,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914caf"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f41"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "Condo Property",
+  "address": "136 Cedar Rd",
+  "region": "West",
+  "price": 222699,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 733,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb0"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8c"
+  },
+  "propertyName": "Landed Property",
+  "address": "137 Maple Ave",
+  "region": "South",
+  "price": 371647,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 165,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb1"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f51"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "138 Main St",
+  "region": "East",
+  "price": 277094,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 620,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb2"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Condo Property",
+  "address": "139 Maple Ave",
+  "region": "North",
+  "price": 430626,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 246,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb3"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f94"
+  },
+  "propertyName": "Condo Property",
+  "address": "140 Cedar Rd",
+  "region": "East",
+  "price": 306391,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 205,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb4"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f53"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Landed Property",
+  "address": "141 Maple Ave",
+  "region": "Central",
+  "price": 389906,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 379,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb5"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8a"
+  },
+  "propertyName": "Landed Property",
+  "address": "142 Pine Tree Ln",
+  "region": "West",
+  "price": 197606,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 205,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb6"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "HDB Property",
+  "address": "143 Main St",
+  "region": "North",
+  "price": 328005,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 783,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb7"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7b"
+  },
+  "propertyName": "HDB Property",
+  "address": "144 Pine Tree Ln",
+  "region": "North",
+  "price": 173363,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 309,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb8"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4f"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f88"
+  },
+  "propertyName": "HDB Property",
+  "address": "145 Pine Tree Ln",
+  "region": "West",
+  "price": 159949,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 443,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cb9"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f86"
+  },
+  "propertyName": "HDB Property",
+  "address": "146 Ocean Blvd",
+  "region": "South",
+  "price": 223520,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 954,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cba"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f89"
+  },
+  "propertyName": "Condo Property",
+  "address": "147 Cedar Rd",
+  "region": "West",
+  "price": 198178,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 602,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cbb"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f86"
+  },
+  "propertyName": "Landed Property",
+  "address": "148 Ocean Blvd",
+  "region": "West",
+  "price": 118797,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 481,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cbc"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f91"
+  },
+  "propertyName": "Condo Property",
+  "address": "149 Ocean Blvd",
+  "region": "Central",
+  "price": 413883,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 808,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cbd"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8f"
+  },
+  "propertyName": "Condo Property",
+  "address": "150 Cedar Rd",
+  "region": "North",
+  "price": 452698,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 359,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cbe"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f43"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f87"
+  },
+  "propertyName": "HDB Property",
+  "address": "151 Ocean Blvd",
+  "region": "Central",
+  "price": 117043,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 915,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cbf"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7f"
+  },
+  "propertyName": "HDB Property",
+  "address": "152 Cedar Rd",
+  "region": "South",
+  "price": 193042,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 290,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc0"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f49"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f91"
+  },
+  "propertyName": "Condo Property",
+  "address": "153 Cedar Rd",
+  "region": "South",
+  "price": 303068,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 1011,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc1"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7e"
+  },
+  "propertyName": "HDB Property",
+  "address": "154 Maple Ave",
+  "region": "East",
+  "price": 378969,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 502,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc2"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "Landed Property",
+  "address": "155 Ocean Blvd",
+  "region": "East",
+  "price": 344337,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 914,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc3"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f56"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f80"
+  },
+  "propertyName": "HDB Property",
+  "address": "156 Cedar Rd",
+  "region": "North",
+  "price": 368985,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 415,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc4"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4f"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f94"
+  },
+  "propertyName": "HDB Property",
+  "address": "157 Ocean Blvd",
+  "region": "North",
+  "price": 232471,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 95,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc5"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f56"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f90"
+  },
+  "propertyName": "Landed Property",
+  "address": "158 Ocean Blvd",
+  "region": "Central",
+  "price": 319568,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 269,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc6"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4f"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "Condo Property",
+  "address": "159 Maple Ave",
+  "region": "Central",
+  "price": 457051,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 727,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc7"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7a"
+  },
+  "propertyName": "Landed Property",
+  "address": "160 Cedar Rd",
+  "region": "South",
+  "price": 255225,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 90,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc8"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7c"
+  },
+  "propertyName": "HDB Property",
+  "address": "161 Ocean Blvd",
+  "region": "East",
+  "price": 171259,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 813,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cc9"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7e"
+  },
+  "propertyName": "Condo Property",
+  "address": "162 Maple Ave",
+  "region": "South",
+  "price": 320541,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 325,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cca"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7a"
+  },
+  "propertyName": "Landed Property",
+  "address": "163 Main St",
+  "region": "North",
+  "price": 451723,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 341,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ccb"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8c"
+  },
+  "propertyName": "Landed Property",
+  "address": "164 Main St",
+  "region": "East",
+  "price": 220356,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 589,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ccc"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7e"
+  },
+  "propertyName": "Condo Property",
+  "address": "165 Main St",
+  "region": "East",
+  "price": 435520,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 620,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ccd"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4e"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "166 Main St",
+  "region": "East",
+  "price": 332274,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 647,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cce"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f85"
+  },
+  "propertyName": "HDB Property",
+  "address": "167 Main St",
+  "region": "South",
+  "price": 207910,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 119,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ccf"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3e"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7f"
+  },
+  "propertyName": "HDB Property",
+  "address": "168 Cedar Rd",
+  "region": "Central",
+  "price": 152607,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 58,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd0"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f40"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f94"
+  },
+  "propertyName": "Landed Property",
+  "address": "169 Cedar Rd",
+  "region": "East",
+  "price": 499663,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 226,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd1"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f42"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7a"
+  },
+  "propertyName": "HDB Property",
+  "address": "170 Maple Ave",
+  "region": "South",
+  "price": 113361,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 882,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd2"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f90"
+  },
+  "propertyName": "Condo Property",
+  "address": "171 Main St",
+  "region": "Central",
+  "price": 449707,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 362,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd3"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "HDB Property",
+  "address": "172 Main St",
+  "region": "West",
+  "price": 254550,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 253,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd4"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3d"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7e"
+  },
+  "propertyName": "Landed Property",
+  "address": "173 Main St",
+  "region": "North",
+  "price": 422380,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 664,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd5"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f43"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f85"
+  },
+  "propertyName": "Landed Property",
+  "address": "174 Maple Ave",
+  "region": "South",
+  "price": 400413,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 628,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd6"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Landed Property",
+  "address": "175 Main St",
+  "region": "South",
+  "price": 266770,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 152,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd7"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f50"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Landed Property",
+  "address": "176 Maple Ave",
+  "region": "West",
+  "price": 367444,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 3,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 26,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd8"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f40"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "HDB Property",
+  "address": "177 Ocean Blvd",
+  "region": "South",
+  "price": 165550,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 921,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cd9"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "HDB Property",
+  "address": "178 Ocean Blvd",
+  "region": "South",
+  "price": 257600,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 600,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cda"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "Condo Property",
+  "address": "179 Maple Ave",
+  "region": "Central",
+  "price": 150955,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 709,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cdb"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7d"
+  },
+  "propertyName": "Condo Property",
+  "address": "180 Maple Ave",
+  "region": "East",
+  "price": 426734,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 961,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cdc"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f79"
+  },
+  "propertyName": "Landed Property",
+  "address": "181 Main St",
+  "region": "Central",
+  "price": 146674,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 5,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 856,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cdd"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4a"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f90"
+  },
+  "propertyName": "Landed Property",
+  "address": "182 Ocean Blvd",
+  "region": "East",
+  "price": 321788,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 3,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 397,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cde"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f44"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f85"
+  },
+  "propertyName": "Landed Property",
+  "address": "183 Cedar Rd",
+  "region": "Central",
+  "price": 322893,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 1016,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cdf"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4e"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f84"
+  },
+  "propertyName": "Condo Property",
+  "address": "184 Cedar Rd",
+  "region": "South",
+  "price": 179050,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 334,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce0"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f51"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7c"
+  },
+  "propertyName": "HDB Property",
+  "address": "185 Ocean Blvd",
+  "region": "West",
+  "price": 394382,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 689,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce1"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "HDB Property",
+  "address": "186 Main St",
+  "region": "East",
+  "price": 453769,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 5,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 647,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce2"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f50"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f90"
+  },
+  "propertyName": "Condo Property",
+  "address": "187 Main St",
+  "region": "East",
+  "price": 422161,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 499,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce3"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Landed Property",
+  "address": "188 Pine Tree Ln",
+  "region": "North",
+  "price": 148967,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 62,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce4"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8f"
+  },
+  "propertyName": "Condo Property",
+  "address": "189 Pine Tree Ln",
+  "region": "West",
+  "price": 235322,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 562,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce5"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4f"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8b"
+  },
+  "propertyName": "Landed Property",
+  "address": "190 Pine Tree Ln",
+  "region": "North",
+  "price": 118597,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 255,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce6"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "HDB Property",
+  "address": "191 Main St",
+  "region": "East",
+  "price": 359784,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 300,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce7"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f3c"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f78"
+  },
+  "propertyName": "Landed Property",
+  "address": "192 Cedar Rd",
+  "region": "North",
+  "price": 335650,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 1,
+  "bathroom": 1,
+  "status": "unsold",
+  "totalviews": 244,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce8"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f55"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7f"
+  },
+  "propertyName": "HDB Property",
+  "address": "193 Ocean Blvd",
+  "region": "South",
+  "price": 274758,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 2,
+  "bathroom": 3,
+  "status": "sold",
+  "totalviews": 678,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ce9"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f46"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f7e"
+  },
+  "propertyName": "HDB Property",
+  "address": "194 Pine Tree Ln",
+  "region": "South",
+  "price": 422047,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 1,
+  "bathroom": 2,
+  "status": "sold",
+  "totalviews": 358,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cea"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f45"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f8f"
+  },
+  "propertyName": "Landed Property",
+  "address": "195 Cedar Rd",
+  "region": "East",
+  "price": 406353,
+  "type": "Landed",
+  "description": "Spacious landed with beautiful views",
+  "bedroom": 2,
+  "bathroom": 1,
+  "status": "sold",
+  "totalviews": 1012,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ceb"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f52"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f92"
+  },
+  "propertyName": "HDB Property",
+  "address": "196 Main St",
+  "region": "North",
+  "price": 228019,
+  "type": "HDB",
+  "description": "Spacious hdb with beautiful views",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 982,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cec"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f48"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f77"
+  },
+  "propertyName": "Condo Property",
+  "address": "197 Ocean Blvd",
+  "region": "Central",
+  "price": 269717,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 980,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914ced"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f58"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f83"
+  },
+  "propertyName": "Condo Property",
+  "address": "198 Maple Ave",
+  "region": "East",
+  "price": 487782,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 4,
+  "bathroom": 3,
+  "status": "unsold",
+  "totalviews": 817,
+  "shortlisted": 0
+},
+{
+  "_id": {
+    "$oid": "6648f376f5f8914f9f914cee"
+  },
+  "agentID": {
+    "$oid": "6648cbeb5161d66fd0e95f4b"
+  },
+  "sellerID": {
+    "$oid": "6648cbec5161d66fd0e95f93"
+  },
+  "propertyName": "Condo Property",
+  "address": "199 Pine Tree Ln",
+  "region": "Central",
+  "price": 342860,
+  "type": "Condo",
+  "description": "Spacious condo with beautiful views",
+  "bedroom": 3,
+  "bathroom": 2,
+  "status": "unsold",
+  "totalviews": 929,
+  "shortlisted": 0
+}]

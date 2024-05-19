@@ -8,8 +8,12 @@ class UserProfile:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+<<<<<<< HEAD
             # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/?tls=true")
+=======
+            self.database = MongoClient("mongodb://localhost:27017")
+>>>>>>> 912c25ab0bda47d551ae699793e585634c72f40c
             
         return self.database
     
@@ -47,8 +51,23 @@ class UserProfile:
         client = self.get_database()
         
         db = client["CSIT314"]
+        
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserAccount', 
+                    'localField': 'userAccountId', 
+                    'foreignField': '_id', 
+                    'as': 'result'
+                }
+            }, {
+                '$unwind': {
+                    'path': '$result'
+                }
+            }
+        ]
 
-        user_profile_data = list(db.UserProfile.find())
+        user_profile_data = list(db.UserProfile.aggregate(pipeline))
         
         return user_profile_data
 
@@ -76,12 +95,12 @@ class UserProfile:
         db = client["CSIT314"]
 
         user = db.UserAccount.find_one({"email": user_email})
-        userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
-        
-        if userObj:
-            return userObj
-        else:
-            return False
+        if user:
+            userObj = db.UserProfile.find_one({"userAccountId":user["_id"]})
+            if userObj:
+                return userObj
+            else:
+                return False
     
     #124 As a system admin, I want to update user profiles so that I can ensure accurate and up-to-date information.
     def updateUserProfile(self, email, field, value):

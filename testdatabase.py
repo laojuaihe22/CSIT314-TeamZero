@@ -6,16 +6,24 @@ client = MongoClient("mongodb://localhost:27017")
 db = client["CSIT314"]
 
 
+pipeline = [
+    {
+        '$lookup': {
+            'from': 'UserProfile', 
+            'localField': '_id', 
+            'foreignField': 'userAccountId', 
+            'as': 'result'
+        }
+    }, {
+        '$unwind': {
+            'path': '$result'
+        }
+    }
+]
 
-# Sort the results based on the price_sort value
-price_sort = 'desc'
+userdata = db.UserAccount.aggregate(pipeline)
 
-if price_sort == 'asc':
-    sort_order = [('price', 1)]
-elif price_sort == 'desc':
-    sort_order = [('price', -1)]
+print(userdata)
 
-
-property_list = list(db.propertyListing.find({"region":"North","type":"Condo","status":"unsold"}).sort(sort_order))
-
-print(property_list)
+for doc in userdata:
+    print(doc)

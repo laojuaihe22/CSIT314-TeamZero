@@ -151,9 +151,10 @@ height: auto; /* Maintain aspect ratio */
                         </div>
                         <div class="listing-description">
                             <p>Description: {{ property.description }}</p>
+                            <p>Status: {{property.status}}</p>
                         </div>
                         <div class="listing-seller">
-                            <p>Seller/Agent: {{ property.agent }}</p>
+                            <p>AgentID: {{ property.agentID }}</p>
                         </div>
                         <div class="listing-bedrooms">
                             <img src="{{ url_for('static', filename='bedroom.png') }}" alt="Bedroom"> <span>: {{ property.bedroom }}</span>

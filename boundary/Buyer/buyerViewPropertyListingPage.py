@@ -11,8 +11,11 @@ def buyer_view_all_property_listing_page():
     if request.method == "GET":
         viewAllPropertyListing = ViewAllPropertyListing()
         property_list = viewAllPropertyListing.viewAllPropertyListing()
-
-        return render_template('buyerViewAllProperty.html', property_list = property_list)
+        
+        if not property_list:
+            return render_template('buyerViewAllProperty.html', message = "No Property Existed!")
+        
+        return render_template('buyerViewAllProperty.html', property_list=property_list)
     
     return redirect('/home')
 

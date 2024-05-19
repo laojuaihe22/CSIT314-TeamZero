@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "6648983f1d98ca726cd87b52"
+  },
+  "sender_id": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "66489850ca4ec4308c6056b7"
+  },
+  "sender_id": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "664898669f0c55be110a5082"
+  },
+  "sender_id": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "664898fb77aacca33658957c"
+  },
+  "sender_id": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "664898fb77aacca336589581"
+  },
+  "sender_id": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "66489919b38fcaf06728c639"
+  },
+  "sender_id": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+},
+{
+  "_id": {
+    "$oid": "66489919b38fcaf06728c63e"
+  },
+  "sender_id": {
+    "$oid": "6646edda19880ce851a46cb7"
+  },
+  "receiver_id": {
+    "$oid": "6646edcc19880ce851a46cb1"
+  },
+  "rating": 3
+}]

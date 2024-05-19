@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "66489919b38fcaf06728c637"
+  },
+  "buyerID": {
+    "$oid": "6646edd319880ce851a46cb4"
+  },
+  "propertyID": {
+    "$oid": "66485bdccdfd8d1a0467ea79"
+  }
+}]

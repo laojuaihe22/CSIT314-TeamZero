@@ -6,8 +6,12 @@ class UserAccount:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+<<<<<<< HEAD
             # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/?tls=true")
+=======
+            self.database = MongoClient("mongodb://localhost:27017")
+>>>>>>> 912c25ab0bda47d551ae699793e585634c72f40c
             
         return self.database
     
@@ -112,9 +116,25 @@ class UserAccount:
         client = self.get_database()
         db = client["CSIT314"]
         
-        user_account_data = list(db.UserAccount.find())
+        pipeline = [
+            {
+                '$lookup': {
+                    'from': 'UserProfile', 
+                    'localField': '_id', 
+                    'foreignField': 'userAccountId', 
+                    'as': 'result'
+                }
+            }, {
+                '$unwind': {
+                    'path': '$result'
+                }
+            }
+        ]
+        
+        user_account_data = list(db.UserAccount.aggregate(pipeline))
         
         return user_account_data
+        
         
         
     #121 As a system admin, I want to search for user accounts so that I can perform administrative tasks for specific users.

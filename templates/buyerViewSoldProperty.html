@@ -197,12 +197,15 @@ button.calculate-btn:hover {
         <div id="messages">
             <strong><p>{{ message }}</p></strong>
         </div>
+        
         <div class="listing-cards">
-            {% set special_condition = False %}
             {% for property in property_list %}
                 {% if property.result['status'] == "sold" %}
-                    {% set special_condition = True %}
                     <div class="listing-card">
+                        <form id="savePropertyForm" action="/unsaveSoldProperty" method="POST">
+                            <input type="hidden" name="propertyID" value="{{ property.result['_id'] }}">
+                            <button class="save-btn" type="submit">Unsave</button>
+                        </form>
                         <div class="listing-info">
                             <h3 class="listing-name">{{ property.result['propertyName'] }}</h3>
                             <h4 class="listing-price" style="color: darkgreen;">${{ property.result['price'] }}</h4>

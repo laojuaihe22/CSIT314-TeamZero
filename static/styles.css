@@ -553,7 +553,7 @@ label[for="role"] {
 }
 
 .no-scroll {
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Ally's css */

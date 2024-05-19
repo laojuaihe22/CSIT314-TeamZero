@@ -9,8 +9,12 @@ class SoldFavourite:
     def get_database(self):
         if self.database is None:
             # Establish a connection to the MongoDB server
+<<<<<<< HEAD
             # self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
             self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/?tls=true")
+=======
+            self.database = MongoClient("mongodb://localhost:27017")
+>>>>>>> 912c25ab0bda47d551ae699793e585634c72f40c
             
         return self.database
     
@@ -60,3 +64,22 @@ class SoldFavourite:
             return property_list
         else:
             return False
+        
+    
+    def unsaveSoldProperty(self,buyerID, propertyID):
+        client = self.get_database()
+        db = client["CSIT314"]
+
+        existing_document = db.SoldFavouriteListing.find_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+        
+        if not existing_document:
+            return False
+        else:
+            deleted = db.SoldFavouriteListing.delete_one({"buyerID": ObjectId(buyerID), "propertyID": ObjectId(propertyID)})
+            increment_shorlisted = db.NewFavouriteListing.update_one(
+                {"_id":ObjectId(propertyID)},{"$inc": {"shortlisted": -1}})
+
+            if deleted and increment_shorlisted:
+                return True
+            else:
+                return False
