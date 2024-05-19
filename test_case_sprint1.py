@@ -9,22 +9,22 @@ class Test_case_sprint1(unittest.TestCase):
         self.app = app.test_client()
 
     def test_admin_success_login(self):
-        verification = UserAccount().verifyAccount("admin@gmail.com", "1")
+        verification = UserAccount().verifyAccount("admin1@example.com", "1")
         self.assertEqual(verification[0],True)
         self.assertEqual(verification[1],"admin")
         
     def test_real_estate_agent_success_login(self):
-        verification = UserAccount().verifyAccount("rea@gmail.com", "1")
+        verification = UserAccount().verifyAccount("agent1@example.com", "1")
         self.assertEqual(verification[0],True)
         self.assertEqual(verification[1],"rea")
         
     def test_buyer_success_login(self):
-        verification = UserAccount().verifyAccount("buyer@gmail.com", "1")
+        verification = UserAccount().verifyAccount("buyer1@example.com", "1")
         self.assertEqual(verification[0],True)
         self.assertEqual(verification[1],"buyer")
         
     def test_seller_success_login(self):
-        verification = UserAccount().verifyAccount("seller@gmail.com", "1")
+        verification = UserAccount().verifyAccount("seller1@example.com", "1")
         self.assertEqual(verification[0],True)
         self.assertEqual(verification[1],"seller")
         

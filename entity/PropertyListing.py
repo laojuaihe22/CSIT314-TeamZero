@@ -7,8 +7,8 @@ class PropertyListing:
         
     def get_database(self):
         if self.database is None:
-            # self.database = MongoClient("mongodb://localhost:27017")
-            self.database = MongoClient("mongodb+srv://mongo:mongo@cluster0.zj42wez.mongodb.net/")
+            self.database = MongoClient("mongodb://localhost:27017")
+            
             
         return self.database
     
